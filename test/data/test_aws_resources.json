@@ -1,0 +1,371 @@
+{
+    "cluster": [
+      {
+        "node": [
+          {
+            "self": {
+              "instance_id": "i-0618310a1487ad8e1", 
+              "name": "ip-10-0-2-117.us-east-2.compute.internal"
+            }
+          }, 
+          {
+            "self": {
+              "instance_id": "i-0bd0c39fdf7060e9a", 
+              "name": "ip-10-0-3-116.us-east-2.compute.internal"
+            }
+          }, 
+          {
+            "self": {
+              "instance_id": "i-03335d893ab1f8e3d", 
+              "name": "ip-10-0-3-17.us-east-2.compute.internal"
+            }
+          }
+        ], 
+        "pod": [
+          {
+            "self": {
+              "name": "conwp-mariadb-0", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "conwp-memcached-67db655bb4-v6w6r", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "conwp-wordpress-868df87fd6-xqvvq", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "aws-node-2gnrj", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "aws-node-9kz2k", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "aws-node-lvwz5", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "coredns-66bc8b7b7b-8gbgt", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "coredns-66bc8b7b7b-tzp2l", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "kube-proxy-4xvbc", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "kube-proxy-khcrz", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "kube-proxy-ljnz2", 
+              "namespace": "kube-system"
+            }
+          }
+        ], 
+        "self": {
+          "arn": "arn:aws:eks:us-east-2:144908232300:cluster/wpcon", 
+          "display_name": "wpcon", 
+          "endpoint": "https://EC1A4335974DF013D18ED3B3C523195B.gr7.us-east-2.eks.amazonaws.com", 
+          "identity": "{'oidc': {'issuer': 'https://oidc.eks.us-east-2.amazonaws.com/id/EC1A4335974DF013D18ED3B3C523195B'}}", 
+          "kubernetesNetworkConfig": "{'serviceIpv4Cidr': '172.20.0.0/16'}", 
+          "logging": {
+            "clusterLogging": [
+              {
+                "enabled": false, 
+                "types": [
+                  "api", 
+                  "audit", 
+                  "authenticator", 
+                  "controllerManager", 
+                  "scheduler"
+                ]
+              }
+            ]
+          }, 
+          "name": "wpcon", 
+          "namespace": [
+            {
+              "name": "default"
+            }, 
+            {
+              "name": "kube-node-lease"
+            }, 
+            {
+              "name": "kube-public"
+            }, 
+            {
+              "name": "kube-system"
+            }
+          ], 
+          "platformVersion": "eks.9", 
+          "region": "us-east-2", 
+          "roleArn": "arn:aws:iam::144908232300:role/wpcon20220103084558929400000003", 
+          "status": "ACTIVE", 
+          "tags": {
+            "Environment": "demoblog", 
+            "GithubOrg": "terraform-aws-modules", 
+            "GithubRepo": "terraform-aws-eks"
+          }, 
+          "version": "1.18"
+        }, 
+        "service": [
+          {
+            "self": {
+              "name": "conwp-mariadb", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "conwp-memcached", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "default", 
+              "namespace": "default"
+            }
+          }, 
+          {
+            "self": {
+              "name": "default", 
+              "namespace": "kube-node-lease"
+            }
+          }, 
+          {
+            "self": {
+              "name": "default", 
+              "namespace": "kube-public"
+            }
+          }, 
+          {
+            "self": {
+              "name": "attachdetach-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "aws-cloud-provider", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "aws-node", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "certificate-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "clusterrole-aggregation-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "coredns", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "cronjob-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "daemon-set-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "default", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "deployment-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "disruption-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "eks-vpc-resource-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "endpoint-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "endpointslice-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "expand-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "generic-garbage-collector", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "horizontal-pod-autoscaler", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "job-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "kube-proxy", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "namespace-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "node-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "persistent-volume-binder", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "pod-garbage-collector", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "pv-protection-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "pvc-protection-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "replicaset-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "replication-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "resourcequota-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "service-account-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "service-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "statefulset-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "ttl-controller", 
+              "namespace": "kube-system"
+            }
+          }, 
+          {
+            "self": {
+              "name": "vpc-resource-controller", 
+              "namespace": "kube-system"
+            }
+          }
+        ]
+      }
+    ], 
+    "instance": []
+  }
