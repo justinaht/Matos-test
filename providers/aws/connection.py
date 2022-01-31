@@ -9,7 +9,9 @@ logger = structlog.get_logger(__file__)
 
 
 def __sts_connection():
-    aws_role_json_path = os.path.join(os.getcwd(), "aws_role_account.json")
+    aws_svc_account_path = os.getenv("AWS_SVC_ACCOUNT_PATH", "credentials")
+    aws_role_json_path = os.path.join(aws_svc_account_path, "aws_role_account.json")
+    # aws_role_json_path = os.path.join(os.getcwd(), "credentials/aws_role_account.json")
     with open(aws_role_json_path, "r") as file_obj:
         data = json.load(file_obj)
         arn = data.get("ARN")
@@ -72,7 +74,7 @@ class AWS:
         self.access_key = aws_credentials.get("ACCESS_KEY_ID")
         self.secret_access_key = aws_credentials.get("SECRET_ACCESS_KEY")
         self.session_token = aws_credentials.get("SESSION_TOKEN", "")
-        self.region = aws_credentials.get("DEFAULT_REGION", "")
+        self.region = aws_credentials.get("DEFAULT_REGION", "us-west-2")
 
         self._session = None
 

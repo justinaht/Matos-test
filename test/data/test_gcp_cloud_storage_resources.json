@@ -1,0 +1,190 @@
+{
+    "storage": [
+      {
+        "self": {
+          "ancestors": [
+            "projects/234821169729", 
+            "organizations/592371966970"
+          ], 
+          "asset_type": "bucket", 
+          "display_name": "sched_job_states", 
+          "iam_policy": {
+            "bindings": [
+              {
+                "members": [
+                  "projectEditor:cloudmatos-demoblog", 
+                  "projectOwner:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyBucketOwner"
+              }, 
+              {
+                "members": [
+                  "projectViewer:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyBucketReader"
+              }, 
+              {
+                "members": [
+                  "projectEditor:cloudmatos-demoblog", 
+                  "projectOwner:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyObjectOwner"
+              }, 
+              {
+                "members": [
+                  "projectViewer:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyObjectReader"
+              }
+            ], 
+            "etag": "BwXCNVI8nsI="
+          }, 
+          "name": "sched_job_states", 
+          "resource": {
+            "acl": [], 
+            "autoclass": {}, 
+            "billing": {}, 
+            "cors": [], 
+            "defaultObjectAcl": [], 
+            "encryption": {}, 
+            "etag": "CAE=", 
+            "iamConfiguration": {
+              "bucketPolicyOnly": {
+                "enabled": true, 
+                "lockedTime": "2021-08-11T12:32:32.755Z"
+              }, 
+              "publicAccessPrevention": "enforced", 
+              "uniformBucketLevelAccess": {
+                "enabled": true, 
+                "lockedTime": "2021-08-11T12:32:32.755Z"
+              }
+            }, 
+            "id": "sched_job_states", 
+            "kind": "storage#bucket", 
+            "labels": {"hi":"safd"}, 
+            "lifecycle": {
+              "rule": []
+            }, 
+            "location": "US-WEST2", 
+            "locationType": "region", 
+            "logging": {}, 
+            "metageneration": 1.0, 
+            "name": "sched_job_states", 
+            "owner": {}, 
+            "projectNumber": 234821169729.0, 
+            "retentionPolicy": {}, 
+            "satisfiesPZS": false, 
+            "selfLink": "https://www.googleapis.com/storage/v1/b/sched_job_states", 
+            "storageClass": "STANDARD", 
+            "timeCreated": "2021-05-13T12:32:32.755Z", 
+            "updated": "2021-05-13T12:32:32.755Z", 
+            "versioning": {}, 
+            "website": {}
+          }
+        }
+      }, 
+      {
+        "self": {
+          "ancestors": [
+            "projects/234821169729", 
+            "organizations/592371966970"
+          ], 
+          "asset_type": "bucket", 
+          "display_name": "test_bucket_cloudmatos-demoblog", 
+          "iam_policy": {
+            "bindings": [
+              {
+                "members": [
+                  "projectEditor:cloudmatos-demoblog", 
+                  "projectOwner:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyBucketOwner"
+              }, 
+              {
+                "members": [
+                  "projectViewer:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyBucketReader"
+              }, 
+              {
+                "members": [
+                  "projectEditor:cloudmatos-demoblog", 
+                  "projectOwner:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyObjectOwner"
+              }, 
+              {
+                "members": [
+                  "projectViewer:cloudmatos-demoblog"
+                ], 
+                "role": "roles/storage.legacyObjectReader"
+              },
+              {
+                "members": [
+                  "allUsers"
+                ], 
+                "role": "roles/storage.objectViewer"
+              }
+            ], 
+            "etag": "BwXV6MwENz4="
+          }, 
+          "name": "test_bucket_cloudmatos-demoblog", 
+          "resource": {
+            "acl": [], 
+            "autoclass": {}, 
+            "billing": {}, 
+            "cors": [], 
+            "defaultObjectAcl": [], 
+            "encryption": {}, 
+            "etag": "CAQ=", 
+            "iamConfiguration": {
+              "bucketPolicyOnly": {
+                "enabled": true, 
+                "lockedTime": "2022-04-19T05:38:35.564Z"
+              }, 
+              "publicAccessPrevention": "enforced", 
+              "uniformBucketLevelAccess": {
+                "enabled": true, 
+                "lockedTime": "2022-04-19T05:38:35.564Z"
+              }
+            }, 
+            "id": "test_bucket_cloudmatos-demoblog", 
+            "kind": "storage#bucket", 
+            "labels": {}, 
+            "lifecycle": {
+              "rule": [
+                {
+                  "action": {
+                    "storageClass": "NEARLINE", 
+                    "type": "SetStorageClass"
+                  }, 
+                  "condition": {
+                    "age": 100.0, 
+                    "matchesStorageClass": []
+                  }
+                }
+              ]
+            }, 
+            "location": "US-EAST1", 
+            "locationType": "region", 
+            "logging": {}, 
+            "metageneration": 4.0, 
+            "name": "test_bucket_cloudmatos-demoblog", 
+            "owner": {}, 
+            "projectNumber": 234821169729.0, 
+            "retentionPolicy": {
+              "effectiveTime": "2022-01-19T05:44:02.395Z", 
+              "retentionPeriod": 2592000.0
+            }, 
+            "satisfiesPZS": false, 
+            "selfLink": "https://www.googleapis.com/storage/v1/b/test_bucket_cloudmatos-demoblog", 
+            "storageClass": "STANDARD", 
+            "timeCreated": "2022-01-19T05:38:35.564Z", 
+            "updated": "2022-01-19T05:44:28.808Z", 
+            "versioning": {}, 
+            "website": {}
+          }
+        }
+      }
+    ]
+  }

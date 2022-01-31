@@ -4874,6 +4874,7 @@
           "instanceGroupUrls": [
             "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/instanceGroupManagers/gke-cmdbgke-cmdbnodepool-7e6be4cc-grp"
           ], 
+          "enableKubernetesAlpha": true, 
           "ipAllocationPolicy": {
             "useRoutes": true
           }, 
@@ -4912,6 +4913,7 @@
           "name": "cmdbgke", 
           "network": "cmdbvpc", 
           "networkConfig": {
+            "enableIntraNodeVisibility": true,
             "defaultSnatStatus": {}, 
             "network": "projects/cloudmatos-demoblog/global/networks/cmdbvpc", 
             "serviceExternalIpsConfig": {
@@ -4933,6 +4935,9 @@
             ], 
             "preemptible": true, 
             "serviceAccount": "default", 
+            "workloadMetadataConfig": {
+              "mode": "GKE_METADATA1"
+            },
             "shieldedInstanceConfig": {
               "enableIntegrityMonitoring": true
             }

@@ -62,6 +62,12 @@ class GCPResourceManager(BaseGCPManager):
                 if resource_type == "cluster"
                 else "instances"
                 if resource_type == "instance"
+                else "networks"
+                if resource_type == "network"
+                else "storages"
+                if resource_type == 'storage'
+                else "serviceAccounts"
+                if resource_type == 'serviceAccount'
                 else resource_type
             )
 
@@ -74,6 +80,10 @@ class GCPResourceManager(BaseGCPManager):
 
             if resource_type == "cluster" and resource_type != current_resource_type:
                 resource["cluster_name"] = current_resource_name
+            if resource_type == 'network' and resource_type != current_resource_type:
+                resource["network_name"] = resource['resource']['data']['network'].split('/')[-1]
+            if resource_type == 'serviceAccount' and resource_type != current_resource_type:
+                resource["service_account"] = current_resource_name
             if current_resource_type == "pods" and resource['resource']['data']['status']['phase'] not in POD_STATUS:
                 continue
 
