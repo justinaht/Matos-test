@@ -180,6 +180,16 @@ ASSET_TYPES = {
     "k8s.io/Node": "nodes",
     "container.googleapis.com/Cluster": "cluster",
     "compute.googleapis.com/Instance": "instance",
+    "compute.googleapis.com/Network": "network",
+    "compute.googleapis.com/Subnetwork": "subnetworks",
+    "compute.googleapis.com/Route": "routes",
+    "compute.googleapis.com/Firewall": "firewalls",
+    "storage.googleapis.com/Bucket": "storages",
+    "iam.googleapis.com/Role": "role",
+    "iam.googleapis.com/ServiceAccount": "serviceAccount",
+    # "iam.googleapis.com/ServiceAccountKey": "serviceAccount",
+    "iam.googleapis.com/ServiceAccountKey": "serviceAccountKey",
+    "sqladmin.googleapis.com/Instance": "sql"
 }
 
 RESOURCE_TYPE_REQUESTS = {
@@ -190,6 +200,22 @@ RESOURCE_TYPE_REQUESTS = {
         "k8s.io/Node",
     ],
     "instance": ["compute.googleapis.com/Instance"],
+    "network": [
+        "compute.googleapis.com/Network",
+        "compute.googleapis.com/Subnetwork",
+        "compute.googleapis.com/Route",
+        "compute.googleapis.com/Firewall"
+    ],
+    "storage": [
+        "storage.googleapis.com/Bucket"
+    ],
+    "serviceAccount": [
+        "iam.googleapis.com/ServiceAccount",
+        "iam.googleapis.com/ServiceAccountKey"
+    ],
+    'sql': [
+        "sqladmin.googleapis.com/Instance",
+    ]
 }
 
 POD_STATUS = ['Running']

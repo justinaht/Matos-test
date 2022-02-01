@@ -179,6 +179,126 @@ def gcp_instance(resource, provider):
     return instances
 
 
+def gcp_network(resource, provider):
+    network_details = resource['network']
+    networks = []
+
+    if isinstance(network_details, list):
+        for network_item in network_details:
+            network = selfish({
+                "name": from_dict(network_item, "resource", "data", "name"),
+                "display_name": from_dict(network_item, "resource", "data", "name"),
+                "self_link": from_dict(network_item, "resource", "data", "selfLink"),
+                "source_data": from_dict(network_item, 'resource', 'data'),
+                # "source_data": network_item,
+            })
+
+            add_child(gcp_network_subnetwork, "subnetworks", "subnetwork", resource, network, provider)
+            add_child(gcp_network_firewall, "firewalls", "firewall", resource, network, provider)
+            add_child(gcp_network_route, "routes", "route", resource, network, provider)
+
+            networks.append(network)
+
+    return networks
+
+
+def gcp_network_subnetwork(resource):
+    return selfish({
+        "name": from_dict(resource, "resource", "data", "name"),
+        "display_name": from_dict(resource, "resource", "data", "name"),
+        "network": from_dict(resource, "network_name"),
+        "region": from_dict(resource, "resource", "data", "region"),
+        "source_data": from_dict(resource, "resource", "data"),
+    })
+
+
+def gcp_network_firewall(resource):
+    return selfish({
+        "name": from_dict(resource, "resource", "data", "name"),
+        "display_name": from_dict(resource, "resource", "data", "name"),
+        "network": from_dict(resource, "network_name"),
+        "source_data": from_dict(resource, "resource", "data"),
+    })
+
+
+def gcp_network_route(resource):
+    return selfish({
+        "name": from_dict(resource, "resource", "data", "name"),
+        "display_name": from_dict(resource, "resource", "data", "name"),
+        "network": from_dict(resource, "network_name"),
+        "source_data": from_dict(resource, "resource", "data"),
+    })
+
+
+def gcp_storage(resource, provider):
+    storage_details = resource['storages']
+    storages = []
+
+    if isinstance(storage_details, list):
+        for storage_item in storage_details:
+            storage = selfish({
+                "name": from_dict(storage_item, "resource", "data", "name").split('/')[-1],
+                "display_name": from_dict(storage_item, "resource", "data", "name").split('/')[-1],
+                "asset_type": "bucket",
+                "resource": from_dict(storage_item, 'resource', 'data'),
+                "iam_policy": from_dict(storage_item, 'iamPolicy'),
+                "ancestors": from_dict(storage_item, 'ancestors')
+            })
+
+            # add_child(gcp_network_subnetwork, "subnetworks", "subnetwork", resource, storage, provider)
+            # add_child(gcp_network_firewall, "firewalls", "firewall", resource, storage, provider)
+            # add_child(gcp_network_route, "routes", "route", resource, storage, provider)
+
+            storages.append(storage)
+
+    return storages
+
+
+def gcp_service_account(resource, provider):
+    service_account_details = resource['serviceAccount']
+    service_account_list = []
+
+    if isinstance(service_account_details, list):
+        for service_account_item in service_account_details:
+            service_account = selfish({
+                "name": from_dict(service_account_item, "resource", "data", "name"),
+                "resource": from_dict(service_account_item, 'resource', 'data'),
+                "iam_policy": from_dict(service_account_item, 'iamPolicy'),
+                "ancestors": from_dict(service_account_item, 'ancestors'),
+                "source_data": service_account_item
+            })
+
+            add_child(gcp_service_account_key, "serviceAccountKey", "serviceAccountKey", resource, service_account,
+                      provider)
+            # add_child(gcp_network_firewall, "firewalls", "firewall", resource, storage, provider)
+            # add_child(gcp_network_route, "routes", "route", resource, storage, provider)
+
+            service_account_list.append(service_account)
+
+    return service_account_list
+
+
+def gcp_service_account_key(resource):
+    return selfish({**from_dict(resource, "resource", "data")})
+
+
+def gcp_sql(resource, provider):
+    sql_details = resource['sql']
+    sqls = []
+
+    if isinstance(sql_details, list):
+        for sql_item in sql_details:
+            sql = selfish({
+                "name": from_dict(sql_item, "resource", "data", "name"),
+                "display_name": from_dict(sql_item, "resource", "data", "name"),
+                "source_data": from_dict(sql_item, 'resource', 'data'),
+            })
+
+            sqls.append(sql)
+
+    return sqls
+
+
 cloud_resource_mappers = {
     'aws': {
         'cluster': aws_cluster,
@@ -193,6 +313,10 @@ cloud_resource_mappers = {
         'cluster_service': None,
         'cluster_node': None,
         'instance': gcp_instance,
+        'network': gcp_network,
+        "storage": gcp_storage,
+        "serviceAccount": gcp_service_account,
+        'sql': gcp_sql,
     }
 }
 
@@ -264,8 +388,8 @@ def add_child(child_mapper,
     """
 
     if source_key not in source_data:
+        print(source_key, "===== non-existed key")
         return
-
     try:
         data = source_data[source_key]
 
@@ -273,12 +397,18 @@ def add_child(child_mapper,
             return
 
         if isinstance(data, (list, tuple, set)):
-            mapped = [child_mapper(s) for s in data if from_dict(s, "cluster_name") == target_data['self']['name'] and provider == 'gcp' or provider == 'aws']
+            mapped = [child_mapper(s) for s in data if (from_dict(s, "cluster_name") == target_data['self']['name']
+                                                        or from_dict(s, 'network_name') == target_data['self']['name']
+                                                        or (source_key == 'serviceAccountKey'
+                                                            and from_dict(s, "service_account") == target_data['self'][
+                                                                'resource']['uniqueId']))
+                      and provider == 'gcp' or provider == 'aws']
         else:
             mapped = child_mapper(data) if from_dict(data, "cluster_name") == target_data['self']['name'] and provider == 'gcp' or provider == 'aws' else None
 
         target_data.update({target_key: mapped})
-    except:
+    except Exception as ex:
+        print("add child error ==== ", ex)
         return
 
 

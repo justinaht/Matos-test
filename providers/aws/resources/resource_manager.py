@@ -8,6 +8,7 @@ import time
 from kubernetes import client as kclient
 from datetime import datetime, timedelta
 from awscli.customizations.eks.get_token import STSClientFactory, TokenGenerator, TOKEN_EXPIRATION_MINS
+import json
 
 logger = get_logger(__file__)
 
@@ -19,16 +20,21 @@ class AWSResourceManager:
         print("AWS Resource Manage __init__ Method")
 
     def get_assets_inventory(
-        self, resource, **kwargs
+            self, resource, **kwargs
     ):
         RESOURCE_TYPES = {
             "eks": Cluster,
             "cluster": Cluster,
             "ec2": Instance,
             "instance": Instance,
+            "storage": Storage,
+            "network": Network,
+            "sql": SQL,
+            "serviceAccount": IAM
         }
 
         log = logger.new()
+        # print(resource['type'], "==== resource type")
 
         # try:
         Resource = RESOURCE_TYPES.get(resource['type'])
@@ -88,8 +94,8 @@ class Cluster(AWS):
                 "apiVersion": "client.authentication.k8s.io/v1alpha1",
                 "spec": {},
                 "status": {
-                        "expirationTimestamp": get_expiration_time(),
-                        "token": token
+                    "expirationTimestamp": get_expiration_time(),
+                    "token": token
                 }
             }
 
@@ -118,7 +124,7 @@ class Cluster(AWS):
 
     def get_object_count(self,
                          object_types,
-                         time_period=100*60,
+                         time_period=100 * 60,
                          filters={},
                          ):
         """
@@ -365,7 +371,7 @@ class Instance(AWS):
                     "total": instance_config["memory"] if instance_config else 0,
                     "unit": "GB",
                 }
-                if self.instance_ids and\
+                if self.instance_ids and \
                         instance_details.get("InstanceId") in self.instance_ids:
                     return instance_details
             return instances
@@ -400,3 +406,381 @@ class Instance(AWS):
                     "DiskSize": {"total": total_size, "unit": "GB"},
                     "Volumes": volumes_data,
                 }
+
+
+class Storage(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(Storage, self).__init__()
+            self.conn = self.client("s3")
+            self.bucket = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        bucket_policy = self.get_bucket_policy_list()
+        metric_config = self.get_bucket_metrics_configuration_list()
+        inventory_config = self.get_bucket_inventory_configuration_list()
+        intelligent_tiering_config = self.get_bucket_intelligent_tiering_configurations_list()
+        acl = self.get_bucket_acl()
+        policyStatus = self.get_bucket_policy_status()
+        object = self.get_object_list()
+        lifecycle = self.get_bucket_lifecycle()
+
+        self.bucket = {
+            **self.bucket,
+            "type": "bucket",
+            "policy": bucket_policy,
+            "metric_configuration": metric_config,
+            "inventory_configuration": inventory_config,
+            "intelligent_tiering_configuration": intelligent_tiering_config,
+            "acl": acl,
+            "policy_status": policyStatus,
+            "object": object,
+            "lifecycle": lifecycle
+        }
+        return self.bucket
+
+    def get_bucket_policy_list(self):
+        bucket_name = self.bucket['name']
+        try:
+            policies = self.conn.get_bucket_policy(Bucket=bucket_name)
+            policy = policies['Policy']
+        except Exception as ex:
+            print(bucket_name, " policy error: ", ex)
+            policy = {}
+
+        return policy
+
+    def fetch_metric_config(self,
+                            metrics=None,
+                            continuationToken: str = None):
+        request = {
+            "Bucket": self.bucket['name'],
+            # "ExpectedBucketOwner": self.bucket['owner']['id']
+        }
+        if continuationToken:
+            request['ContinuationToken'] = continuationToken
+        response = self.conn.list_bucket_metrics_configurations(**request)
+        nextContinuationToken = response.get('NextContinuationToken', None)
+        current_metrics = [] if not metrics else metrics
+        current_metrics.extend(response.get('MetricsConfigurationList', []))
+
+        return current_metrics, nextContinuationToken
+
+    def get_bucket_metrics_configuration_list(self):
+        try:
+            metrics, nextContinuationToken = self.fetch_metric_config()
+
+            while nextContinuationToken:
+                metrics, nextContinuationToken = self.fetch_metric_config(metrics, nextContinuationToken)
+
+        except Exception as ex:
+            print(self.bucket['name'], " metric configuration: ", ex)
+            return []
+
+        return metrics
+
+    def fetch_inventory_config(self,
+                               metrics=None,
+                               continuationToken: str = None):
+        request = {
+            "Bucket": self.bucket['name'],
+            # "ExpectedBucketOwner": self.bucket['owner']['id']
+        }
+        if continuationToken:
+            request['ContinuationToken'] = continuationToken
+        response = self.conn.list_bucket_inventory_configurations(**request)
+        nextContinuationToken = response.get('NextContinuationToken', None)
+        current_inventories = [] if not metrics else metrics
+        current_inventories.extend(response.get('InventoryConfigurationList', []))
+
+        return current_inventories, nextContinuationToken
+
+    def get_bucket_inventory_configuration_list(self):
+        try:
+            inventories, nextContinuationToken = self.fetch_inventory_config()
+
+            while nextContinuationToken:
+                inventories, nextContinuationToken = self.fetch_inventory_config(inventories, nextContinuationToken)
+
+        except Exception as ex:
+            print(self.bucket['name'], " inventory configuration: ", ex)
+            return []
+
+        return inventories
+
+    def fetch_intelligent_tiering_config(self,
+                                         tierings=None,
+                                         continuationToken: str = None):
+        request = {
+            "Bucket": self.bucket['name'],
+            # "ExpectedBucketOwner": self.bucket['owner']['id']
+        }
+        if continuationToken:
+            request['ContinuationToken'] = continuationToken
+        response = self.conn.list_bucket_inventory_configurations(**request)
+        nextContinuationToken = response.get('NextContinuationToken', None)
+        current_tierings = [] if not tierings else tierings
+        current_tierings.extend(response.get('IntelligentTieringConfigurationList', []))
+
+        return current_tierings, nextContinuationToken
+
+    def get_bucket_intelligent_tiering_configurations_list(self):
+        try:
+            tiering, nextContinuationToken = self.fetch_intelligent_tiering_config()
+
+            while nextContinuationToken:
+                tiering, nextContinuationToken = self.fetch_intelligent_tiering_config(tiering, nextContinuationToken)
+
+        except Exception as ex:
+            print(self.bucket['name'], " intelligent tiering configuration: ", ex)
+            return []
+
+        return tiering
+
+    def get_bucket_acl(self):
+        try:
+            response = self.conn.get_bucket_acl(Bucket=self.bucket['name'])
+            del response['ResponseMetadata']
+        except Exception as ex:
+            print(self.bucket['name'], " bucket ACL: ", ex)
+            response = {}
+        return response
+
+    def get_bucket_policy_status(self):
+        try:
+            response = self.conn.get_bucket_policy_status(Bucket=self.bucket['name'])
+        except Exception as ex:
+            print(self.bucket['name'], " policy status: ", ex)
+            response = {}
+        return response
+
+    def get_object_acl(self, key):
+        try:
+            response = self.conn.get_object_acl(Bucket=self.bucket['name'], Key=key)
+        except Exception as ex:
+            print(self.bucket['name'], " object acl: ", ex)
+            response = {}
+        return response
+
+    def get_object_list(self):
+        try:
+            response = self.conn.list_objects(Bucket=self.bucket['name'])
+        except Exception as ex:
+            print(self.bucket['name'], " object list: ", ex)
+            response = {}
+        object_list = response.get('Contents', [])
+        objects = []
+        for object in object_list:
+            object_acl = self.get_object_acl(object['Key'])
+            del object_acl['ResponseMetadata']
+            objects.append({
+                **object,
+                "Acl": object_acl
+            })
+        return objects
+
+    def get_bucket_lifecycle(self):
+        try:
+            response = self.conn.get_bucket_lifecycle(Bucket=self.bucket['name'])
+        except Exception as ex:
+            print(self.bucket['name'], " bucket lifecycle: ", ex)
+            response = {}
+        return response
+
+
+class Network(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(Network, self).__init__()
+            self.conn = self.client("ec2")
+            self.network = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        subnets = self.get_subnet()
+        network_acl = self.get_network_acl()
+        # inventory_config = self.get_bucket_inventory_configuration_list()
+        # intelligent_tiering_config = self.get_bucket_intelligent_tiering_configurations_list()
+        # acl = self.get_bucket_acl()
+        # policyStatus = self.get_bucket_policy_status()
+        # object = self.get_object_list()
+        # lifecycle = self.get_bucket_lifecycle()
+
+        self.network = {
+            **self.network,
+            "subnets": subnets,
+            "network_acl": network_acl
+            # "type": "bucket",
+            # "policy": bucket_policy,
+            # "metric_configuration": metric_config,
+            # "inventory_configuration": inventory_config,
+            # "intelligent_tiering_configuration": intelligent_tiering_config,
+            # "acl": acl,
+            # "policy_status": policyStatus,
+            # "object": object,
+            # "lifecycle": lifecycle
+        }
+        return self.network
+
+    def get_subnet(self):
+        def fetch_subnet(subnetwork_list=None, continueToken: str = None):
+            request = {
+                "Filters": [
+                    {
+                        "Name": "vpc-id",
+                        "Values": [self.network['id']]
+                    }
+                ]
+            }
+            if continueToken:
+                request['NextToken'] = continueToken
+            response = self.conn.describe_subnets(**request)
+            print("[*** subnet response ***]", response.get('Subnets', []))
+            continueToken = response.get('NextToken', None)
+            current_subnets = [] if not subnetwork_list else subnetwork_list
+            current_subnets.extend(response.get('Subnets', []))
+
+            return current_subnets, continueToken
+
+        try:
+            subnets, nextToken = fetch_subnet()
+
+            while nextToken:
+                subnets, nextToken = fetch_subnet(subnets, nextToken)
+        except Exception as ex:
+            print("subnet fetch error: ", ex)
+            return []
+
+        return subnets
+
+    def get_network_acl(self):
+        def fetch_network_acl(acl_list=None, continueToken: str = None):
+            request = {
+                "Filters": [
+                    {
+                        "Name": "vpc-id",
+                        "Values": [self.network['id']]
+                    }
+                ]
+            }
+            if continueToken:
+                request['NextToken'] = continueToken
+            response = self.conn.describe_network_acls(**request)
+            continueToken = response.get('NextToken', None)
+            current_acls = [] if not acl_list else acl_list
+            current_acls.extend(response.get('NetworkAcls', []))
+
+            return current_acls, continueToken
+
+        try:
+            acls, nextToken = fetch_network_acl()
+
+            while nextToken:
+                acls, nextToken = fetch_network_acl(acls, nextToken)
+        except Exception as ex:
+            print("network acl fetch error: ", ex)
+            return []
+
+        return acls
+
+
+class SQL(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(SQL, self).__init__()
+            self.conn = self.client("rds")
+            self.database = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+
+        self.database = {
+            **self.database,
+        }
+        return self.database
+
+
+class IAM(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(IAM, self).__init__()
+            self.conn = self.client("iam")
+            self.user = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        response = self.conn.get_user(UserName=self.user['UserName'])
+        user_data = {
+            **response.get('User', {})
+        }
+        response = self.conn.list_user_policies(UserName=self.user['UserName'])
+        policy_data = []
+        for policy in response.get('PolicyNames', []):
+            response = self.conn.get_user_policy(UserName=self.user['UserName'], PolicyName=policy)
+            policy_data.append({
+                "PolicyName": policy,
+                "PolicyDocument": response.get('PolicyDocument', "")
+            })
+        user_data = {
+            **user_data,
+            "Policies": policy_data
+        }
+
+        return user_data

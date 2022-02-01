@@ -21,6 +21,7 @@ class ResourceService:
             resource = resources[type]
             if self.provider == 'gcp':
                 pretty_resources = {**pretty_resources, **(reform_resources(self.provider, resource))}
+                # print("*** pretty resources ***", pretty_resources)
             else:
                 if type not in pretty_resources:
                     pretty_resources[type] = []
