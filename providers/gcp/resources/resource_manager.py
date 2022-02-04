@@ -72,9 +72,12 @@ class GCPResourceManager(BaseGCPManager):
             )
 
             resource_name_split = resource["name"].split("/")
-            current_resource_name = resource_name_split[
-                resource_name_split.index(resource_type_plural) + 1
-            ]
+            try:
+                current_resource_name = resource_name_split[
+                    resource_name_split.index(resource_type_plural) + 1
+                ]
+            except:
+                current_resource_name = ""
             # if mode is not 'all' and current_resource_name not in resource_names:
             #     continue
 

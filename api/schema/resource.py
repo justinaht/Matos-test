@@ -165,7 +165,11 @@ class ResourceInstanceSchema(Schema):
 
 class ResourceSchema(Schema):
     class Meta:
-        fields = ['cluster', 'instance']
+        fields = ['cluster', 'instance', 'storage', 'sql', 'serviceAccount', 'network']
 
     cluster = List(Nested(ResourceClusterSchema), required=True)
     instance = List(Nested(ResourceInstanceSchema), required=True)
+    storage = List(Dict())
+    sql = List(Dict())
+    serviceAccount = List(Dict())
+    network = List(Dict())
