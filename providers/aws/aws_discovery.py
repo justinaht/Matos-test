@@ -54,8 +54,7 @@ class AWSDiscovery(AWS):
             cluster_resources.append({
                 'name': cluster_details['name'],
                 'type': 'cluster',
-                'location': cluster_details['endpoint']
-                    .replace('.eks.amazonaws.com', '').split('.')[-1]
+                'location': cluster_details['endpoint'].replace('.eks.amazonaws.com', '').split('.')[-1]
             })
 
         return cluster_resources
@@ -68,9 +67,6 @@ class AWSDiscovery(AWS):
         owner = buckets['Owner']
 
         bucket_resources = []
-        # if len(buckets['Buckets']) == 0:
-        #     location = {'LocationConstraint': 'us-east-2'}
-        #     self.s3.create_bucket(Bucket="bucket-resource", CreateBucketConfiguration=location)
         for bucket in buckets['Buckets']:
             detail = {
                 'name': bucket.get('Name', ""),
@@ -82,7 +78,6 @@ class AWSDiscovery(AWS):
                 },
             }
             bucket_resources.append(detail)
-            print(detail, "===== bucket detail data")
 
         return bucket_resources
 
@@ -107,7 +102,6 @@ class AWSDiscovery(AWS):
         except Exception as ex:
             print("network fetch error: ", ex)
             return []
-        print(networks, "===== networks")
         network_resources = []
         for network in networks:
             detail = {

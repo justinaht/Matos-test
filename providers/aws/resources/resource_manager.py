@@ -439,6 +439,7 @@ class Storage(AWS):
         policyStatus = self.get_bucket_policy_status()
         object = self.get_object_list()
         lifecycle = self.get_bucket_lifecycle()
+        bucket_encryption = self.get_bucket_encryption()
 
         self.bucket = {
             **self.bucket,
@@ -450,7 +451,8 @@ class Storage(AWS):
             "acl": acl,
             "policy_status": policyStatus,
             "object": object,
-            "lifecycle": lifecycle
+            "lifecycle": lifecycle,
+            "bucket_encryption": bucket_encryption
         }
         return self.bucket
 
@@ -561,9 +563,19 @@ class Storage(AWS):
             response = {}
         return response
 
+    def get_bucket_encryption(self):
+        try:
+            response = self.conn.get_bucket_encryption(Bucket=self.bucket['name'])
+            del response['ResponseMetadata']
+        except Exception as ex:
+            print(self.bucket['name'], " bucket encryption: ", ex)
+            response = {}
+        return response
+
     def get_bucket_policy_status(self):
         try:
             response = self.conn.get_bucket_policy_status(Bucket=self.bucket['name'])
+            del response['ResponseMetadata']
         except Exception as ex:
             print(self.bucket['name'], " policy status: ", ex)
             response = {}
@@ -628,26 +640,11 @@ class Network(AWS):
         """
         subnets = self.get_subnet()
         network_acl = self.get_network_acl()
-        # inventory_config = self.get_bucket_inventory_configuration_list()
-        # intelligent_tiering_config = self.get_bucket_intelligent_tiering_configurations_list()
-        # acl = self.get_bucket_acl()
-        # policyStatus = self.get_bucket_policy_status()
-        # object = self.get_object_list()
-        # lifecycle = self.get_bucket_lifecycle()
 
         self.network = {
             **self.network,
             "subnets": subnets,
             "network_acl": network_acl
-            # "type": "bucket",
-            # "policy": bucket_policy,
-            # "metric_configuration": metric_config,
-            # "inventory_configuration": inventory_config,
-            # "intelligent_tiering_configuration": intelligent_tiering_config,
-            # "acl": acl,
-            # "policy_status": policyStatus,
-            # "object": object,
-            # "lifecycle": lifecycle
         }
         return self.network
 
@@ -664,7 +661,6 @@ class Network(AWS):
             if continueToken:
                 request['NextToken'] = continueToken
             response = self.conn.describe_subnets(**request)
-            print("[*** subnet response ***]", response.get('Subnets', []))
             continueToken = response.get('NextToken', None)
             current_subnets = [] if not subnetwork_list else subnetwork_list
             current_subnets.extend(response.get('Subnets', []))
