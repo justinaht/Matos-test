@@ -1,5 +1,4 @@
 ![Matos Logo](./images/matos-logo.png)
-# Matos
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/matos/matos)
 ![GitHub Downloads](https://img.shields.io/github/downloads/matos/matos/total?logo=github&logoColor=white)
