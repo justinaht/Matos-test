@@ -1,5 +1,4 @@
 ![Matos Logo](../images/matos-logo.png)
-# [Matos](../README.md)
 
 ## Dependencies
 
