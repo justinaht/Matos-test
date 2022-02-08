@@ -1,4 +1,4 @@
-
+![Matos Logo](../images/matos-logo.png)
 # Open Matos Community Code of Conduct v1.0
 
 ## Our Pledge

@@ -1,3 +1,4 @@
+![Matos Logo](../images/matos-logo.png)
 # Security
 
 ## Reporting a Vulnerability
