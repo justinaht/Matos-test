@@ -1,3 +1,4 @@
+![Matos Logo](../images/matos-logo.png)
 # Maintainers
 
 Matos Maintainers have write access to the [Matos Repository][MatosGitHub].

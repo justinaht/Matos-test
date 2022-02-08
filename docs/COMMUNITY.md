@@ -1,3 +1,5 @@
+![Matos Logo](../images/matos-logo.png)
+
 # Welcome to Matos Community!
 
 This is the starting point for joining and contributing to the [Matos Community][MatosCommunity].
