@@ -70,7 +70,7 @@ class GCPResourceManager(BaseGCPManager):
                 if resource_type == 'serviceAccount'
                 else resource_type
             )
-
+            print(resource["name"], "======= resource name")
             resource_name_split = resource["name"].split("/")
             try:
                 current_resource_name = resource_name_split[

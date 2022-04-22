@@ -4992,6 +4992,9 @@
           "releaseChannel": {
             "channel": "REGULAR"
           }, 
+          "resourceLabels": {
+            "env": "test-environment"
+          },
           "selfLink": "https://container.googleapis.com/v1/projects/cloudmatos-demoblog/locations/us-west1/clusters/cmdbgke", 
           "servicesIpv4Cidr": "10.27.240.0/20", 
           "shieldedNodes": {

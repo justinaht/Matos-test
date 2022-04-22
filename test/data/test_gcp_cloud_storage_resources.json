@@ -78,7 +78,9 @@
             "storageClass": "STANDARD", 
             "timeCreated": "2021-05-13T12:32:32.755Z", 
             "updated": "2021-05-13T12:32:32.755Z", 
-            "versioning": {}, 
+            "versioning": {
+              "enabled": true
+            },
             "website": {}
           }
         }

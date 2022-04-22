@@ -128,12 +128,13 @@ class ResourceServiceSelfWrapperSchema(Schema):
 
 class ResourceClusterSchema(Schema):
     class Meta:
-        fields = ("self", "node", "pod", "service")
+        fields = ("self", "node", "pod", "service", "deployment")
 
     self = Nested(ResourceClusterSelfSchema)
     node = List(Nested(ResourceNodeSelfWrapperSchema))
     pod = List(Nested(ResourcePodSelfWrapperSchema))
     service = List(Nested(ResourceServiceSelfWrapperSchema))
+    deployment = List(Dict())
 
 
 class ResourceInstanceSelfSchema(Schema):

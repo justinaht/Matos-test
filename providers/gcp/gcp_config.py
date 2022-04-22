@@ -178,6 +178,7 @@ ASSET_TYPES = {
     "k8s.io/Pod": "pods",
     "k8s.io/Service": "services",
     "k8s.io/Node": "nodes",
+    "apps.k8s.io/Deployment": "deployments",
     "container.googleapis.com/Cluster": "cluster",
     "compute.googleapis.com/Instance": "instance",
     "compute.googleapis.com/Network": "network",
@@ -198,6 +199,7 @@ RESOURCE_TYPE_REQUESTS = {
         "k8s.io/Pod",
         "k8s.io/Service",
         "k8s.io/Node",
+        "apps.k8s.io/Deployment",
     ],
     "instance": ["compute.googleapis.com/Instance"],
     "network": [

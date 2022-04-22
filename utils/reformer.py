@@ -21,7 +21,8 @@ def aws_cluster(resource, provider):
         "identity": from_dict(resource, "identity"),
         "kubernetesNetworkConfig": from_dict(resource, "kubernetesNetworkConfig"),
         "logging": from_dict(resource, "logging"),
-        "region": from_dict(resource, "zone")
+        "region": from_dict(resource, "zone"),
+        "source_data": resource
     })
 
     add_child(aws_cluster_pod, "pod", "pod", resource, cluster, provider)
@@ -38,6 +39,7 @@ def aws_cluster_pod(resource):
     return selfish({
         'name': resource['name'],
         'namespace': resource['namespace'],
+        "source_data": resource
     })
 
 
@@ -47,7 +49,8 @@ def aws_cluster_node(resource):
 
     return selfish({
         'name': resource['name'],
-        'instance_id': resource['instance_id']
+        'instance_id': resource['instance_id'],
+        "source_data": resource
     })
 
 
@@ -57,7 +60,8 @@ def aws_cluster_service(resource):
 
     return selfish({
         'name': resource['name'],
-        'namespace': resource['namespace']
+        'namespace': resource['namespace'],
+        "source_data": resource
     })
 
 
@@ -69,7 +73,7 @@ def aws_instance(resource, provider):
         "instance_id": from_dict(resource, "InstanceId"),
         "display_name": from_dict(resource, "InstanceId"),
         "instance_type": from_dict(resource, "InstanceType"),
-        "zone": from_dict(resource, "Placement", "AvailabilityZone"),
+        "region": from_dict(resource, "Placement", "AvailabilityZone"),
         "network_interfaces": from_dict(resource, "NetworkInterfaces"),
         "tags": from_dict(resource, "Tags"),
         "subnet_id": from_dict(resource, "SubnetId"),
@@ -77,8 +81,142 @@ def aws_instance(resource, provider):
         "image_id": from_dict(resource, "ImageId"),
         "launch_time": from_dict(resource, "LaunchTime"),
         "cpu_option": from_dict(resource, "CpuOptions"),
-        "block_device_mappings": from_dict(resource, "BlockDeviceMappings")
+        "block_device_mappings": from_dict(resource, "BlockDeviceMappings"),
+        "source_data": resource
     })
+
+
+def aws_network(resource, provider):
+    """
+    """
+    return selfish({
+        "name": from_dict(resource, "id"),
+        "description": from_dict(resource, "description"),
+        "status": from_dict(resource, "state"),
+        "source_data": resource
+    })
+
+
+def aws_storage(resource, provider):
+    """
+    """
+    return selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": resource
+    })
+
+
+def aws_sql(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def azure_cluster(resource, provider):
+    """
+    """
+    temp_resource = {**resource}
+    del temp_resource['pod']
+    del temp_resource['service']
+    cluster = selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": temp_resource
+    })
+
+    add_child(azure_cluster_pod, "pod", "pod",
+              {**resource, "pod": [{**pod, "cluster_name": from_dict(resource, "name")} for pod in resource['pod']]},
+              cluster, provider)
+    add_child(azure_cluster_node, "node", "node", {**resource,
+                                                   "node": [{"name": node, "cluster_name": from_dict(resource, "name")}
+                                                            for node in list(set(
+                                                           [from_dict(pod, "spec", "node_name") for pod in
+                                                            resource['pod']]))]}, cluster, provider)
+    add_child(azure_cluster_service, "service", "service", {**resource, "service": [
+        {**service, "cluster_name": from_dict(resource, "name")} for service in resource['service']]}, cluster,
+              provider)
+
+    return cluster
+
+
+def azure_cluster_pod(resource):
+    return selfish({
+        "name": from_dict(resource, "metadata", 'name'),
+        "display_name": from_dict(resource, "metadata", 'name'),
+        "namespace": from_dict(resource, "metadata", 'namespace'),
+        "cluster_name": from_dict(resource, "cluster_name"),
+        "node_name": from_dict(resource, "spec", 'node_name'),
+        "source_data": resource
+    })
+
+
+def azure_cluster_service(resource):
+    return selfish({
+        "name": from_dict(resource, "metadata", 'name'),
+        "display_name": from_dict(resource, "metadata", 'name'),
+        "namespace": from_dict(resource, "metadata", 'namespace'),
+        "cluster_name": from_dict(resource, "cluster_name"),
+        "source_data": resource
+    })
+
+
+def azure_cluster_node(resource):
+    return selfish({
+        "instance_id": from_dict(resource, 'name'),
+        "name": from_dict(resource, 'name'),
+        "display_name": from_dict(resource, 'name'),
+        "cluster_name": from_dict(resource, "cluster_name"),
+        "source_data": resource
+    })
+
+
+def azure_instance(resource, provider):
+    """
+    """
+
+    instance = selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": resource
+    })
+
+    return instance
+
+
+def azure_network(resource, provider):
+    """
+    """
+
+    network = selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": resource
+    })
+
+    return network
+
+
+def azure_storage(resource, provider):
+    """
+    """
+
+    storage = selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": resource
+    })
+
+    return storage
+
+
+def azure_sql(resource, provider):
+    """
+    """
+
+    sql = selfish({
+        "name": from_dict(resource, "name"),
+        "source_data": resource
+    })
+
+    return sql
 
 
 def gcp_cluster(resource, provider):
@@ -106,6 +244,7 @@ def gcp_cluster(resource, provider):
             add_child(gcp_cluster_pod, "pods", "pod", resource, cluster, provider)
             add_child(gcp_cluster_service, "services", "service", resource, cluster, provider)
             add_child(gcp_cluster_node, "nodes", "node", resource, cluster, provider)
+            add_child(gcp_cluster_deployment, "deployments", "deployment", resource, cluster, provider)
 
             clusters.append(cluster)
 
@@ -153,6 +292,20 @@ def gcp_cluster_service(resource):
         "namespace": from_dict(resource, "resource", "data", "metadata", "namespace"),
         "create_time": from_dict(resource, "resource", "data", "metadata", "creationTimestamp"),
         "status": from_dict(resource, "resource", "data", "status"),
+        "source_data": from_dict(resource, "resource", "data")
+    })
+
+
+def gcp_cluster_deployment(resource):
+    """
+    """
+
+    return selfish({
+        # "name": from_dict(resource, "resource", "data", "metadata", "name"),
+        # "cluster_name": from_dict(resource, "cluster_name"),
+        # "namespace": from_dict(resource, "resource", "data", "metadata", "namespace"),
+        # "create_time": from_dict(resource, "resource", "data", "metadata", "creationTimestamp"),
+        # "status": from_dict(resource, "resource", "data", "status"),
         "source_data": from_dict(resource, "resource", "data")
     })
 
@@ -240,7 +393,7 @@ def gcp_storage(resource, provider):
                 "name": from_dict(storage_item, "resource", "data", "name").split('/')[-1],
                 "display_name": from_dict(storage_item, "resource", "data", "name").split('/')[-1],
                 "asset_type": "bucket",
-                "resource": from_dict(storage_item, 'resource', 'data'),
+                "source_data": from_dict(storage_item, 'resource', 'data'),
                 "iam_policy": from_dict(storage_item, 'iamPolicy'),
                 "ancestors": from_dict(storage_item, 'ancestors')
             })
@@ -306,6 +459,17 @@ cloud_resource_mappers = {
         'cluster_service': None,
         'cluster_node': None,
         'instance': aws_instance,
+        'storage': aws_storage,
+        'network': aws_network,
+        'sql': aws_sql,
+    },
+    'azure': {
+        'cluster': azure_cluster,
+        'instance': azure_instance,
+        'network': azure_network,
+        'storage': azure_storage,
+        'sql': azure_sql,
+
     },
     'gcp': {
         'cluster': gcp_cluster,
@@ -388,7 +552,7 @@ def add_child(child_mapper,
     """
 
     if source_key not in source_data:
-        print(source_key, "===== non-existed key")
+        target_data.update({target_key: []})
         return
     try:
         data = source_data[source_key]
@@ -402,9 +566,10 @@ def add_child(child_mapper,
                                                         or (source_key == 'serviceAccountKey'
                                                             and from_dict(s, "service_account") == target_data['self'][
                                                                 'resource']['uniqueId']))
-                      and provider == 'gcp' or provider == 'aws']
+                      and provider == 'gcp' or provider != 'gcp']
         else:
-            mapped = child_mapper(data) if from_dict(data, "cluster_name") == target_data['self']['name'] and provider == 'gcp' or provider == 'aws' else None
+            mapped = child_mapper(data) if from_dict(data, "cluster_name") == target_data['self'][
+                'name'] and provider == 'gcp' or provider != 'gcp' else None
 
         target_data.update({target_key: mapped})
     except Exception as ex:

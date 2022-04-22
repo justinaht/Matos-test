@@ -15,7 +15,9 @@ class TestServiceAccount(TestCase):
         """
         Check service account has project wise roles assigned or not
         """
-        test = [match.value for match in parse('serviceAccount[*].self.iam_policy.bindings[*].role').find(self.resources) if  match.value in ['roles/editor', 'roles/owner']]
+        test = [match.value for match in
+                parse('serviceAccount[*].self.iam_policy.bindings[*].role').find(self.resources) if
+                match.value in ['roles/editor', 'roles/owner']]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few service accounts having administrative permission assinged.")
 
@@ -23,25 +25,20 @@ class TestServiceAccount(TestCase):
         """
         Check service account has customer created service account keys or not
         """
-        test = [match.value for match in parse('serviceAccount[*].serviceAccountKey[*].self.keyType').find(self.resources) if  match.value == 'USER_MANAGED']
+        test = [match.value for match in
+                parse('serviceAccount[*].serviceAccountKey[*].self.keyType').find(self.resources) if
+                match.value == 'USER_MANAGED']
         flag = len(test) > 0
-        self.assertEqual(False, flag, msg="There are few service accounts having customer managed service account keys created.")
-
+        self.assertEqual(False, flag,
+                         msg="There are few service accounts having customer managed service account keys created.")
 
     def test_check_service_account_has_service_account_admin_binding(self):
         """
         Check service account has service account admin role binding
         """
-        test = [match.value for match in parse('serviceAccount[*].self.iam_policy.bindings[*].role').find(self.resources) if  match.value == 'roles/iam.serviceAccountAdmin']
+        test = [match.value for match in
+                parse('serviceAccount[*].self.iam_policy.bindings[*].role').find(self.resources) if
+                match.value == 'roles/iam.serviceAccountAdmin']
         flag = len(test) > 0
-        self.assertEqual(False, flag, msg="There are few service accounts having service account admin role binding to it.")
-
-
-
-
-
-
-
-
-
-
+        self.assertEqual(False, flag,
+                         msg="There are few service accounts having service account admin role binding to it.")
