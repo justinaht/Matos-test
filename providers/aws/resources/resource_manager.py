@@ -213,23 +213,44 @@ class Cluster(AWS):
             'pod': k8s_client.list_pod_for_all_namespaces,
             'namespace': k8s_client.list_namespace,
             'node': k8s_client.list_node,
-            'service': k8s_client.list_service_account_for_all_namespaces,
+            'service': k8s_client.list_service_for_all_namespaces,
         }
 
         object_map = {}
 
-        def append_objects(object_type, objects):
+        def append_objects(object_type, objects, cluster_name):
             for object in objects.items:
                 object_list = object_map.get(object_type, [])
                 object_name = object.metadata.name
                 object_namespace = getattr(object.metadata, 'namespace', None)
+                object_uid = getattr(object.metadata, 'uid', None)
+                object_self_link = getattr(object.metadata, 'self_link', None)
+                object_node_name = getattr(object.spec, "node_name", None)
+                if object_type == 'pod':
+                    object_container = [{'name': c.name, 'image_pull_policy': c.image_pull_policy} for c in
+                                        object.spec.containers]
+                else:
+                    object_container = None
 
                 object_details = {
-                    'name': object_name
+                    'name': object_name,
+                    'cluster_name': cluster_name
                 }
 
                 if object_namespace:
                     object_details.update(namespace=object_namespace)
+
+                if object_self_link:
+                    object_details.update(self_link=object_self_link)
+
+                if object_self_link:
+                    object_details.update(uid=object_uid)
+
+                if object_node_name:
+                    object_details.update(node=object_node_name)
+
+                if object_container:
+                    object_details.update(container=object_container)
 
                 if object_type == 'node':
                     try:
@@ -244,18 +265,10 @@ class Cluster(AWS):
         for object_type, function in function_map.items():
             try:
                 objects = function()
-                append_objects(object_type, objects)
+                append_objects(object_type, objects, name)
 
-                if object_type == 'pod':
-                    object_list = object_map.get('container', [])
-                    object_list.extend(
-                        [{'name': c.name}
-                         for object in objects
-                         for c in object.spec.containers]
-                    )
-                    object_map['container'] = object_list
-
-            except:
+            except Exception as ex:
+                print(ex, "=======", object_type, "=======")
                 pass
 
         cluster_details.update(object_map)
@@ -440,6 +453,7 @@ class Storage(AWS):
         object = self.get_object_list()
         lifecycle = self.get_bucket_lifecycle()
         bucket_encryption = self.get_bucket_encryption()
+        bucket_location = self.get_bucket_location()
 
         self.bucket = {
             **self.bucket,
@@ -452,7 +466,10 @@ class Storage(AWS):
             "policy_status": policyStatus,
             "object": object,
             "lifecycle": lifecycle,
-            "bucket_encryption": bucket_encryption
+            "bucket_encryption": bucket_encryption,
+            "versioning": self.get_bucket_versioning(),
+            "tagging": self.get_bucket_tagging(),
+            "location": bucket_location
         }
         return self.bucket
 
@@ -466,6 +483,17 @@ class Storage(AWS):
             policy = {}
 
         return policy
+
+    def get_bucket_location(self):
+        bucket_name = self.bucket['name']
+        try:
+            resp = self.conn.get_bucket_location(Bucket=bucket_name)
+            location = resp['LocationConstraint']
+        except Exception as ex:
+            print(bucket_name, " location getting error: ", ex)
+            location = ''
+
+        return location
 
     def fetch_metric_config(self,
                             metrics=None,
@@ -569,6 +597,24 @@ class Storage(AWS):
             del response['ResponseMetadata']
         except Exception as ex:
             print(self.bucket['name'], " bucket encryption: ", ex)
+            response = {}
+        return response
+
+    def get_bucket_versioning(self):
+        try:
+            response = self.conn.get_bucket_versioning(Bucket=self.bucket['name'])
+            del response['ResponseMetadata']
+        except Exception as ex:
+            print(self.bucket['name'], " bucket versioning: ", ex)
+            response = {}
+        return response
+
+    def get_bucket_tagging(self):
+        try:
+            response = self.conn.get_bucket_tagging(Bucket=self.bucket['name'])
+            del response['ResponseMetadata']
+        except Exception as ex:
+            print(self.bucket['name'], " bucket tagging: ", ex)
             response = {}
         return response
 

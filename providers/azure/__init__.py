@@ -1,0 +1,1 @@
+from .resources.resource_manager import AzureResourceManager  # noqa

@@ -92,11 +92,11 @@ class TestCluster(TestCase):
         Tests auto repair / auto upgrade is enabled
         """
         auto_repair_enable = [match.value for match in
-                            parse('cluster[*].self..management.autoRepair').find(self.resources) if
-                            match.value in [True, 'true']]
+                              parse('cluster[*].self..management.autoRepair').find(self.resources) if
+                              match.value in [True, 'true']]
         auto_upgrade_enable = [match.value for match in
-                             parse('cluster[*].self..management.autoUpgrade').find(self.resources) if
-                             match.value in [True, 'true']]
+                               parse('cluster[*].self..management.autoUpgrade').find(self.resources) if
+                               match.value in [True, 'true']]
         flag = len(auto_repair_enable) > 0 and len(auto_upgrade_enable) > 0
         self.assertEqual(True, flag, msg="auto repair or auto upgrade or both of them is not enabled.")
 
@@ -113,7 +113,7 @@ class TestCluster(TestCase):
         """
         Test private cluster is enable 
         """
-        test = [match.value for match in parse('cluster[*].self..privateClusterConfig').find(self.resources) ]
+        test = [match.value for match in parse('cluster[*].self..privateClusterConfig').find(self.resources)]
         flag = len(test) > 0
         self.assertEqual(True, flag, msg="Private cluster is not enabled.")
 
@@ -121,8 +121,8 @@ class TestCluster(TestCase):
         """
         Test default VPC is being used or not
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.network').find(self.resources) ]
-        
+        test = [match.value for match in parse('cluster[*].self.source_data.network').find(self.resources)]
+
         default_vpc = [vpc for vpc in test if 'default' == vpc]
         flag = len(default_vpc) > 0
         self.assertEqual(False, flag, msg="Clusters is being used default VPC.")
@@ -131,7 +131,8 @@ class TestCluster(TestCase):
         """
         Test either clusters are highly available or not
         """
-        test = [match.value for match in parse('cluster[*].self.region').find(self.resources) if len(match.value.split('-')) > 2]
+        test = [match.value for match in parse('cluster[*].self.region').find(self.resources) if
+                len(match.value.split('-')) > 2]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="The clusters are not highly available across the region.")
 
@@ -139,8 +140,9 @@ class TestCluster(TestCase):
         """
         Check autoscalling is enable or not for node pools
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.nodePools..autoscaling.enabled').find(self.resources) ]
-        disabled_autoscaling = [autoscale for autoscale in test if  autoscale in [False, 'false']]
+        test = [match.value for match in
+                parse('cluster[*].self.source_data.nodePools..autoscaling.enabled').find(self.resources)]
+        disabled_autoscaling = [autoscale for autoscale in test if autoscale in [False, 'false']]
         flag = len(disabled_autoscaling) > 0
         self.assertEqual(False, flag, msg="Autoscalling has not been enabled for Node pool.")
 
@@ -148,8 +150,9 @@ class TestCluster(TestCase):
         """
         Check image pull policy is IfNotPresent or not
         """
-        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.spec.containers[*].imagePullPolicy').find(self.resources) ]
-        image_pull_policies = [policy for policy in test if  policy != "IfNotPresent"]
+        test = [match.value for match in
+                parse('cluster[*].pod[*].self.source_data.spec.containers[*].imagePullPolicy').find(self.resources)]
+        image_pull_policies = [policy for policy in test if policy != "IfNotPresent"]
         flag = len(image_pull_policies) > 0
         self.assertEqual(False, flag, msg="Image pull policy has not configured as IFNotPresent.")
 
@@ -157,7 +160,9 @@ class TestCluster(TestCase):
         """
         Check either liveness probe has been configured or not for container
         """
-        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.spec.containers[*]').find(self.resources) if not match.value.get("livenessProbe", False) ]
+        test = [match.value for match in
+                parse('cluster[*].pod[*].self.source_data.spec.containers[*]').find(self.resources) if
+                not match.value.get("livenessProbe", False)]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="Container doesn't have liveness probe configured.")
 
@@ -165,15 +170,19 @@ class TestCluster(TestCase):
         """
         Check either readinessProbe has been configured or not for container
         """
-        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.spec.containers[*]').find(self.resources) if not match.value.get("readinessProbe", False) ]
+        test = [match.value for match in
+                parse('cluster[*].pod[*].self.source_data.spec.containers[*]').find(self.resources) if
+                not match.value.get("readinessProbe", False)]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="Container doesn't have readinessProbe configured.")
-    
+
     def test_statefulset(self):
         """
         Check either statefulset workload is available or not
         """
-        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.metadata.ownerReferences[*].kind').find(self.resources) if match.value == "StatefulSet"]
+        test = [match.value for match in
+                parse('cluster[*].pod[*].self.source_data.metadata.ownerReferences[*].kind').find(self.resources) if
+                match.value == "StatefulSet"]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="Stateful set workload is available.")
 
@@ -181,34 +190,39 @@ class TestCluster(TestCase):
         """
         Check cluster is using vpc native clusters
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.ipAllocationPolicy').find(self.resources) if match.value.get('useRoutes', False)]
+        test = [match.value for match in parse('cluster[*].self.source_data.ipAllocationPolicy').find(self.resources) if
+                match.value.get('useRoutes', False)]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="there are few gke clusters created without vpc native clusters.")
-
 
     def test_check_gke_meta_data_server(self):
         """
         Check cluster metadata server is enabled or not
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.nodeConfig').find(self.resources) if not match.value.get('workloadMetadataConfig', False) ]
-        other_meta_data_type = [match.value for match in parse('cluster[*].self.source_data.nodeConfig.workloadMetadataConfig.mode').find(self.resources) if not match.value in ['GKE_METADATA'] ]
+        test = [match.value for match in parse('cluster[*].self.source_data.nodeConfig').find(self.resources) if
+                not match.value.get('workloadMetadataConfig', False)]
+        other_meta_data_type = [match.value for match in
+                                parse('cluster[*].self.source_data.nodeConfig.workloadMetadataConfig.mode').find(
+                                    self.resources) if match.value not in ['GKE_METADATA']]
         flag = len(test) or len(other_meta_data_type) > 0
-        self.assertEqual(False, flag, msg="There are few clusters without enabled enable metadata server enabled.")
+        self.assertEqual(False, flag, msg="There are few clusters without enabled metadata server.")
 
     def test_check_alpha_server(self):
         """
         Check cluster has alpha feature enabled or not
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.enableKubernetesAlpha').find(self.resources) if match.value in [True, 'true'] ]
+        test = [match.value for match in parse('cluster[*].self.source_data.enableKubernetesAlpha').find(self.resources)
+                if match.value in [True, 'true']]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few clusters with alpha features enabled.")
-
 
     def test_check_intra_node_visibility(self):
         """
         Check cluster has intra node visibility
         """
-        test = [match.value for match in parse('cluster[*].self.source_data.networkConfig.enableIntraNodeVisibility').find(self.resources) if match.value in [True, 'true'] ]
+        test = [match.value for match in
+                parse('cluster[*].self.source_data.networkConfig.enableIntraNodeVisibility').find(self.resources) if
+                match.value in [True, 'true']]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few clusters with intra node visibility enabled.")
 
@@ -216,17 +230,25 @@ class TestCluster(TestCase):
         """
         Check cluter labels availbility
         """
-        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.metadata').find(self.resources) if not match.value.get('labels', False)]
+        test = [match.value for match in parse('cluster[*].pod[*].self.source_data.metadata').find(self.resources) if
+                not match.value.get('labels', False)]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="few of the clusters resources doesn't have labeled applied.")
-
-        
-
-
-
-
-
-
-
-
-
+    
+    def test_check_preemtiable_vm(self):
+        """
+        Check cluster has preemtiable vm used or not
+        """
+        test = [match.value for match in parse('cluster[*]..nodeConfig.preemptible').find(self.resources) if match.value in [True, 'true'] ]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few clusters with preemtiable vm enabled.")
+    
+    def test_check_cluster_labels(self):
+        """
+        Check cluster has labels applied or not
+        """
+        test = [match.value for match in parse('cluster[*].self..resourceLabels').find(self.resources) if
+                len(match.value) < 1]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few clusters without labels.")
+    

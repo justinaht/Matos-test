@@ -11,7 +11,6 @@ class TestCluster(TestCase):
         fp.close()
         self.resources = loads(content)
 
-
     def test_loggingcomponents(self):
         """
         Tests logging is not enabled 

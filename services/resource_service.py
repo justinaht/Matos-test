@@ -12,7 +12,7 @@ class ResourceService:
     def get_resource(self, remove_instance=True):
         pretty_resources = {}
         try:
-            resource_list = Discovery(self.provider).find_resources() if self.provider == 'aws' else []
+            resource_list = Discovery(self.provider).find_resources() if self.provider != 'gcp' else []
             resource_obj = Resource(self.provider)
             resources = resource_obj.get_resource_inventory(resource_list=resource_list)
         except Exception as ex:
@@ -33,9 +33,9 @@ class ResourceService:
         if remove_instance:
             for cluster in pretty_resources['cluster']:
                 cluster_node_name_list.extend(
-                    [node['self']['name' if self.provider == 'gcp' else 'instance_id'] for node in cluster['node']])
+                    [node['self']['name' if self.provider == 'gcp' else 'instance_id'] for node in cluster.get('node', [])])
 
             pretty_resources['instance'] = [rsc for rsc in pretty_resources['instance'] if
-                                            rsc['self']['display_name'] not in cluster_node_name_list]
+                                            rsc['self'].get('display_name', '') not in cluster_node_name_list]
 
         return pretty_resources, cluster_node_name_list

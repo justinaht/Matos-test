@@ -43,7 +43,8 @@ class Resource:
                         resources[resource_type] = self.manager.get_assets_inventory({"type": resource_type})
                 except Exception as ex:
                     raise Exception(ex)
-            elif self.provider == 'aws':
+            elif self.provider != 'aws':
                 for resource_type in RESOURCE_TYPE_REQUESTS.keys():
                     resources[resource_type] = [self.manager.get_assets_inventory(resource) for resource in resource_list if resource['type'] == resource_type]
+
             return resources
