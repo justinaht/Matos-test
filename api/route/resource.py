@@ -28,7 +28,7 @@ def fetchResources(provider):
       - name: provider
         in: path
         type: string
-        enum: ['gcp', 'aws']
+        enum: ['gcp', 'aws', 'azure']
         required: true
         default: gcp
     """
