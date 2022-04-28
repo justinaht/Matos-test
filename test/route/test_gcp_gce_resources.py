@@ -31,7 +31,7 @@ class TestInstances(TestCase):
         """
         Tests either vm has project wise ssh disabled or not
         """
-        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if match.value.get('key', '') == 'block-project-ssh-keys' and  match.value.get('value', '') in ['false', False]]
+        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if ('block-project-ssh-keys' not in match.value.get('key', '') ) or (match.value.get('key', '') == 'block-project-ssh-keys' and  match.value.get('value', '') in ['false', False])]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few instances without disabled project wise ssh.")
     
@@ -55,7 +55,55 @@ class TestInstances(TestCase):
         """
         Tests either vm has serial port disabled or not
         """
-        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if match.value.get('key', '') == 'serial-port-enable' and  match.value.get('value', '') in ['false', False]]
+        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if ('serial-port-enable' not in match.value.get('key', '') ) or (match.value.get('key', '') == 'serial-port-enable' and  match.value.get('value', '') in ['false', False])]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few instances with serial port enabled.")
+    
+    def test_ip_forwarding(self):
+        """
+        Tests either vm has IP forwarding enable or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.canIpForward').find(self.resources) if match.value in ['true', True]]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances with IP forwarding enabled.")
+    
+    def test_disk_auto_delete(self):
+        """
+        Tests either vm disks has auto delete enable or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.disks[*].autoDelete').find(self.resources) if match.value in ['true', True]]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances disks with auto delete enabled.")
+    
+    def test_enable_os_login(self):
+        """
+        Tests either vm has os login enabled or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if ('enable-oslogin' not in match.value.get('key', '') ) or (match.value.get('key', '') == 'enable-oslogin' and  match.value.get('value', '') in ['false', False])]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances without os login enable.")
+    
+    def test_enable_2factor_authentication(self):
+        """
+        Tests either vm has 2 factor authentication enabled or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.metadata.items[*]').find(self.resources) if ('enable-oslogin-2fa' not in match.value.get('key', '') ) or (match.value.get('key', '') == 'enable-oslogin-2fa' and  match.value.get('value', '') in ['false', False])]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances without 2 factor authentication enable.")
+    
+    def test_vm_maintenance_behavior(self):
+        """
+        Tests either vm has maintenance behaviour configured correctly or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.scheduling.onHostMaintenance').find(self.resources) if 'MIGRATE' not in match.value]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances without configure maintenance behaviour correctly.")
+    
+    def test_external_ip(self):
+        """
+        Tests either vm has external ip enable or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data.networkInterfaces[0].accessConfigs[0].name').find(self.resources)]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances with external IP enabled")
     

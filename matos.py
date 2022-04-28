@@ -1,3 +1,5 @@
+#!/usr/bin/exec python3
+
 from flask import Flask
 from flask_cors import CORS
 from flasgger import Swagger

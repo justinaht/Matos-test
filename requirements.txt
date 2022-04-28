@@ -92,4 +92,3 @@ azure-mgmt-containerservice>=14.0.0b1
 azure-mgmt-sql>=1.0.0b1
 
 ruamel.yaml
-base64
