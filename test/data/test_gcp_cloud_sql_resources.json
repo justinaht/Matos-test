@@ -6,17 +6,17 @@
                 "name": "cmdbvm",
                 "source_data": {
                     "backendType": "SECOND_GEN",
-                    "connectionName": "cloudmatos-demoblog:us-west1:cmdbvm",
+                    "connectionName": "example-project:us-west1:cmdbvm",
                     "createTime": "2021-04-21T13:38:35.001Z",
                     "databaseInstalledVersion": "MYSQL_8_0_18",
                     "databaseVersion": "MYSQL_8_0",
                     "diskEncryptionConfiguration": {
                         "kind": "sql#diskEncryptionConfiguration", 
-                        "kmsKeyName": "projects/cloudmatos-demoblog/locations/us-east1/keyRings/test-key-ring/cryptoKeys/bucket_key-rings"
+                        "kmsKeyName": "projects/example-project/locations/us-east1/keyRings/test-key-ring/cryptoKeys/bucket_key-rings"
                       }, 
                       "diskEncryptionStatus": {
                         "kind": "sql#diskEncryptionStatus", 
-                        "kmsKeyVersionName": "projects/cloudmatos-demoblog/locations/us-east1/keyRings/test-key-ring/cryptoKeys/bucket_key-rings/cryptoKeyVersions/1"
+                        "kmsKeyVersionName": "projects/example-project/locations/us-east1/keyRings/test-key-ring/cryptoKeys/bucket_key-rings/cryptoKeyVersions/1"
                     }, 
                     "gceZone": "us-west1-a",
                     "instanceType": "CLOUD_SQL_INSTANCE",
@@ -28,9 +28,9 @@
                     ],
                     "kind": "sql#instance",
                     "name": "cmdbvm",
-                    "project": "cloudmatos-demoblog",
+                    "project": "example-project",
                     "region": "us-west1",
-                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cloudmatos-demoblog/instances/cmdbvm",
+                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/example-project/instances/cmdbvm",
                     "serverCaCert": {
                         "certSerialNumber": "0",
                         "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=09c60ecb-f43e-4649-84c3-5f85d8939aaa",
@@ -40,7 +40,7 @@
                         "kind": "sql#sslCert",
                         "sha1Fingerprint": "b97f3843c9a4231783c6c80b69b2cc485ccd9ebf"
                     },
-                    "serviceAccountEmailAddress": "p234821169729-i8gqt3@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+                    "serviceAccountEmailAddress": "xxxxxxxxxxxxxxx-xxxxxx@gcp-sa-cloud-sql.iam.gserviceaccount.com",
                     "settings": {
                         "activationPolicy": "ALWAYS",
                         "availabilityType": "ZONAL",
@@ -89,7 +89,7 @@
                 "name": "lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
                 "source_data": {
                     "backendType": "SECOND_GEN",
-                    "connectionName": "cloudmatos-demoblog:us-west3:lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
+                    "connectionName": "example-project:us-west3:lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
                     "createTime": "2021-08-17T11:59:00.258Z",
                     "databaseInstalledVersion": "MYSQL_8_0_18",
                     "databaseVersion": "MYSQL_8_0",
@@ -107,9 +107,9 @@
                     ],
                     "kind": "sql#instance",
                     "name": "lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
-                    "project": "cloudmatos-demoblog",
+                    "project": "example-project",
                     "region": "us-west3",
-                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cloudmatos-demoblog/instances/lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
+                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/example-project/instances/lrscmpdbvm90610aff-e2ec-31c3-ea77-c5c82923d053",
                     "serverCaCert": {
                         "certSerialNumber": "0",
                         "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=0426b607-d271-435c-aac0-d6cb53a2ca66",
@@ -119,7 +119,7 @@
                         "kind": "sql#sslCert",
                         "sha1Fingerprint": "525b5ee090cc700acc1d964b0abff65809b14208"
                     },
-                    "serviceAccountEmailAddress": "p234821169729-vnaotq@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+                    "serviceAccountEmailAddress": "xxxxxxxxxxxxxxx-xxxxxx@gcp-sa-cloud-sql.iam.gserviceaccount.com",
                     "settings": {
                         "activationPolicy": "ALWAYS",
                         "availabilityType": "ZONAL",
@@ -144,7 +144,7 @@
                                 }
                             ],
                             "ipv4Enabled": true,
-                            "privateNetwork": "projects/cloudmatos-demoblog/global/networks/lrscmpdbvpc",
+                            "privateNetwork": "projects/example-project/global/networks/lrscmpdbvpc",
                             "requireSsl": false
                         },
                         "kind": "sql#settings",
@@ -169,7 +169,7 @@
                 "name": "rscmpdbvm16305001071634303801",
                 "source_data": {
                     "backendType": "SECOND_GEN",
-                    "connectionName": "cloudmatos-demoblog:us-west3:rscmpdbvm16305001071634303801",
+                    "connectionName": "example-project:us-west3:rscmpdbvm16305001071634303801",
                     "createTime": "2021-10-15T13:18:38.085Z",
                     "databaseInstalledVersion": "MYSQL_8_0_18",
                     "databaseVersion": "MYSQL_8_0",
@@ -187,9 +187,9 @@
                     ],
                     "kind": "sql#instance",
                     "name": "rscmpdbvm16305001071634303801",
-                    "project": "cloudmatos-demoblog",
+                    "project": "example-project",
                     "region": "us-west3",
-                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cloudmatos-demoblog/instances/rscmpdbvm16305001071634303801",
+                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/example-project/instances/rscmpdbvm16305001071634303801",
                     "serverCaCert": {
                         "certSerialNumber": "0",
                         "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=8c400fcf-f6ee-442b-b405-e5c5f598abae",
@@ -199,7 +199,7 @@
                         "kind": "sql#sslCert",
                         "sha1Fingerprint": "6c4f84039dda46aaabb241a523878b5703e828a2"
                     },
-                    "serviceAccountEmailAddress": "p234821169729-l6q52m@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+                    "serviceAccountEmailAddress": "xxxxxxxxxxxxxxx-xxxxxx@gcp-sa-cloud-sql.iam.gserviceaccount.com",
                     "settings": {
                         "activationPolicy": "ALWAYS",
                         "availabilityType": "ZONAL",
@@ -224,7 +224,7 @@
                                 }
                             ],
                             "ipv4Enabled": true,
-                            "privateNetwork": "projects/cloudmatos-demoblog/global/networks/rscmpdbvpc16305001071634303801",
+                            "privateNetwork": "projects/example-project/global/networks/rscmpdbvpc16305001071634303801",
                             "requireSsl": false
                         },
                         "kind": "sql#settings",
@@ -249,7 +249,7 @@
                 "name": "runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
                 "source_data": {
                     "backendType": "SECOND_GEN",
-                    "connectionName": "cloudmatos-demoblog:us-west3:runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
+                    "connectionName": "example-project:us-west3:runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
                     "createTime": "2021-10-12T13:53:05.816Z",
                     "databaseInstalledVersion": "MYSQL_8_0_18",
                     "databaseVersion": "MYSQL_8_0",
@@ -263,9 +263,9 @@
                     ],
                     "kind": "sql#instance",
                     "name": "runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
-                    "project": "cloudmatos-demoblog",
+                    "project": "example-project",
                     "region": "us-west3",
-                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cloudmatos-demoblog/instances/runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
+                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/example-project/instances/runpodsvm163032383716340467426a3b1c2b-aa6d-35b9-31b3-ec18a509e1ae",
                     "serverCaCert": {
                         "certSerialNumber": "0",
                         "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=bf877d71-9f5f-4ff6-a1d6-04de4dfd6f5d",
@@ -275,7 +275,7 @@
                         "kind": "sql#sslCert",
                         "sha1Fingerprint": "722c47c5ea4bbd04b3855e255bd923126f7a2a53"
                     },
-                    "serviceAccountEmailAddress": "p234821169729-4e08m2@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+                    "serviceAccountEmailAddress": "xxxxxxxxxxxxxxx-xxxxxx@gcp-sa-cloud-sql.iam.gserviceaccount.com",
                     "settings": {
                         "activationPolicy": "ALWAYS",
                         "availabilityType": "ZONAL",
@@ -324,7 +324,7 @@
               "name": "test-sql", 
               "source_data": {
                 "backendType": "SECOND_GEN", 
-                "connectionName": "cloudmatos-demoblog:us-central1:test-sql", 
+                "connectionName": "example-project:us-central1:test-sql", 
                 "createTime": "2022-01-20T04:28:42.657Z", 
                 "databaseInstalledVersion": "MYSQL_5_7_36", 
                 "databaseVersion": "MYSQL_5_7", 
@@ -341,10 +341,10 @@
                 ], 
                 "kind": "sql#instance", 
                 "name": "test-sql", 
-                "project": "cloudmatos-demoblog", 
+                "project": "example-project", 
                 "region": "us-central1", 
                 "secondaryGceZone": "us-central1-b", 
-                "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cloudmatos-demoblog/instances/test-sql", 
+                "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/example-project/instances/test-sql", 
                 "serverCaCert": {
                   "certSerialNumber": "0", 
                   "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=7c8a3537-3e30-443c-93e9-6ba2e5b919d8", 
@@ -354,7 +354,7 @@
                   "kind": "sql#sslCert", 
                   "sha1Fingerprint": "b76f8262c3494516b62c7f044ccb8c6db22bc3e3"
                 }, 
-                "serviceAccountEmailAddress": "p234821169729-bhlaqg@gcp-sa-cloud-sql.iam.gserviceaccount.com", 
+                "serviceAccountEmailAddress": "xxxxxxxxxxxxxxx-xxxxxx@gcp-sa-cloud-sql.iam.gserviceaccount.com", 
                 "settings": {
                   "activationPolicy": "ALWAYS", 
                   "availabilityType": "REGIONAL", 
