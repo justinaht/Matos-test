@@ -564,8 +564,8 @@ def add_child(child_mapper,
             mapped = [child_mapper(s) for s in data if (from_dict(s, "cluster_name") == target_data['self']['name']
                                                         or from_dict(s, 'network_name') == target_data['self']['name']
                                                         or (source_key == 'serviceAccountKey'
-                                                            and from_dict(s, "service_account") == target_data['self'][
-                                                                'resource']['uniqueId']))
+                                                            and from_dict(s, "serviceAccount_name") ==
+                                                            target_data['self']['resource']['uniqueId']))
                       and provider == 'gcp' or provider != 'gcp']
         else:
             mapped = child_mapper(data) if from_dict(data, "cluster_name") == target_data['self'][
