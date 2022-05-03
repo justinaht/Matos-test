@@ -7,9 +7,8 @@ from google.cloud import asset_v1p5beta1
 
 from google.protobuf.json_format import MessageToDict
 
-from ..gcp_config import RESOURCE_TYPE_REQUESTS, ASSET_TYPES, POD_STATUS
+from ..gcp_config import RESOURCE_TYPE_REQUESTS, ASSET_TYPES, PLURAL_RESOURCE_TYPE_LIST, IAM_TYPE, POD_STATUS
 from ..base import BaseGCPManager
-
 
 logger = get_logger(__file__)
 
@@ -29,18 +28,18 @@ class GCPResourceManager(BaseGCPManager):
             raise Exception(ex)
 
     def get_resources(
-        self,
-        project_id: str,
-        resource_type: str,
-        resource_names: list,
-        resources: dict = None,
-        next_page_token: str = None,
-        mode: str = 'all'
+            self,
+            project_id: str,
+            resource_type: str,
+            resource_names: list,
+            resources: dict = None,
+            next_page_token: str = None,
+            mode: str = 'all'
     ):
 
         # Step by step will add the provision to fetch all resource type details e.g. pod, services etc.
+        contentType = asset_v1p5beta1.ContentType.IAM_POLICY
         request = {
-            # "asset_types": [RESOURCE_TYPE_REQUESTS[resource_type]],
             "asset_types": RESOURCE_TYPE_REQUESTS[resource_type],
             "parent": f"projects/{project_id if project_id is not None else self.projectId}",
             **self.request,
@@ -48,47 +47,51 @@ class GCPResourceManager(BaseGCPManager):
 
         if next_page_token:
             request["page_token"] = next_page_token
+        try:
+            response = self.client.list_assets(request=request)
+            response_dict = MessageToDict(response._pb)
+            assets = response_dict.get("assets") or []
+            resources = resources or {}
+        except Exception as ex:
+            print(" ************ exception on call list assets: ", ex)
+            assets = []
 
-        response = self.client.list_assets(request=request)
-        response_dict = MessageToDict(response._pb)
-        assets = response_dict.get("assets") or []
-        resources = resources or {}
-
+        iam_assets = []
+        if resource_type in IAM_TYPE:
+            try:
+                request['content_type'] = contentType
+                response = self.client.list_assets(request=request)
+                response_dict = MessageToDict(response._pb)
+                iam_assets = response_dict.get("assets") or []
+            except Exception as ex:
+                print("******* exception on call list assets for iam policy: ", ex)
+                iam_assets = []
         for resource in assets:
             current_resource_type = ASSET_TYPES[resource["assetType"]]
-
             resource_type_plural = (
-                "clusters"
-                if resource_type == "cluster"
-                else "instances"
-                if resource_type == "instance"
-                else "networks"
-                if resource_type == "network"
-                else "storages"
-                if resource_type == 'storage'
-                else "serviceAccounts"
-                if resource_type == 'serviceAccount'
-                else resource_type
+                f"{resource_type}s" if resource_type in PLURAL_RESOURCE_TYPE_LIST else resource_type
             )
-            print(resource["name"], "======= resource name")
-            resource_name_split = resource["name"].split("/")
+            if resource_type == 'network':
+                resource_data = resource['resource']['data']
+                resource_name_split = resource_data.get('network', resource_data.get('selfLink')).split('/')
+            else:
+                resource_name_split = resource["name"].split("/")
             try:
                 current_resource_name = resource_name_split[
                     resource_name_split.index(resource_type_plural) + 1
-                ]
+                    ]
             except:
                 current_resource_name = ""
-            # if mode is not 'all' and current_resource_name not in resource_names:
-            #     continue
 
-            if resource_type == "cluster" and resource_type != current_resource_type:
-                resource["cluster_name"] = current_resource_name
-            if resource_type == 'network' and resource_type != current_resource_type:
-                resource["network_name"] = resource['resource']['data']['network'].split('/')[-1]
-            if resource_type == 'serviceAccount' and resource_type != current_resource_type:
-                resource["service_account"] = current_resource_name
+            if resource_type != current_resource_type:
+                resource[f"{resource_type}_name"] = current_resource_name
+
             if current_resource_type == "pods" and resource['resource']['data']['status']['phase'] not in POD_STATUS:
                 continue
+
+            if resource_type in IAM_TYPE:
+                iam = [item for item in iam_assets if item['name'] == resource['name']]
+                resource['iamPolicy'] = iam[0]['iamPolicy'] if len(iam) > 0 else {}
 
             existing_resources = resources.get(current_resource_type) or []
             existing_resources.append(resource)

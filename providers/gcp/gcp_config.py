@@ -221,6 +221,11 @@ RESOURCE_TYPE_REQUESTS = {
 }
 
 POD_STATUS = ['Running']
+IAM_TYPE = ['serviceAccount', 'storage']
+
+PLURAL_RESOURCE_TYPE_LIST = [
+    'cluster', 'instance', 'network', 'sql', 'serviceAccount', 'storage'
+]
 
 
 class GCPConfig:
