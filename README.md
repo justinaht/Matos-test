@@ -33,6 +33,19 @@ Matos is a cloud resource anomaly detection application. It helps detect anomali
   - [Security](./docs/SECURITY.md)
 - [License](./docs/LICENSE.md)
 
+## Contents
+
+Directory|Description
+-|-
+[api](api) | API model, routes and schema definitions module
+[credentials](credentials)| Cloud account credential json files for authentication and authorization
+[docs](docs) | Matos project documents
+[images](images) | Matos project image assets
+[providers](providers) | Cloud Service Provider discovery, observability module
+[services](services) | Cloud Infrastructure resource service module
+[test](test) | Matos project test cases and data 
+[utils](utils) | Utility library module
+
 # Disclaimer
 
 Matos does not save, publish or share with anyone any identifiable confidential information.
