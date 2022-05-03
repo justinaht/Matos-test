@@ -138,7 +138,7 @@
               }
           ],
           "self": {
-              "arn": "arn:aws:eks:us-east-2:144908232300:cluster/wpcon",
+              "arn": "arn:aws:eks:us-east-2:xxxxxxxxxxx:cluster/wpcon",
               "display_name": "wpcon",
               "endpoint": "https://EC1A4335974DF013D18ED3B3C523195B.gr7.us-east-2.eks.amazonaws.com",
               "identity": "{'oidc': {'issuer': 'https://oidc.eks.us-east-2.amazonaws.com/id/EC1A4335974DF013D18ED3B3C523195B'}}",
@@ -180,10 +180,10 @@
               ],
               "platformVersion": "eks.9",
               "region": "us-east-2",
-              "roleArn": "arn:aws:iam::144908232300:role/wpcon20220103084558929400000003",
+              "roleArn": "arn:aws:iam::xxxxxxxxxxx:role/wpcon20220103084558929400000003",
               "status": "ACTIVE",
               "tags": {
-                  "Environment": "demoblog",
+                  "Environment": "example-proj",
                   "GithubOrg": "terraform-aws-modules",
                   "GithubRepo": "terraform-aws-eks"
               },
@@ -511,7 +511,7 @@
                       "Ipv6Addresses": [],
                       "MacAddress": "06:7b:dd:ef:93:c6",
                       "NetworkInterfaceId": "eni-01c3d21dbea295798",
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "PrivateDnsName": "ip-172-31-10-139.us-east-2.compute.internal",
                       "PrivateIpAddress": "172.31.10.139",
                       "PrivateIpAddresses": [
@@ -622,12 +622,12 @@
                       ],
                       "IsDefault": true,
                       "NetworkAclId": "acl-0362dd6ef51926cbb",
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "Tags": [],
                       "VpcId": "vpc-08a183e2a9e8053f9"
                   }
               ],
-              "owner_id": "144908232300",
+              "owner_id": "xxxxxxxxxxx",
               "state": "available",
               "subnets": [
                   {
@@ -640,9 +640,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": true,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-0859a98419bd17b42",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-0859a98419bd17b42",
                       "SubnetId": "subnet-0859a98419bd17b42",
                       "Tags": [
                           {
@@ -670,9 +670,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-02b4646bab9f6883d",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-02b4646bab9f6883d",
                       "SubnetId": "subnet-02b4646bab9f6883d",
                       "Tags": [
                           {
@@ -700,9 +700,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": true,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-083ce84e1c9731b8c",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-083ce84e1c9731b8c",
                       "SubnetId": "subnet-083ce84e1c9731b8c",
                       "Tags": [
                           {
@@ -730,9 +730,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-0fab6904794f03db1",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-0fab6904794f03db1",
                       "SubnetId": "subnet-0fab6904794f03db1",
                       "Tags": [
                           {
@@ -760,9 +760,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-09ad5e7053a11ab70",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-09ad5e7053a11ab70",
                       "SubnetId": "subnet-09ad5e7053a11ab70",
                       "Tags": [
                           {
@@ -790,9 +790,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": true,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-079562ba83f0c86c7",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-079562ba83f0c86c7",
                       "SubnetId": "subnet-079562ba83f0c86c7",
                       "Tags": [
                           {
@@ -892,12 +892,12 @@
                       ],
                       "IsDefault": true,
                       "NetworkAclId": "acl-03f3fe33107c8851f",
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "Tags": [],
                       "VpcId": "vpc-0abf607f6e4d9d6e1"
                   }
               ],
-              "owner_id": "144908232300",
+              "owner_id": "xxxxxxxxxxx",
               "state": "available",
               "subnets": [
                   {
@@ -910,9 +910,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-080aa51ac46b81b99",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-080aa51ac46b81b99",
                       "SubnetId": "subnet-080aa51ac46b81b99",
                       "Tags": [
                           {
@@ -932,9 +932,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-085f137294010a4f2",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-085f137294010a4f2",
                       "SubnetId": "subnet-085f137294010a4f2",
                       "Tags": [
                           {
@@ -954,9 +954,9 @@
                       "Ipv6CidrBlockAssociationSet": [],
                       "MapCustomerOwnedIpOnLaunch": false,
                       "MapPublicIpOnLaunch": false,
-                      "OwnerId": "144908232300",
+                      "OwnerId": "xxxxxxxxxxx",
                       "State": "available",
-                      "SubnetArn": "arn:aws:ec2:us-east-2:144908232300:subnet/subnet-035a1eda8cd493270",
+                      "SubnetArn": "arn:aws:ec2:us-east-2:xxxxxxxxxxx:subnet/subnet-035a1eda8cd493270",
                       "SubnetId": "subnet-035a1eda8cd493270",
                       "Tags": [
                           {
@@ -975,7 +975,7 @@
   "serviceAccount": [
       {
           "self": {
-              "Arn": "arn:aws:iam::144908232300:user/ajaya@cloudmatos.com",
+              "Arn": "arn:aws:iam::xxxxxxxxxxx:user/user@example.com",
               "CreateDate": "Tue, 07 Sep 2021 15:30:23 GMT",
               "Path": "/",
               "Policies": [],
@@ -986,12 +986,12 @@
                   }
               ],
               "UserId": "AIDASDPJUEZWPPVNHB75J",
-              "UserName": "ajaya@cloudmatos.com"
+              "UserName": "user@example.com"
           }
       },
       {
           "self": {
-              "Arn": "arn:aws:iam::144908232300:user/maulik@cloudmatos.com",
+              "Arn": "arn:aws:iam::xxxxxxxxxxx:user/user@example.com",
               "CreateDate": "Tue, 07 Sep 2021 15:30:23 GMT",
               "PasswordLastUsed": "Thu, 03 Feb 2022 17:48:31 GMT",
               "Path": "/",
@@ -1003,12 +1003,12 @@
                   }
               ],
               "UserId": "AIDASDPJUEZWKUP5R55JD",
-              "UserName": "maulik@cloudmatos.com"
+              "UserName": "user@example.com"
           }
       },
       {
           "self": {
-              "Arn": "arn:aws:iam::144908232300:user/testcmops",
+              "Arn": "arn:aws:iam::xxxxxxxxxxx:user/testcmops",
               "CreateDate": "Wed, 15 Sep 2021 12:17:28 GMT",
               "Path": "/",
               "Policies": [],
@@ -1028,7 +1028,7 @@
       },
       {
           "self": {
-              "Arn": "arn:aws:iam::144908232300:user/testcmsa",
+              "Arn": "arn:aws:iam::xxxxxxxxxxx:user/testcmsa",
               "CreateDate": "Tue, 07 Sep 2021 16:15:13 GMT",
               "PasswordLastUsed": "Fri, 04 Feb 2022 08:13:48 GMT",
               "Path": "/",
@@ -1110,11 +1110,11 @@
                                   "Action": "eks:*",
                                   "Effect": "Allow",
                                   "Resource": [
-                                      "arn:aws:eks:*:144908232300:addon/*/*/*",
-                                      "arn:aws:eks:*:144908232300:identityproviderconfig/*/*/*/*",
-                                      "arn:aws:eks:*:144908232300:cluster/*",
-                                      "arn:aws:eks:*:144908232300:fargateprofile/*/*/*",
-                                      "arn:aws:eks:*:144908232300:nodegroup/*/*/*"
+                                      "arn:aws:eks:*:xxxxxxxxxxx:addon/*/*/*",
+                                      "arn:aws:eks:*:xxxxxxxxxxx:identityproviderconfig/*/*/*/*",
+                                      "arn:aws:eks:*:xxxxxxxxxxx:cluster/*",
+                                      "arn:aws:eks:*:xxxxxxxxxxx:fargateprofile/*/*/*",
+                                      "arn:aws:eks:*:xxxxxxxxxxx:nodegroup/*/*/*"
                                   ],
                                   "Sid": "VisualEditor1"
                               }
@@ -1147,7 +1147,7 @@
               "CACertificateIdentifier": "rds-ca-2019",
               "CopyTagsToSnapshot": true,
               "CustomerOwnedIpEnabled": false,
-              "DBInstanceArn": "arn:aws:rds:us-east-2:144908232300:db:cmdb-1",
+              "DBInstanceArn": "arn:aws:rds:us-east-2:xxxxxxxxxxx:db:cmdb-1",
               "DBInstanceClass": "db.t2.micro",
               "DBInstanceIdentifier": "cmdb-1",
               "DBInstanceStatus": "available",
@@ -1299,7 +1299,7 @@
                   "displayName": "",
                   "id": "000e16a7cab9f18c5aa4e4bc9839dee11e72e060feebd7671a064b9fdba5b82a"
               },
-              "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::144908232300:root\"},\"Action\":\"s3:*\",\"Resource\":[\"arn:aws:s3:::allent-bucket/*\",\"arn:aws:s3:::allent-bucket\"]}]}",
+              "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::xxxxxxxxxxx:root\"},\"Action\":\"s3:*\",\"Resource\":[\"arn:aws:s3:::allent-bucket/*\",\"arn:aws:s3:::allent-bucket\"]}]}",
               "policy_status": {
                   "PolicyStatus": {
                       "IsPublic": false
@@ -1309,11 +1309,11 @@
                   "TagSet": [
                       {
                           "Key": "name",
-                          "Value": "allent-bucket"
+                          "Value": "user-bucket"
                       },
                       {
                           "Key": "company",
-                          "Value": "cloudmatos"
+                          "Value": "example"
                       }
                   ]
               },
@@ -1344,7 +1344,7 @@
                       "Rules": [
                           {
                               "ApplyServerSideEncryptionByDefault": {
-                                  "KMSMasterKeyID": "arn:aws:kms:us-east-2:144908232300:alias/aws/s3",
+                                  "KMSMasterKeyID": "arn:aws:kms:us-east-2:xxxxxxxxxxx:alias/aws/s3",
                                   "SSEAlgorithm": "aws:kms"
                               },
                               "BucketKeyEnabled": true

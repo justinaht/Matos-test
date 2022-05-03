@@ -12,27 +12,27 @@
             "bindings": [
               {
                 "members": [
-                  "projectEditor:cloudmatos-demoblog", 
-                  "projectOwner:cloudmatos-demoblog"
+                  "projectEditor:example-project", 
+                  "projectOwner:example-project"
                 ], 
                 "role": "roles/storage.legacyBucketOwner"
               }, 
               {
                 "members": [
-                  "projectViewer:cloudmatos-demoblog"
+                  "projectViewer:example-project"
                 ], 
                 "role": "roles/storage.legacyBucketReader"
               }, 
               {
                 "members": [
-                  "projectEditor:cloudmatos-demoblog", 
-                  "projectOwner:cloudmatos-demoblog"
+                  "projectEditor:example-project", 
+                  "projectOwner:example-project"
                 ], 
                 "role": "roles/storage.legacyObjectOwner"
               }, 
               {
                 "members": [
-                  "projectViewer:cloudmatos-demoblog"
+                  "projectViewer:example-project"
                 ], 
                 "role": "roles/storage.legacyObjectReader"
               }
@@ -92,32 +92,32 @@
             "organizations/592371966970"
           ], 
           "asset_type": "bucket", 
-          "display_name": "test_bucket_cloudmatos-demoblog", 
+          "display_name": "test_bucket_example-project", 
           "iam_policy": {
             "bindings": [
               {
                 "members": [
-                  "projectEditor:cloudmatos-demoblog", 
-                  "projectOwner:cloudmatos-demoblog"
+                  "projectEditor:example-project", 
+                  "projectOwner:example-project"
                 ], 
                 "role": "roles/storage.legacyBucketOwner"
               }, 
               {
                 "members": [
-                  "projectViewer:cloudmatos-demoblog"
+                  "projectViewer:example-project"
                 ], 
                 "role": "roles/storage.legacyBucketReader"
               }, 
               {
                 "members": [
-                  "projectEditor:cloudmatos-demoblog", 
-                  "projectOwner:cloudmatos-demoblog"
+                  "projectEditor:example-project", 
+                  "projectOwner:example-project"
                 ], 
                 "role": "roles/storage.legacyObjectOwner"
               }, 
               {
                 "members": [
-                  "projectViewer:cloudmatos-demoblog"
+                  "projectViewer:example-project"
                 ], 
                 "role": "roles/storage.legacyObjectReader"
               },
@@ -130,7 +130,7 @@
             ], 
             "etag": "BwXV6MwENz4="
           }, 
-          "name": "test_bucket_cloudmatos-demoblog", 
+          "name": "test_bucket_example-project", 
           "resource": {
             "acl": [], 
             "autoclass": {}, 
@@ -150,7 +150,7 @@
                 "lockedTime": "2022-04-19T05:38:35.564Z"
               }
             }, 
-            "id": "test_bucket_cloudmatos-demoblog", 
+            "id": "test_bucket_example-project", 
             "kind": "storage#bucket", 
             "labels": {}, 
             "lifecycle": {
@@ -171,7 +171,7 @@
             "locationType": "region", 
             "logging": {}, 
             "metageneration": 4.0, 
-            "name": "test_bucket_cloudmatos-demoblog", 
+            "name": "test_bucket_example-project", 
             "owner": {}, 
             "projectNumber": 234821169729.0, 
             "retentionPolicy": {
@@ -179,7 +179,7 @@
               "retentionPeriod": 2592000.0
             }, 
             "satisfiesPZS": false, 
-            "selfLink": "https://www.googleapis.com/storage/v1/b/test_bucket_cloudmatos-demoblog", 
+            "selfLink": "https://www.googleapis.com/storage/v1/b/test_bucket_example-project", 
             "storageClass": "STANDARD", 
             "timeCreated": "2022-01-19T05:38:35.564Z", 
             "updated": "2022-01-19T05:44:28.808Z", 

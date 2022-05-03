@@ -13,7 +13,7 @@
               "metadata": {
                 "annotations": {
                   "container.googleapis.com/instance_id": "2409296997784965297", 
-                  "csi.volume.kubernetes.io/nodeid": "{\"pd.csi.storage.gke.io\":\"projects/cloudmatos-demoblog/zones/us-west1-a/instances/gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89\"}", 
+                  "csi.volume.kubernetes.io/nodeid": "{\"pd.csi.storage.gke.io\":\"projects/example-project/zones/us-west1-a/instances/gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89\"}", 
                   "node.alpha.kubernetes.io/ttl": "0", 
                   "node.gke.io/last-applied-node-labels": "cloud.google.com/gke-boot-disk=pd-standard,cloud.google.com/gke-container-runtime=docker,cloud.google.com/gke-nodepool=cmdbnodepool,cloud.google.com/gke-os-distribution=cos,cloud.google.com/gke-preemptible=true,cloud.google.com/machine-family=e2", 
                   "volumes.kubernetes.io/controller-managed-attach-detach": "true"
@@ -95,7 +95,7 @@
                 "podCIDRs": [
                   "10.24.6.0/24"
                 ], 
-                "providerID": "gce://cloudmatos-demoblog/us-west1-a/gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89", 
+                "providerID": "gce://example-project/us-west1-a/gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89", 
                 "unschedulable": false
               }, 
               "status": {
@@ -109,11 +109,11 @@
                     "type": "ExternalIP"
                   }, 
                   {
-                    "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.cloudmatos-demoblog.internal", 
+                    "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.example-project.internal", 
                     "type": "InternalDNS"
                   }, 
                   {
-                    "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.cloudmatos-demoblog.internal", 
+                    "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.example-project.internal", 
                     "type": "Hostname"
                   }
                 ], 
@@ -444,11 +444,11 @@
                   "type": "ExternalIP"
                 }, 
                 {
-                  "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.cloudmatos-demoblog.internal", 
+                  "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.example-project.internal", 
                   "type": "InternalDNS"
                 }, 
                 {
-                  "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.cloudmatos-demoblog.internal", 
+                  "address": "gke-cmdbgke-cmdbnodepool-7e6be4cc-dl89.us-west1-a.c.example-project.internal", 
                   "type": "Hostname"
                 }
               ], 
@@ -551,7 +551,7 @@
                       }, 
                       {
                         "name": "WORDPRESS_DB_USER", 
-                        "value": "demoblog"
+                        "value": "example-proj"
                       }, 
                       {
                         "name": "WORDPRESS_DB_PASSWORD", 
@@ -559,7 +559,7 @@
                       }, 
                       {
                         "name": "WORDPRESS_DB_NAME", 
-                        "value": "demoblogdb"
+                        "value": "example-projdb"
                       }, 
                       {
                         "name": "WORDPRESS_TABLE_PREFIX", 
@@ -4840,7 +4840,7 @@
         "endpoint": "35.247.32.119", 
         "name": "cmdbgke", 
         "region": "us-west1", 
-        "self_link": "https://container.googleapis.com/v1/projects/cloudmatos-demoblog/locations/us-west1/clusters/cmdbgke", 
+        "self_link": "https://container.googleapis.com/v1/projects/example-project/locations/us-west1/clusters/cmdbgke", 
         "source_data": {
           "addonsConfig": {
             "gcePersistentDiskCsiDriverConfig": {
@@ -4872,7 +4872,7 @@
           "initialClusterVersion": "1.18.16-gke.502", 
           "initialNodeCount": 1.0, 
           "instanceGroupUrls": [
-            "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/instanceGroupManagers/gke-cmdbgke-cmdbnodepool-7e6be4cc-grp"
+            "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/instanceGroupManagers/gke-cmdbgke-cmdbnodepool-7e6be4cc-grp"
           ], 
           "enableKubernetesAlpha": true, 
           "ipAllocationPolicy": {
@@ -4915,11 +4915,11 @@
           "networkConfig": {
             "enableIntraNodeVisibility": true,
             "defaultSnatStatus": {}, 
-            "network": "projects/cloudmatos-demoblog/global/networks/cmdbvpc", 
+            "network": "projects/example-project/global/networks/cmdbvpc", 
             "serviceExternalIpsConfig": {
               "enabled": true
             }, 
-            "subnetwork": "projects/cloudmatos-demoblog/regions/us-west1/subnetworks/cmdbsubnet"
+            "subnetwork": "projects/example-project/regions/us-west1/subnetworks/cmdbsubnet"
           }, 
           "nodeConfig": {
             "diskSizeGb": 100.0, 
@@ -4970,7 +4970,7 @@
               }, 
               "initialNodeCount": 1.0, 
               "instanceGroupUrls": [
-                "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/instanceGroupManagers/gke-cmdbgke-cmdbnodepool-7e6be4cc-grp"
+                "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/instanceGroupManagers/gke-cmdbgke-cmdbnodepool-7e6be4cc-grp"
               ], 
               "locations": [
                 "us-west1-a"
@@ -4981,7 +4981,7 @@
               }, 
               "name": "cmdbnodepool", 
               "podIpv4CidrSize": 24.0, 
-              "selfLink": "https://container.googleapis.com/v1/projects/cloudmatos-demoblog/locations/us-west1/clusters/cmdbgke/nodePools/cmdbnodepool", 
+              "selfLink": "https://container.googleapis.com/v1/projects/example-project/locations/us-west1/clusters/cmdbgke/nodePools/cmdbnodepool", 
               "status": "RUNNING", 
               "upgradeSettings": {
                 "maxSurge": 1.0
@@ -4995,7 +4995,7 @@
           "resourceLabels": {
             "env": "test-environment"
           },
-          "selfLink": "https://container.googleapis.com/v1/projects/cloudmatos-demoblog/locations/us-west1/clusters/cmdbgke", 
+          "selfLink": "https://container.googleapis.com/v1/projects/example-project/locations/us-west1/clusters/cmdbgke", 
           "servicesIpv4Cidr": "10.27.240.0/20", 
           "shieldedNodes": {
             "enabled": true
@@ -5384,7 +5384,7 @@
       "self": {
         "create_time": "2021-09-28T12:08:09.271-07:00", 
         "id": "9032467426737837815", 
-        "self_link": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-central1-a/instances/jump-box", 
+        "self_link": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-central1-a/instances/jump-box", 
         "source_data": {
           "allocationAffinity": {
             "consumeAllocationType": "ANY_ALLOCATION"
@@ -5431,7 +5431,7 @@
                   }
                 ]
               }, 
-              "source": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-central1-a/disks/jump-box", 
+              "source": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-central1-a/disks/jump-box", 
               "type": "PERSISTENT"
             }
           ], 
@@ -5445,7 +5445,7 @@
             "name": "mohan"
           }, 
           "lastStartTimestamp": "2021-09-28T12:08:18.755-07:00", 
-          "machineType": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-central1-a/machineTypes/e2-micro", 
+          "machineType": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-central1-a/machineTypes/e2-micro", 
           "metadata": {
             "items": [
               {
@@ -5475,10 +5475,10 @@
               ], 
               "fingerprint": "XVhKrS281Eo=", 
               "name": "nic0", 
-              "network": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/global/networks/default", 
+              "network": "https://www.googleapis.com/compute/v1/projects/example-project/global/networks/default", 
               "networkIP": "10.128.0.2", 
               "stackType": "IPV4_ONLY", 
-              "subnetwork": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/regions/us-central1/subnetworks/default"
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/example-project/regions/us-central1/subnetworks/default"
             }
           ], 
           "scheduling": {
@@ -5486,7 +5486,7 @@
             "onHostMaintenance": "MIGRATE", 
             "preemptible": false
           }, 
-          "selfLink": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-central1-a/instances/jump-box", 
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-central1-a/instances/jump-box", 
           "serviceAccounts": [
             {
               "email": "234821169729-compute@developer.gserviceaccount.com", 
@@ -5516,7 +5516,7 @@
               "http-server"
             ]
           }, 
-          "zone": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-central1-a"
+          "zone": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-central1-a"
         }, 
         "status": "RUNNING"
       }
@@ -5525,7 +5525,7 @@
       "self": {
         "create_time": "2021-04-29T05:39:58.384-07:00", 
         "id": "4260511954850224114", 
-        "self_link": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/instances/cmdbonvm-vm", 
+        "self_link": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/instances/cmdbonvm-vm", 
         "source_data": {
           "canIpForward": false, 
           "cpuPlatform": "Intel Broadwell", 
@@ -5549,7 +5549,7 @@
                 "https://www.googleapis.com/compute/v1/projects/click-to-deploy-images/global/licenses/c2d-wordpressmulti"
               ], 
               "mode": "READ_WRITE", 
-              "source": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/disks/cmdbonvm-vm", 
+              "source": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/disks/cmdbonvm-vm", 
               "type": "PERSISTENT"
             }
           ], 
@@ -5560,7 +5560,7 @@
             "goog-dm": "cmdbonvm"
           }, 
           "lastStartTimestamp": "2021-04-29T05:40:06.541-07:00", 
-          "machineType": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/machineTypes/g1-small", 
+          "machineType": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/machineTypes/g1-small", 
           "metadata": {
             "items": [
               {
@@ -5590,9 +5590,9 @@
               ], 
               "fingerprint": "xbD45OVNLW8=", 
               "name": "nic0", 
-              "network": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/global/networks/default", 
+              "network": "https://www.googleapis.com/compute/v1/projects/example-project/global/networks/default", 
               "networkIP": "10.138.0.2", 
-              "subnetwork": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/regions/us-west1/subnetworks/default"
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/example-project/regions/us-west1/subnetworks/default"
             }
           ], 
           "scheduling": {
@@ -5600,7 +5600,7 @@
             "onHostMaintenance": "MIGRATE", 
             "preemptible": false
           }, 
-          "selfLink": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a/instances/cmdbonvm-vm", 
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a/instances/cmdbonvm-vm", 
           "serviceAccounts": [
             {
               "email": "234821169729-compute@developer.gserviceaccount.com", 
@@ -5623,7 +5623,7 @@
               "https-server"
             ]
           }, 
-          "zone": "https://www.googleapis.com/compute/v1/projects/cloudmatos-demoblog/zones/us-west1-a"
+          "zone": "https://www.googleapis.com/compute/v1/projects/example-project/zones/us-west1-a"
         }, 
         "status": "RUNNING"
       }
