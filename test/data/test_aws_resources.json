@@ -1268,7 +1268,7 @@
               "inventory_configuration": [],
               "lifecycle": {},
               "metric_configuration": [],
-              "name": "allent-bucket",
+              "name": "user-bucket",
               "object": [
                   {
                       "Acl": {
@@ -1299,7 +1299,7 @@
                   "displayName": "",
                   "id": "000e16a7cab9f18c5aa4e4bc9839dee11e72e060feebd7671a064b9fdba5b82a"
               },
-              "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::xxxxxxxxxxx:root\"},\"Action\":\"s3:*\",\"Resource\":[\"arn:aws:s3:::allent-bucket/*\",\"arn:aws:s3:::allent-bucket\"]}]}",
+              "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::xxxxxxxxxxx:root\"},\"Action\":\"s3:*\",\"Resource\":[\"arn:aws:s3:::user-bucket/*\",\"arn:aws:s3:::user-bucket\"]}]}",
               "policy_status": {
                   "PolicyStatus": {
                       "IsPublic": false
