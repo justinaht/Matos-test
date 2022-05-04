@@ -33,7 +33,7 @@ Matos is a cloud resource anomaly detection application. It helps detect anomali
   - [Security](./docs/SECURITY.md)
 - [License](./docs/LICENSE.md)
 
-## Contents
+# Contents
 
 Directory|Description
 -|-
@@ -45,6 +45,78 @@ Directory|Description
 [services](services) | Cloud Infrastructure resource service module
 [test](test) | Matos project test cases and data 
 [utils](utils) | Utility library module
+
+# Testing	
+
+Matos supports the `unittest` & `pytest` unit testing frameworks to create and execute automated unit test cases. Unit test cases are created in Matos to identify and check the state of the cloud infrastructure resources. 
+
+Before creating the unit test cases, the input required for the test cases must be collected. Test data are saved in the `Matos/test/data/` folder.
+The API response of the cloud service provider is processed to meet the Matos requirement and saved in JSON format. The test data describes the current state of the cloud infrastructure resources.
+These could be resource metadata or additional information describing the resource configuration and state.
+
+Test cases are located in the folder `Matos/test/route/`, and the test case file name begins with `test_`. The python class represents the test suite and the python function represents the test case.  Depending on the test need, many functions can be added to cover all test scenarios.
+
+## Naming convention
+
+Replace the content in the curly bracket with the actual value. Examples are shown below.
+
+**Test data file:**
+
+    test_{cloud-provider}_{cloud-infrastructure}.json
+e.g. test_gcp_cloud_storage_resources.json
+
+
+**Test case file:**
+
+    test_{cloud-provider}_{cloud-infrastructure}.py
+e.g. test_gcp_cloud_storage_resources.py
+
+**Class:**
+
+    Test{cloud-infrastructure}
+e.g. TestCloudStorage
+
+**Function:**
+
+    test_{use-case}
+e.g. test_public_access
+
+
+## Unit test example
+
+```python
+import os
+from unittest import TestCase
+from json import loads, dumps
+from jsonpath_ng import parse
+
+
+class TestCloudStorage(TestCase):
+    def setUp(self):
+        fp = open(os.getcwd() + "/test/data/test_gcp_cloud_storage_resources.json", "r")
+        content = fp.read()
+        fp.close()
+        self.resources = loads(content)
+
+    def test_public_access(self):
+        """
+        Check bucket is publicly accessible or not
+        """
+        test = [match.value for match in parse('storage[*].self.iam_policy.bindings[*].members[*]').find(self.resources)
+                if match.value == 'allUsers']
+        flag = len(test) > 0
+        self.assertEqual(True, flag, msg="There are few buckets which are publicly accessible.")
+```
+
+## Command to excute unit test
+
+Using unit testing framework `unittest`
+
+    python3 -m unittest
+
+Using unit test framework `pytest`
+
+    python3 -m pytest
 
 # Disclaimer
 
