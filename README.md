@@ -33,6 +33,40 @@ Matos is a cloud resource anomaly detection application. It helps detect anomali
   - [Security](./docs/SECURITY.md)
 - [License](./docs/LICENSE.md)
 
+
+# Quick Start  
+
+Clone the Matos repository into a directory
+
+    git clone https://github.com/cloudmatos/Matos.git
+
+Change directory
+
+    cd Matos
+
+Create a virtual environment
+
+    python3 -m venv ./.venv 
+
+Activate the virtual environment
+
+    source ./.venv/bin/activate
+
+Upgrade pip (optional)
+
+    python3 -m pip install --upgrade pip
+
+Install packages using requirements.txt
+
+    python3 -m pip install -r requirements.txt
+
+Set `FLASK_APP` environment variable to specify the application
+
+    export FLASK_APP=matos.py
+
+Run the application
+
+    python3 -m flask run
 # Contents
 
 Directory|Description
