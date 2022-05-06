@@ -5,34 +5,38 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/matos/matos)](https://goreportcard.com/report/github.com/matos/matos)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3588/badge)](https://bestpractices.coreinfrastructure.org/projects/3588)
 
+# Introduction
+
 Matos is a cloud resource anomaly detection application. It helps detect anomalies; configuration and policy drifts. It interacts with native cloud services api's or third party tools to deduce current status and metadata of underlying resources and represents current security and compliance posture, one use case at a time. Inherently supports Amazon Web Services and Google Cloud Platform services. Resource support and use cases will be extended as a part of planned road map.
 
-## Features
+# Features and Supported Services
 
-- Support AWS and GCP
-- Get current real time resource information and metadata
-- Identify anomalies and policy/configuration drifts
+- Support Amazon Web Services (AWS), Google Cloud Platform (GCP) and Microsoft Azure cloud service providers.
+- Discover cloud infrastructure resources (e.g. Cloud Storage, SQL, Compute Instance, Cluster K8s & Networking) and services of the provided account or organization (AWS) / project (GCP) / subscription (Azure).
+- Observe and analyze the cloud infrastructure resource in real-time to identify issues and pro-actively resolve them for improved performance.
 
-## Future Enhancements
+# Roadmap
 
-- Extend
-  - Support to more resources and Services
-  - Detection scope for more use cases
-  - Support for more cloud platforms
-- Get health information and compare against set/defined thresholds
-- Recommend remediation for detected anomalies and drifts
+- Extend the support to additional cloud service providers (CSP).
+- Extend the support to additional cloud infrastructure resources and services.
+- Identify and recommend remediation based on detected anomalies and drifts.
+- Identify and recommend remediation based on compliance requirements and best practices for security and governance.
+- Get health information and compare it against set/defined thresholds.
+- Detect anomalies and drifts in cloud infrastructure setup and policies.
 
-## Documentation & Support
+# Audience 
 
-- [Quickstart](./docs/QUICKSTART.md)
-- [Community](./docs/COMMUNITY.md)
-- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
-- [Maintainers](./docs/MAINTAINERS.md)
-  - [CodeOwners](./docs/CODEOWNERS.md)
-  - [Contribution Guidelines](./docs/CONTRIBUTION_GUIDELINES.md)
-  - [Security](./docs/SECURITY.md)
-- [License](./docs/LICENSE.md)
+- This project is intended to serve a diverse audience who build, maintain and manage cloud infrastructure.
 
+    - Site Reliability Engineering (SRE)
+    - DevSecOps
+    - Cloud Security Architects and Developers
+
+# Prerequisites 
+
+* Amazon Web Services: Access to AWS account with credential having (programmatic access - access key ID and secret access key) having read-access permission.
+* Microsoft Azure: Access to Azure subscription with app registered having read-access permission.
+* Google Cloud: Access to Google projects with a service account having read-access permission.
 
 # Quick Start  
 
@@ -151,6 +155,17 @@ Using unit testing framework `unittest`
 Using unit test framework `pytest`
 
     python3 -m pytest
+
+# Documentation & Support
+
+- [Quickstart](./docs/QUICKSTART.md)
+- [Community](./docs/COMMUNITY.md)
+- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
+- [Maintainers](./docs/MAINTAINERS.md)
+  - [CodeOwners](./docs/CODEOWNERS.md)
+  - [Contribution Guidelines](./docs/CONTRIBUTION_GUIDELINES.md)
+  - [Security](./docs/SECURITY.md)
+- [License](./docs/LICENSE.md)
 
 # Disclaimer
 
