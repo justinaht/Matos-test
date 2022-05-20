@@ -114,3 +114,12 @@ class TestCloudSql(TestCase):
                 not match.value.get('binaryLogEnabled', False)]
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few sql instances without binary logging enable.")
+
+    def test_user_labels(self):
+        """
+        Check cloud sql server having user labels or not
+        """
+        test = [match.value for match in parse('sql[*].self.source_data.settings').find(self.resources) if not match.value.get('userLabels') or len(match.value.get('userLabels')) < 1]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few sql instances without user labels attached.")
+

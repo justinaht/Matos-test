@@ -1,0 +1,242 @@
+{
+    "kms": [
+        {
+            "self": {
+                "source_data": {
+                    "AWSAccountId": "000000000000",
+                    "Arn": "arn:aws:kms:us-east-2:000000000000:key/0000-0000-0000-0000-0000",
+                    "CreationDate": "Mon, 07 Feb 2022 18:22:58 GMT",
+                    "CustomerMasterKeySpec": "SYMMETRIC_DEFAULT",
+                    "Description": "Default key that protects my S3 objects when no other key is defined",
+                    "Enabled": true,
+                    "EncryptionAlgorithms": [
+                        "SYMMETRIC_DEFAULT"
+                    ],
+                    "KeyId": "00000-0000-0000-0000-0000",
+                    "KeyManager": "AWS",
+                    "KeyPolicies": [
+                        {
+                            "Id": "auto-s3-2",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "kms:Encrypt",
+                                        "kms:Decrypt",
+                                        "kms:ReEncrypt*",
+                                        "kms:GenerateDataKey*",
+                                        "kms:DescribeKey"
+                                    ],
+                                    "Condition": {
+                                        "StringEquals": {
+                                            "kms:CallerAccount": "000000000000",
+                                            "kms:ViaService": "s3.us-east-2.amazonaws.com"
+                                        }
+                                    },
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": "*"
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow access through S3 for all principals in the account that are authorized to use S3"
+                                },
+                                {
+                                    "Action": [
+                                        "kms:Describe*",
+                                        "kms:Get*",
+                                        "kms:List*"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": "arn:aws:iam::000000000000:root"
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow direct access to key metadata to the account"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    ],
+                    "KeyRotationEnabled": true,
+                    "KeySpec": "SYMMETRIC_DEFAULT",
+                    "KeyState": "Enabled",
+                    "KeyUsage": "ENCRYPT_DECRYPT",
+                    "MultiRegion": false,
+                    "Origin": "AWS_KMS"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "AWSAccountId": "000000000000",
+                    "Arn": "arn:aws:kms:us-east-2:000000000000:key/0000-0000-0000-0000-0000",
+                    "CreationDate": "Tue, 17 May 2022 03:33:10 GMT",
+                    "CustomerMasterKeySpec": "SYMMETRIC_DEFAULT",
+                    "Description": "",
+                    "Enabled": true,
+                    "EncryptionAlgorithms": [
+                        "SYMMETRIC_DEFAULT"
+                    ],
+                    "KeyId": "0000-0000-0000-0000-0000",
+                    "KeyManager": "CUSTOMER",
+                    "KeyPolicies": [
+                        {
+                            "Id": "key-consolepolicy-3",
+                            "Statement": [
+                                {
+                                    "Action": "kms:*",
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": "arn:aws:iam::000000000000:root"
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Enable IAM User Permissions"
+                                },
+                                {
+                                    "Action": [
+                                        "kms:Create*",
+                                        "kms:Describe*",
+                                        "kms:Enable*",
+                                        "kms:List*",
+                                        "kms:Put*",
+                                        "kms:Update*",
+                                        "kms:Revoke*",
+                                        "kms:Disable*",
+                                        "kms:Get*",
+                                        "kms:Delete*",
+                                        "kms:TagResource",
+                                        "kms:UntagResource",
+                                        "kms:ScheduleKeyDeletion",
+                                        "kms:CancelKeyDeletion"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": [
+                                            "arn:aws:iam::000000000000:user/testaccountops",
+                                            "arn:aws:iam::000000000000:user/testaccountsa"
+                                        ]
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow access for Key Administrators"
+                                },
+                                {
+                                    "Action": [
+                                        "kms:Encrypt",
+                                        "kms:Decrypt",
+                                        "kms:ReEncrypt*",
+                                        "kms:GenerateDataKey*",
+                                        "kms:DescribeKey"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": [
+                                            "arn:aws:iam::000000000000:user/testaccountops",
+                                            "arn:aws:iam::000000000000:user/testaccountsa"
+                                        ]
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow use of the key"
+                                },
+                                {
+                                    "Action": [
+                                        "kms:CreateGrant",
+                                        "kms:ListGrants",
+                                        "kms:RevokeGrant"
+                                    ],
+                                    "Condition": {
+                                        "Bool": {
+                                            "kms:GrantIsForAWSResource": "true"
+                                        }
+                                    },
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": [
+                                            "arn:aws:iam::000000000000:user/testaccountops",
+                                            "arn:aws:iam::000000000000:user/testaccountsa"
+                                        ]
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow attachment of persistent resources"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    ],
+                    "KeyRotationEnabled": true,
+                    "KeySpec": "SYMMETRIC_DEFAULT",
+                    "KeyState": "Enabled",
+                    "KeyUsage": "ENCRYPT_DECRYPT",
+                    "MultiRegion": false,
+                    "Origin": "AWS_KMS"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "AWSAccountId": "000000000000",
+                    "Arn": "arn:aws:kms:us-east-2:000000000000:key/0000-0000-0000-0000-0000",
+                    "CreationDate": "Sun, 17 Apr 2022 16:38:20 GMT",
+                    "CustomerMasterKeySpec": "SYMMETRIC_DEFAULT",
+                    "Description": "Default key that protects my EBS volumes when no other key is defined",
+                    "Enabled": true,
+                    "EncryptionAlgorithms": [
+                        "SYMMETRIC_DEFAULT"
+                    ],
+                    "KeyId": "0000-0000-0000-0000-0000",
+                    "KeyManager": "AWS",
+                    "KeyPolicies": [
+                        {
+                            "Id": "auto-ebs-2",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "kms:Encrypt",
+                                        "kms:Decrypt",
+                                        "kms:ReEncrypt*",
+                                        "kms:GenerateDataKey*",
+                                        "kms:CreateGrant",
+                                        "kms:DescribeKey"
+                                    ],
+                                    "Condition": {
+                                        "StringEquals": {
+                                            "kms:CallerAccount": "000000000000",
+                                            "kms:ViaService": "ec2.us-east-2.amazonaws.com"
+                                        }
+                                    },
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": "*"
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow access through EBS for all principals in the account that are authorized to use EBS"
+                                },
+                                {
+                                    "Action": [
+                                        "kms:Describe*",
+                                        "kms:Get*",
+                                        "kms:List*",
+                                        "kms:RevokeGrant"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Principal": {
+                                        "AWS": "arn:aws:iam::000000000000:root"
+                                    },
+                                    "Resource": "*",
+                                    "Sid": "Allow direct access to key metadata to the account"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    ],
+                    "KeyRotationEnabled": true,
+                    "KeySpec": "SYMMETRIC_DEFAULT",
+                    "KeyState": "Enabled",
+                    "KeyUsage": "ENCRYPT_DECRYPT",
+                    "MultiRegion": false,
+                    "Origin": "AWS_KMS"
+                }
+            }
+        }
+    ]
+}

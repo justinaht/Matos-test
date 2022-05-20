@@ -114,6 +114,63 @@ def aws_sql(resource, provider):
     })
 
 
+def aws_cloudtrail(resource, provider):
+    """
+    """
+    return selfish({
+        "name": from_dict(resource, "Name"),
+        "source_data": resource
+    })
+
+
+def aws_kms(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def aws_policy(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def aws_sa(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def aws_disk(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def aws_snapshot(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
+def aws_dynamodb(resource, provider):
+    """
+    """
+    return selfish({
+        "source_data": resource
+    })
+
+
 def azure_cluster(resource, provider):
     """
     """
@@ -418,13 +475,17 @@ def gcp_service_account(resource, provider):
                 "resource": from_dict(service_account_item, 'resource', 'data'),
                 "iam_policy": from_dict(service_account_item, 'iamPolicy'),
                 "ancestors": from_dict(service_account_item, 'ancestors'),
-                "source_data": service_account_item
+                "source_data": {
+                    **service_account_item,
+                    "serviceAccountKey": [{
+                        "key": akey['name'].split('/')[-1],
+                        "name": akey['name'],
+                        **akey['resource']['data']
+                    } for akey in resource['serviceAccountKey'] if
+                                          akey['serviceAccount_name'] ==
+                                          from_dict(service_account_item, 'resource', 'data')['uniqueId']]
+                }
             })
-
-            add_child(gcp_service_account_key, "serviceAccountKey", "serviceAccountKey", resource, service_account,
-                      provider)
-            # add_child(gcp_network_firewall, "firewalls", "firewall", resource, storage, provider)
-            # add_child(gcp_network_route, "routes", "route", resource, storage, provider)
 
             service_account_list.append(service_account)
 
@@ -452,6 +513,56 @@ def gcp_sql(resource, provider):
     return sqls
 
 
+def gcp_project(resource, provider):
+    project_details = resource['iam']
+    project_list = []
+
+    if isinstance(project_details, list):
+        for service_account_item in project_details:
+            service_account = selfish({
+                "name": from_dict(service_account_item, "resource", "data", "name"),
+                # "resource": from_dict(service_account_item, 'resource', 'data'),
+                "iam_policy": from_dict(service_account_item, 'iamPolicy'),
+                "source_data": service_account_item
+            })
+
+            project_list.append(service_account)
+
+    return project_list
+
+
+def gcp_disk(resource, provider):
+    disk_details = resource['disk']
+    disk_list = []
+
+    if isinstance(disk_details, list):
+        for disk_item in disk_details:
+            service_account = selfish({
+                "name": from_dict(disk_item, "resource", "data", "name"),
+                "source_data": disk_item
+            })
+
+            disk_list.append(service_account)
+
+    return disk_list
+
+
+def gcp_snapshot(resource, provider):
+    snapshot_details = resource['snapshot']
+    snapshot_list = []
+
+    if isinstance(snapshot_details, list):
+        for snapshot_item in snapshot_details:
+            service_account = selfish({
+                "name": from_dict(snapshot_item, "resource", "data", "name"),
+                "source_data": snapshot_item
+            })
+
+            snapshot_list.append(service_account)
+
+    return snapshot_list
+
+
 cloud_resource_mappers = {
     'aws': {
         'cluster': aws_cluster,
@@ -462,6 +573,14 @@ cloud_resource_mappers = {
         'storage': aws_storage,
         'network': aws_network,
         'sql': aws_sql,
+        'log_monitor': aws_cloudtrail,
+        'kms': aws_kms,
+        'policy': aws_policy,
+        'serviceAccount': aws_sa,
+        'no_sql': aws_dynamodb,
+        'disk': aws_disk,
+        'snapshot': aws_snapshot,
+        'eip': aws_snapshot,
     },
     'azure': {
         'cluster': azure_cluster,
@@ -481,6 +600,9 @@ cloud_resource_mappers = {
         "storage": gcp_storage,
         "serviceAccount": gcp_service_account,
         'sql': gcp_sql,
+        'iam': gcp_project,
+        'disk': gcp_disk,
+        'snapshot': gcp_snapshot
     }
 }
 
@@ -608,7 +730,7 @@ def reform_resources(provider, resources):
 
     retdict = {}
     if isinstance(resources, dict):
-        res_type = resources['type']
+        res_type = resources.get('type')
         details = resources.get('details')
         if res_type == 'cluster' and provider == 'aws':
             details['zone'] = resources['location']

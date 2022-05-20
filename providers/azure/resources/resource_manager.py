@@ -235,6 +235,27 @@ class SQL(Azure):
         return: dictionary object.
         """
 
-        resources = [self.scrub(item) for item in self.conn.servers.list()]
-        resources = [resource for resource in resources if resource.get('name', '') == self.resource.get('name')]
-        return resources[0] if len(resources) > 0 else self.resource
+        resource = None
+        for item in self.conn.servers.list():
+            objitem = self.scrub(item)
+            if objitem.get('name', '') == self.resource.get('name'):
+                obj_rg_name = objitem['id'].split('/')[-5]
+                obj_name = objitem['name']
+                sqlbdlist = []
+                for sqldbitem in self.conn.databases.list_by_server(obj_rg_name, obj_name):
+                    sqldb = self.scrub(sqldbitem)
+                    sqldb["Bckup_retention_policies"] = [self.scrub(sqldbbkitem) for sqldbbkitem in
+                                                         self.conn.backup_short_term_retention_policies.list_by_database(
+                                                             obj_rg_name, obj_name, sqldb["name"])]
+                    sqlbdlist.append(sqldb)
+                objitem["Firewall_rules"] = [self.scrub(fwitem) for fwitem in
+                                             self.conn.firewall_rules.list_by_server(obj_rg_name, obj_name)]
+                objitem["failover_groups"] = [self.scrub(fgitem) for fgitem in
+                                              self.conn.failover_groups.list_by_server(obj_rg_name, obj_name)]
+                objitem["Databases"] = sqlbdlist
+                resource = objitem
+            # sqllist.append(objitem)
+
+        # resources = [self.scrub(item) for item in self.conn.servers.list()]
+        # resources = [resource for resource in resources if resource.get('name', '') == self.resource.get('name')]
+        return resource if resource else self.resource

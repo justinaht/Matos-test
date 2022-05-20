@@ -1,0 +1,600 @@
+{
+    "serviceAccount": [
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/user-01",
+                "AttachedManagedPolicies": [
+                    {
+                        "Arn": "arn:aws:iam::000000000000:policy/user-01-test-ebs-policy",
+                        "AttachmentCount": 2,
+                        "CreateDate": "Wed, 18 May 2022 07:07:25 GMT",
+                        "DefaultVersionId": "v7",
+                        "Description": "To find out for  EBS encryption use case what policies are required.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "user-01-test-ebs-policy",
+                        "PolicyVersion": {
+                            "CreateDate": "Wed, 18 May 2022 09:43:38 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:Describe*",
+                                            "ec2:StartInstances",
+                                            "ec2:StopInstances",
+                                            "ec2:CreateSnapshots",
+                                            "ec2:CreateVolume"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "VisualEditor0"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v7"
+                        },
+                        "Scope": "Local",
+                        "Tags": [],
+                        "UpdateDate": "Wed, 18 May 2022 09:43:38 GMT"
+                    }
+                ],
+                "CreateDate": "Wed, 18 May 2022 07:03:15 GMT",
+                "GroupList": [],
+                "PasswordEnable": true,
+                "Path": "/",
+                "Tags": [],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "user-01-test-EBS"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/user-02@example.com",
+                "AttachedManagedPolicies": [
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/IAMUserChangePassword",
+                        "AttachmentCount": 6,
+                        "CreateDate": "Tue, 15 Nov 2016 00:25:16 GMT",
+                        "DefaultVersionId": "v2",
+                        "Description": "Provides the ability for an IAM user to change their own password.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "IAMUserChangePassword",
+                        "PolicyVersion": {
+                            "CreateDate": "Tue, 15 Nov 2016 23:18:55 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "iam:ChangePassword"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:iam::*:user/${aws:username}"
+                                        ]
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:GetAccountPasswordPolicy"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Tue, 15 Nov 2016 23:18:55 GMT"
+                    }
+                ],
+                "CreateDate": "Tue, 07 Sep 2021 15:30:23 GMT",
+                "GroupList": [
+                    "Admins"
+                ],
+                "PasswordEnable": true,
+                "Path": "/",
+                "Tags": [
+                    {
+                        "Key": "Admins",
+                        "Value": "All access"
+                    }
+                ],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "user-02@example.com"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/user-03@example.com",
+                "AttachedManagedPolicies": [
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/IAMUserChangePassword",
+                        "AttachmentCount": 6,
+                        "CreateDate": "Tue, 15 Nov 2016 00:25:16 GMT",
+                        "DefaultVersionId": "v2",
+                        "Description": "Provides the ability for an IAM user to change their own password.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "IAMUserChangePassword",
+                        "PolicyVersion": {
+                            "CreateDate": "Tue, 15 Nov 2016 23:18:55 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "iam:ChangePassword"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:iam::*:user/${aws:username}"
+                                        ]
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:GetAccountPasswordPolicy"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Tue, 15 Nov 2016 23:18:55 GMT"
+                    }
+                ],
+                "CreateDate": "Tue, 07 Sep 2021 15:30:23 GMT",
+                "GroupList": [
+                    "Admins"
+                ],
+                "PasswordEnable": true,
+                "Path": "/",
+                "Tags": [
+                    {
+                        "Key": "Admins",
+                        "Value": "All access"
+                    }
+                ],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "user-03@example.com"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/user-10",
+                "AttachedManagedPolicies": [
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+                        "AttachmentCount": 3,
+                        "CreateDate": "Fri, 06 Feb 2015 18:39:46 GMT",
+                        "DefaultVersionId": "v1",
+                        "Description": "Provides full access to AWS services and resources.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "AdministratorAccess",
+                        "PolicyVersion": {
+                            "CreateDate": "Fri, 06 Feb 2015 18:39:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Fri, 06 Feb 2015 18:39:46 GMT"
+                    },
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/IAMUserChangePassword",
+                        "AttachmentCount": 6,
+                        "CreateDate": "Tue, 15 Nov 2016 00:25:16 GMT",
+                        "DefaultVersionId": "v2",
+                        "Description": "Provides the ability for an IAM user to change their own password.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "IAMUserChangePassword",
+                        "PolicyVersion": {
+                            "CreateDate": "Tue, 15 Nov 2016 23:18:55 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "iam:ChangePassword"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:iam::*:user/${aws:username}"
+                                        ]
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:GetAccountPasswordPolicy"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Tue, 15 Nov 2016 23:18:55 GMT"
+                    },
+                    {
+                        "Arn": "arn:aws:iam::000000000000:policy/test-policy-kms-decrypt",
+                        "AttachmentCount": 2,
+                        "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                        "DefaultVersionId": "v1",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "test-policy-kms-decrypt",
+                        "PolicyVersion": {
+                            "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "kms:Decrypt",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:kms:*:000000000000:key/*",
+                                        "Sid": "VisualEditor0"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        },
+                        "Scope": "Local",
+                        "Tags": [],
+                        "UpdateDate": "Sun, 15 May 2022 14:59:57 GMT"
+                    }
+                ],
+                "CreateDate": "Mon, 16 May 2022 03:23:38 GMT",
+                "GroupList": [],
+                "PasswordEnable": true,
+                "Path": "/",
+                "Tags": [],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "user-10"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/user-04@example.com",
+                "AttachedManagedPolicies": [],
+                "CreateDate": "Mon, 02 May 2022 03:59:18 GMT",
+                "GroupList": [
+                    "IAMfullAccess",
+                    "Admins",
+                    "Devs-Cluster",
+                    "Devs-General",
+                    "Monitors",
+                    "IAMAdmin"
+                ],
+                "PasswordEnable": false,
+                "Path": "/",
+                "Tags": [],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "user-04@example.com"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/testaccountops",
+                "AttachedManagedPolicies": [],
+                "CreateDate": "Wed, 15 Sep 2021 12:17:28 GMT",
+                "GroupList": [
+                    "Monitors"
+                ],
+                "PasswordEnable": false,
+                "Path": "/",
+                "Tags": [
+                    {
+                        "Key": "name",
+                        "Value": "Monitors"
+                    },
+                    {
+                        "Key": "description",
+                        "Value": "Monitoring service account"
+                    }
+                ],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "testaccountops"
+            }
+        },
+        {
+            "self": {
+                "Arn": "arn:aws:iam::000000000000:user/testaccountsa",
+                "AttachedManagedPolicies": [
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+                        "AttachmentCount": 3,
+                        "CreateDate": "Fri, 06 Feb 2015 18:39:46 GMT",
+                        "DefaultVersionId": "v1",
+                        "Description": "Provides full access to AWS services and resources.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "AdministratorAccess",
+                        "PolicyVersion": {
+                            "CreateDate": "Fri, 06 Feb 2015 18:39:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Fri, 06 Feb 2015 18:39:46 GMT"
+                    },
+                    {
+                        "Arn": "arn:aws:iam::aws:policy/IAMUserChangePassword",
+                        "AttachmentCount": 6,
+                        "CreateDate": "Tue, 15 Nov 2016 00:25:16 GMT",
+                        "DefaultVersionId": "v2",
+                        "Description": "Provides the ability for an IAM user to change their own password.",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "IAMUserChangePassword",
+                        "PolicyVersion": {
+                            "CreateDate": "Tue, 15 Nov 2016 23:18:55 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "iam:ChangePassword"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:iam::*:user/${aws:username}"
+                                        ]
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:GetAccountPasswordPolicy"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        "Scope": "AWS",
+                        "Tags": [],
+                        "UpdateDate": "Tue, 15 Nov 2016 23:18:55 GMT"
+                    },
+                    {
+                        "Arn": "arn:aws:iam::000000000000:policy/test-policy-kms-decrypt",
+                        "AttachmentCount": 2,
+                        "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                        "DefaultVersionId": "v1",
+                        "IsAttachable": true,
+                        "Path": "/",
+                        "PermissionsBoundaryUsageCount": 0,
+                        "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                        "PolicyName": "test-policy-kms-decrypt",
+                        "PolicyVersion": {
+                            "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "kms:Decrypt",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:kms:*:000000000000:key/*",
+                                        "Sid": "VisualEditor0"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        },
+                        "Scope": "Local",
+                        "Tags": [],
+                        "UpdateDate": "Sun, 15 May 2022 14:59:57 GMT"
+                    }
+                ],
+                "CreateDate": "Tue, 07 Sep 2021 16:15:13 GMT",
+                "GroupList": [
+                    "IAMfullAccess",
+                    "Admins",
+                    "Devs-Cluster",
+                    "Devs-General",
+                    "Monitors",
+                    "IAMAdmin"
+                ],
+                "PasswordEnable": true,
+                "Path": "/",
+                "Tags": [
+                    {
+                        "Key": "devs",
+                        "Value": "All service account holders"
+                    }
+                ],
+                "UserId": "XXXXXXXXXXXXXXXXXXXX",
+                "UserName": "testaccountsa",
+                "UserPolicyList": [
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": "cloudshell:CreateEnvironment",
+                                    "Effect": "Allow",
+                                    "Resource": "*",
+                                    "Sid": "VisualEditor0"
+                                },
+                                {
+                                    "Action": "cloudshell:*",
+                                    "Effect": "Allow",
+                                    "Resource": "arn:aws:cloudshell:*:000000000000:environment/*",
+                                    "Sid": "VisualEditor1"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "CloudShellAccess"
+                    },
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": "eks:*",
+                                    "Effect": "Allow",
+                                    "Resource": "*",
+                                    "Sid": "VisualEditor0"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "EKS-Full-ACCESS"
+                    },
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "iam:CreateInstanceProfile",
+                                        "iam:CreateServiceSpecificCredential",
+                                        "iam:UntagRole",
+                                        "iam:TagRole",
+                                        "iam:RemoveRoleFromInstanceProfile",
+                                        "iam:DeletePolicy",
+                                        "iam:CreateRole",
+                                        "iam:TagMFADevice",
+                                        "iam:AttachRolePolicy",
+                                        "iam:TagSAMLProvider",
+                                        "iam:AddRoleToInstanceProfile",
+                                        "iam:PassRole",
+                                        "iam:DetachRolePolicy",
+                                        "iam:DeleteInstanceProfile",
+                                        "iam:UntagSAMLProvider",
+                                        "iam:DeleteRole",
+                                        "iam:UntagServerCertificate",
+                                        "iam:TagPolicy",
+                                        "iam:TagUser",
+                                        "iam:CreatePolicy",
+                                        "iam:UntagUser",
+                                        "iam:CreateServiceLinkedRole",
+                                        "iam:UntagMFADevice",
+                                        "iam:TagServerCertificate",
+                                        "iam:UntagPolicy",
+                                        "iam:DeleteServiceLinkedRole",
+                                        "iam:UntagOpenIDConnectProvider",
+                                        "iam:UntagInstanceProfile",
+                                        "iam:DeleteServiceSpecificCredential",
+                                        "iam:TagOpenIDConnectProvider",
+                                        "iam:TagInstanceProfile"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": "*",
+                                    "Sid": "VisualEditor0"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "IAM-MANAGE-ROLE"
+                    },
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "eks:ListClusters",
+                                        "eks:DescribeAddonVersions",
+                                        "eks:CreateCluster"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": "*",
+                                    "Sid": "VisualEditor0"
+                                },
+                                {
+                                    "Action": "eks:*",
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:eks:*:000000000000:addon/*/*/*",
+                                        "arn:aws:eks:*:000000000000:identityproviderconfig/*/*/*/*",
+                                        "arn:aws:eks:*:000000000000:cluster/*",
+                                        "arn:aws:eks:*:000000000000:fargateprofile/*/*/*",
+                                        "arn:aws:eks:*:000000000000:nodegroup/*/*/*"
+                                    ],
+                                    "Sid": "VisualEditor1"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "Inline_ALL_EKS"
+                    },
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": "kms:Decrypt",
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:kms:*:000000000000:alias/*",
+                                        "arn:aws:kms:*:000000000000:key/*"
+                                    ],
+                                    "Sid": "VisualEditor0"
+                                },
+                                {
+                                    "Action": "kms:CreateKey",
+                                    "Effect": "Allow",
+                                    "Resource": "*",
+                                    "Sid": "VisualEditor1"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "kms-inline-test-decrypt"
+                    }
+                ]
+            }
+        }
+    ]
+}

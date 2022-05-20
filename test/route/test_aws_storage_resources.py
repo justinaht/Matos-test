@@ -52,3 +52,15 @@ class TestCloudStorage(TestCase):
         print(test)
         flag = (len(set(test)) >= 1 and set(test).pop() in ['Enabled'])
         self.assertEqual(True, flag, msg="Versioning is not enabled")
+    
+    # Use Case: S3.9 S3 bucket server access logging should be enabled
+    def test_server_access_logs(self):
+        """
+        Check access logs enable or not for bucket
+        """
+        test = [match.value for match in parse('storage[*].self.source_data.logging').find(self.resources) if not match.value]
+        flag = len(test)
+        self.assertEqual(False, flag, msg="There are few buckets without logging enabled")
+    
+
+    

@@ -190,7 +190,10 @@ ASSET_TYPES = {
     "iam.googleapis.com/ServiceAccount": "serviceAccount",
     # "iam.googleapis.com/ServiceAccountKey": "serviceAccount",
     "iam.googleapis.com/ServiceAccountKey": "serviceAccountKey",
-    "sqladmin.googleapis.com/Instance": "sql"
+    "sqladmin.googleapis.com/Instance": "sql",
+    'cloudresourcemanager.googleapis.com/Project': 'iam',
+    'compute.googleapis.com/Disk': 'disk',
+    'compute.googleapis.com/Snapshot': 'snapshot',
 }
 
 RESOURCE_TYPE_REQUESTS = {
@@ -217,14 +220,28 @@ RESOURCE_TYPE_REQUESTS = {
     ],
     'sql': [
         "sqladmin.googleapis.com/Instance",
-    ]
+    ],
+    'iam': [
+        'cloudresourcemanager.googleapis.com/Project'
+    ],
+    'disk': [
+        'compute.googleapis.com/Disk'
+    ],
+    'snapshot': [
+        'compute.googleapis.com/Snapshot'
+    ],
+    'log_monitor': [],
+    'kms': [],
+    'policy': [],
+    'no_sql': [],
+    "eip": []
 }
 
 POD_STATUS = ['Running']
-IAM_TYPE = ['serviceAccount', 'storage']
+IAM_TYPE = ['serviceAccount', 'storage', 'iam']
 
 PLURAL_RESOURCE_TYPE_LIST = [
-    'cluster', 'instance', 'network', 'sql', 'serviceAccount', 'storage'
+    'cluster', 'instance', 'network', 'sql', 'serviceAccount', 'storage', 'iam'
 ]
 
 

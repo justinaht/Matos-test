@@ -100,3 +100,15 @@ class TestCloudStorage(TestCase):
                 if match.value == 'allAuthenticatedUsers']
         flag = len(test) > 0
         self.assertEqual(True, flag, msg="There are few buckets which are publicly accessible to all authentcated users")
+
+    
+    def test_check_user_labels(self):
+        """
+        Check bucket has labels attached or not
+        """
+        test = [match.value for match in parse('storage[*].self.resource').find(self.resources)
+                if not match.value.get('labels') or len(match.value.get('labels')) < 1]
+        flag = len(test) > 0
+        self.assertEqual(True, flag, msg="There are few buckets without labels attached.")
+
+    

@@ -17,8 +17,9 @@ class ResourceService:
             resources = resource_obj.get_resource_inventory(resource_list=resource_list)
         except Exception as ex:
             raise Exception(ex)
+
         for type in resources.keys():
-            resource = resources[type]
+            resource = resources.get(type, {})
             if self.provider == 'gcp':
                 pretty_resources = {**pretty_resources, **(reform_resources(self.provider, resource))}
                 # print("*** pretty resources ***", pretty_resources)
@@ -31,11 +32,11 @@ class ResourceService:
 
         cluster_node_name_list = []
         if remove_instance:
-            for cluster in pretty_resources['cluster']:
+            for cluster in pretty_resources.get('cluster', []):
                 cluster_node_name_list.extend(
                     [node['self']['name' if self.provider == 'gcp' else 'instance_id'] for node in cluster.get('node', [])])
-
-            pretty_resources['instance'] = [rsc for rsc in pretty_resources['instance'] if
-                                            rsc['self'].get('display_name', '') not in cluster_node_name_list]
+            if 'instance' in pretty_resources:
+                pretty_resources['instance'] = [rsc for rsc in pretty_resources['instance'] if
+                                                rsc['self'].get('display_name', '') not in cluster_node_name_list]
 
         return pretty_resources, cluster_node_name_list
