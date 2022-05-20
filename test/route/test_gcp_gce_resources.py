@@ -107,3 +107,11 @@ class TestInstances(TestCase):
         flag = len(test) > 0
         self.assertEqual(False, flag, msg="There are few instances with external IP enabled")
     
+    def test_labels_attached(self):
+        """
+        Tests either vm has labels attached or not
+        """
+        test = [match.value for match in parse('instance[*].self.source_data').find(self.resources) if not match.value.get('labels') or len(match.value.get('labels')) < 1]
+        flag = len(test) > 0
+        self.assertEqual(False, flag, msg="There are few instances without label attached.")
+    

@@ -16,6 +16,9 @@ class AWSDiscovery(AWS):
             self.network = self.client('networkmanager')
             self.rds = self.client('rds')
             self.iam = self.client('iam')
+            self.cloudtrail = self.client('cloudtrail')
+            self.kms = self.client('kms')
+            self.dynamodb = self.client('dynamodb')
         except Exception as ex:
             raise Exception(ex)
 
@@ -78,7 +81,6 @@ class AWSDiscovery(AWS):
                 },
             }
             bucket_resources.append(detail)
-
         return bucket_resources
 
     def get_networks(self):
@@ -87,7 +89,6 @@ class AWSDiscovery(AWS):
             if continueToken:
                 request['NextToken'] = continueToken
             response = self.ec2.describe_vpcs(**request)
-            print("[*** network response ***]", response.get('Vpcs', []))
             continueToken = response.get('NextToken', None)
             current_networks = [] if not network_list else network_list
             current_networks.extend(response.get('Vpcs', []))
@@ -152,6 +153,38 @@ class AWSDiscovery(AWS):
 
         return firewall_resources
 
+    def get_cloudtrails(self):
+        def fetch_cloudtrails(cloudtrail_list=None, continueToken: str = None):
+            request = {}
+            if continueToken:
+                request['NextToken'] = continueToken
+            response = self.cloudtrail.list_trails(**request)
+            continueToken = response.get('NextToken', None)
+            current_cloudtrails = [] if not cloudtrail_list else cloudtrail_list
+            current_cloudtrails.extend(response.get('Trails', []))
+
+            return current_cloudtrails, continueToken
+
+        try:
+            cloudtrails, nextToken = fetch_cloudtrails()
+
+            while nextToken:
+                cloudtrails = fetch_cloudtrails(cloudtrails, nextToken)
+        except Exception as ex:
+            print("cloudtrail: ", ex)
+            return []
+        cloudtrail_resources = []
+        for cloudtrail in cloudtrails:
+            detail = {
+                'name': cloudtrail.get('Name', ""),
+                'arn': cloudtrail.get('TrailARN'),
+                'region': cloudtrail.get("HomeRegion"),
+                'type': 'log_monitor'
+            }
+            cloudtrail_resources.append(detail)
+
+        return cloudtrail_resources
+
     def get_database(self):
         response = self.rds.describe_db_instances()
         databases = [{**item, "type": "sql"} for item in response.get('DBInstances', [])]
@@ -163,6 +196,49 @@ class AWSDiscovery(AWS):
         users = [{**item, "type": "serviceAccount"} for item in response.get('Users', [])]
         return users
 
+    def get_kms(self):
+        response = self.kms.list_keys()
+        keys = [{**item, "type": "kms"} for item in response.get('Keys', [])]
+        return keys
+
+    def get_policy(self):
+        response = self.iam.list_policies(Scope='Local')
+        policies = [{**item, "type": "policy"} for item in response.get('Policies', [])]
+        return policies
+
+    def get_dynamo_db(self):
+        response = self.dynamodb.list_tables()
+        dynamodbs = [{"name": item, "type": "no_sql"} for item in response.get('TableNames', [])]
+        print(dynamodbs, "==== dynamodb")
+        return dynamodbs
+
+    def get_snapshot(self):
+        user = self.iam.list_users().get('Users', [])[0]
+        owner_id = user.get('Arn').split(':')[-2]
+        response = self.ec2.describe_snapshots(Filters=[
+            {
+                'Name': 'owner-id',
+                'Values': [
+                    owner_id,
+                ]
+            },
+        ], )
+        snapshots = [{**item, "type": "snapshot"} for item in response.get('Snapshots', [])]
+        # print(len(snapshots), "===== snapshot length")
+        return snapshots
+
+    def get_disk(self):
+        response = self.ec2.describe_volumes()
+        volumes = [{**item, "type": "disk"} for item in response.get('Volumes', [])]
+        # print(volumes, "==== volumes")
+        return volumes
+
+    def get_eip(self):
+        response = self.ec2.describe_addresses()
+        eip = [{**item, "type": "eip"} for item in response.get('Addresses', [])]
+        # print(eip, "==== volumes")
+        return eip
+
     def find_resources(self, **kwargs):
         """
         """
@@ -172,9 +248,16 @@ class AWSDiscovery(AWS):
         resources.extend(self.get_clusters())
         resources.extend(self.get_instances())
         resources.extend(self.get_buckets())
-        resources.extend(self.get_firewalls())
+        # resources.extend(self.get_firewalls())
         resources.extend(self.get_networks())
         resources.extend(self.get_database())
         resources.extend(self.get_iam())
+        resources.extend(self.get_cloudtrails())
+        resources.extend(self.get_kms())
+        resources.extend(self.get_policy())
+        resources.extend(self.get_snapshot())
+        resources.extend(self.get_dynamo_db())
+        resources.extend(self.get_disk())
+        resources.extend(self.get_eip())
 
         return resources

@@ -1,0 +1,2630 @@
+{
+    "policy": [
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/i-00000000000000000_policy",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Wed, 11 May 2022 08:40:00 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "i-00000000000000000_policy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Wed, 11 May 2022 08:40:00 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:Describe*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Wed, 11 May 2022 08:40:00 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/IAMFullAccess",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Thu, 31 Mar 2022 17:49:24 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "IAMFullAccess",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Thu, 31 Mar 2022 17:49:24 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "iam:*",
+                                            "organizations:DescribeAccount",
+                                            "organizations:DescribeOrganization",
+                                            "organizations:DescribeOrganizationalUnit",
+                                            "organizations:DescribePolicy",
+                                            "organizations:ListChildren",
+                                            "organizations:ListParents",
+                                            "organizations:ListPoliciesForTarget",
+                                            "organizations:ListRoots",
+                                            "organizations:ListPolicies",
+                                            "organizations:ListTargetsForPolicy"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Thu, 31 Mar 2022 17:49:24 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/vpc_vpc-0ed354ba386e0b43f_flow_log_policy_000000000000",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Tue, 17 May 2022 06:57:56 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "vpc_vpc-0ed354ba386e0b43f_flow_log_policy_000000000000",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 17 May 2022 06:57:56 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 17 May 2022 06:57:56 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/IAMAdmin",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Thu, 03 Feb 2022 18:10:37 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "IAMAdmin",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Thu, 03 Feb 2022 18:10:37 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "iam:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "VisualEditor0"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Thu, 03 Feb 2022 18:10:37 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/user-01-test-flow-log-role-01",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Mon, 16 May 2022 11:32:53 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "user-01-test-flow-log-role-01",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 16 May 2022 11:32:53 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 16 May 2022 11:32:53 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/service-role/CloudTrailPolicyForCloudWatchLogs_56d220bf-7ddb-4f4e-a13a-d0a93bc79c56",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Fri, 06 May 2022 13:51:28 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/service-role/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "CloudTrailPolicyForCloudWatchLogs_56d220bf-7ddb-4f4e-a13a-d0a93bc79c56",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Fri, 06 May 2022 13:51:28 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogStream"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:logs:us-east-2:000000000000:log-group:aws-cloudtrail-logs-000000000000-ce31a0b7:log-stream:000000000000_CloudTrail_us-east-2*"
+                                        ],
+                                        "Sid": "AWSCloudTrailCreateLogStream2014110"
+                                    },
+                                    {
+                                        "Action": [
+                                            "logs:PutLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:logs:us-east-2:000000000000:log-group:aws-cloudtrail-logs-000000000000-ce31a0b7:log-stream:000000000000_CloudTrail_us-east-2*"
+                                        ],
+                                        "Sid": "AWSCloudTrailPutLogEvents20141101"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Fri, 06 May 2022 13:51:28 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/wpcon-deny-log-group20220103084558928900000002",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "wpcon-deny-log-group20220103084558928900000002",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "logs:CreateLogGroup",
+                                        "Effect": "Deny",
+                                        "Resource": "*",
+                                        "Sid": ""
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/service-role/CloudTrailPolicyForCloudWatchLogs_0000-0000-0000-0000-0000",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Fri, 06 May 2022 13:52:24 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/service-role/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "CloudTrailPolicyForCloudWatchLogs_0000-0000-0000-0000-0000",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Fri, 06 May 2022 13:52:24 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogStream"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:logs:us-east-2:000000000000:log-group:aws-cloudtrail-logs-000000000000-ce31a0b7:log-stream:000000000000_CloudTrail_us-east-2*"
+                                        ],
+                                        "Sid": "AWSCloudTrailCreateLogStream2014110"
+                                    },
+                                    {
+                                        "Action": [
+                                            "logs:PutLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": [
+                                            "arn:aws:logs:us-east-2:000000000000:log-group:aws-cloudtrail-logs-000000000000-ce31a0b7:log-stream:000000000000_CloudTrail_us-east-2*"
+                                        ],
+                                        "Sid": "AWSCloudTrailPutLogEvents20141101"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Fri, 06 May 2022 13:52:24 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/vpc_vpc-08a183e2a9e8053f9_flow_log_policy_",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Tue, 17 May 2022 10:31:38 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "vpc_vpc-08a183e2a9e8053f9_flow_log_policy_",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 17 May 2022 10:31:38 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 17 May 2022 10:31:38 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/i-00e598fe6cb98365d_policy",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Wed, 11 May 2022 06:34:46 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "i-00e598fe6cb98365d_policy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Wed, 11 May 2022 06:34:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:Describe*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Wed, 11 May 2022 06:34:46 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/vpc_vpc-0085e45c576a1504b_flow_log_policy_",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Tue, 17 May 2022 10:32:05 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "vpc_vpc-0085e45c576a1504b_flow_log_policy_",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 17 May 2022 10:32:05 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 17 May 2022 10:32:05 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/test-policy-kms-decrypt",
+                    "AttachmentCount": 2,
+                    "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "test-policy-kms-decrypt",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "kms:Decrypt",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:kms:*:000000000000:key/*",
+                                        "Sid": "VisualEditor0"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Sun, 15 May 2022 14:59:57 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/vpc_vpc-000000000000000_flow_log_policy_",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Tue, 17 May 2022 10:32:18 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "vpc_vpc-000000000000000_flow_log_policy_",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 17 May 2022 10:32:18 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 17 May 2022 10:32:18 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/vpc_vpc-0ed354ba386e0b43f_flow_log_policy_",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Tue, 17 May 2022 10:31:52 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "vpc_vpc-0ed354ba386e0b43f_flow_log_policy_",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 17 May 2022 10:31:52 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "logs:CreateLogGroup",
+                                            "logs:CreateLogStream",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogGroups",
+                                            "logs:DescribeLogStreams"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 17 May 2022 10:31:52 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::000000000000:policy/wpcon-elb-sl-role-creation20220103084558928400000001",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "wpcon-elb-sl-role-creation20220103084558928400000001",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeAddresses",
+                                            "ec2:DescribeAccountAttributes"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": ""
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 03 Jan 2022 08:45:57 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/AmazonRDSFullAccess",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Fri, 06 Feb 2015 18:40:52 GMT",
+                    "DefaultVersionId": "v9",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AmazonRDSFullAccess",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 07 Mar 2022 21:11:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "application-autoscaling:DeleteScalingPolicy",
+                                            "application-autoscaling:DeregisterScalableTarget",
+                                            "application-autoscaling:DescribeScalableTargets",
+                                            "application-autoscaling:DescribeScalingActivities",
+                                            "application-autoscaling:DescribeScalingPolicies",
+                                            "application-autoscaling:PutScalingPolicy",
+                                            "application-autoscaling:RegisterScalableTarget",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "cloudwatch:PutMetricAlarm",
+                                            "cloudwatch:DeleteAlarms",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeCoipPools",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeLocalGatewayRouteTablePermissions",
+                                            "ec2:DescribeLocalGatewayRouteTables",
+                                            "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
+                                            "ec2:DescribeLocalGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:GetCoipPoolUsage",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "sns:Publish",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents",
+                                            "outposts:GetOutpostInstanceTypes"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": [
+                                                    "rds.amazonaws.com",
+                                                    "rds.application-autoscaling.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v9"
+                        },
+                        {
+                            "CreateDate": "Tue, 24 Nov 2020 19:30:26 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "application-autoscaling:DeleteScalingPolicy",
+                                            "application-autoscaling:DeregisterScalableTarget",
+                                            "application-autoscaling:DescribeScalableTargets",
+                                            "application-autoscaling:DescribeScalingActivities",
+                                            "application-autoscaling:DescribeScalingPolicies",
+                                            "application-autoscaling:PutScalingPolicy",
+                                            "application-autoscaling:RegisterScalableTarget",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "cloudwatch:PutMetricAlarm",
+                                            "cloudwatch:DeleteAlarms",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeCoipPools",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeLocalGatewayRouteTables",
+                                            "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
+                                            "ec2:DescribeLocalGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:GetCoipPoolUsage",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "sns:Publish",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents",
+                                            "outposts:GetOutpostInstanceTypes"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": [
+                                                    "rds.amazonaws.com",
+                                                    "rds.application-autoscaling.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v8"
+                        },
+                        {
+                            "CreateDate": "Thu, 27 Aug 2020 23:38:56 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "application-autoscaling:DeleteScalingPolicy",
+                                            "application-autoscaling:DeregisterScalableTarget",
+                                            "application-autoscaling:DescribeScalableTargets",
+                                            "application-autoscaling:DescribeScalingActivities",
+                                            "application-autoscaling:DescribeScalingPolicies",
+                                            "application-autoscaling:PutScalingPolicy",
+                                            "application-autoscaling:RegisterScalableTarget",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "cloudwatch:PutMetricAlarm",
+                                            "cloudwatch:DeleteAlarms",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "sns:Publish",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents",
+                                            "outposts:GetOutpostInstanceTypes"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": [
+                                                    "rds.amazonaws.com",
+                                                    "rds.application-autoscaling.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v7"
+                        },
+                        {
+                            "CreateDate": "Mon, 09 Apr 2018 17:42:48 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "application-autoscaling:DeleteScalingPolicy",
+                                            "application-autoscaling:DeregisterScalableTarget",
+                                            "application-autoscaling:DescribeScalableTargets",
+                                            "application-autoscaling:DescribeScalingActivities",
+                                            "application-autoscaling:DescribeScalingPolicies",
+                                            "application-autoscaling:PutScalingPolicy",
+                                            "application-autoscaling:RegisterScalableTarget",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "cloudwatch:PutMetricAlarm",
+                                            "cloudwatch:DeleteAlarms",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "sns:Publish",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": [
+                                                    "rds.amazonaws.com",
+                                                    "rds.application-autoscaling.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v6"
+                        },
+                        {
+                            "CreateDate": "Mon, 20 Nov 2017 18:36:33 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "sns:Publish",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "rds.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v5"
+                        },
+                        {
+                            "CreateDate": "Thu, 14 Sep 2017 23:40:45 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "pi:*",
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:pi:*:*:metrics/rds/*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v4"
+                        },
+                        {
+                            "CreateDate": "Mon, 28 Aug 2017 21:35:27 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeInternetGateways",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcAttribute",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v3"
+                        },
+                        {
+                            "CreateDate": "Wed, 16 Dec 2015 21:02:23 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics",
+                                            "logs:DescribeLogStreams",
+                                            "logs:GetLogEvents"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Fri, 06 Feb 2015 18:40:52 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "rds:*",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricStatistics",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAvailabilityZones",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVpcs",
+                                            "sns:ListSubscriptions",
+                                            "sns:ListTopics"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 07 Mar 2022 21:11:46 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/AmazonEC2FullAccess",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Fri, 06 Feb 2015 18:40:15 GMT",
+                    "DefaultVersionId": "v5",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AmazonEC2FullAccess",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 27 Nov 2018 02:16:56 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "elasticloadbalancing:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "cloudwatch:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "autoscaling:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": [
+                                                    "autoscaling.amazonaws.com",
+                                                    "ec2scheduled.amazonaws.com",
+                                                    "elasticloadbalancing.amazonaws.com",
+                                                    "spot.amazonaws.com",
+                                                    "spotfleet.amazonaws.com",
+                                                    "transitgateway.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v5"
+                        },
+                        {
+                            "CreateDate": "Thu, 08 Feb 2018 18:11:24 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "elasticloadbalancing:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "cloudwatch:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "autoscaling:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": [
+                                                    "autoscaling.amazonaws.com",
+                                                    "ec2scheduled.amazonaws.com",
+                                                    "elasticloadbalancing.amazonaws.com",
+                                                    "spot.amazonaws.com",
+                                                    "spotfleet.amazonaws.com"
+                                                ]
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v4"
+                        },
+                        {
+                            "CreateDate": "Thu, 11 Jan 2018 20:16:43 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "elasticloadbalancing:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "cloudwatch:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "autoscaling:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "spotfleet.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/spotfleet.amazonaws.com/AWSServiceRoleForEC2Spot*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "ec2scheduled.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/ec2scheduled.amazonaws.com/AWSServiceRoleForEC2Scheduled*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v3"
+                        },
+                        {
+                            "CreateDate": "Mon, 30 Oct 2017 22:35:27 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "elasticloadbalancing:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "cloudwatch:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "autoscaling:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "spotfleet.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/spotfleet.amazonaws.com/AWSServiceRoleForEC2Spot*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "ec2scheduled.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:iam::*:role/aws-service-role/ec2scheduled.amazonaws.com/AWSServiceRoleForEC2Scheduled*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Fri, 06 Feb 2015 18:40:15 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "ec2:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "elasticloadbalancing:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "cloudwatch:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "autoscaling:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 27 Nov 2018 02:16:56 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+                    "AttachmentCount": 2,
+                    "CreateDate": "Sun, 27 May 2018 21:06:14 GMT",
+                    "DefaultVersionId": "v5",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AmazonEKSClusterPolicy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Tue, 15 Jun 2021 20:57:05 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "autoscaling:DescribeAutoScalingGroups",
+                                            "autoscaling:UpdateAutoScalingGroup",
+                                            "ec2:AttachVolume",
+                                            "ec2:AuthorizeSecurityGroupIngress",
+                                            "ec2:CreateRoute",
+                                            "ec2:CreateSecurityGroup",
+                                            "ec2:CreateTags",
+                                            "ec2:CreateVolume",
+                                            "ec2:DeleteRoute",
+                                            "ec2:DeleteSecurityGroup",
+                                            "ec2:DeleteVolume",
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:DescribeDhcpOptions",
+                                            "ec2:DescribeNetworkInterfaces",
+                                            "ec2:DetachVolume",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:ModifyVolume",
+                                            "ec2:RevokeSecurityGroupIngress",
+                                            "ec2:DescribeAccountAttributes",
+                                            "ec2:DescribeAddresses",
+                                            "ec2:DescribeInternetGateways",
+                                            "elasticloadbalancing:AddTags",
+                                            "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                                            "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                                            "elasticloadbalancing:ConfigureHealthCheck",
+                                            "elasticloadbalancing:CreateListener",
+                                            "elasticloadbalancing:CreateLoadBalancer",
+                                            "elasticloadbalancing:CreateLoadBalancerListeners",
+                                            "elasticloadbalancing:CreateLoadBalancerPolicy",
+                                            "elasticloadbalancing:CreateTargetGroup",
+                                            "elasticloadbalancing:DeleteListener",
+                                            "elasticloadbalancing:DeleteLoadBalancer",
+                                            "elasticloadbalancing:DeleteLoadBalancerListeners",
+                                            "elasticloadbalancing:DeleteTargetGroup",
+                                            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                            "elasticloadbalancing:DeregisterTargets",
+                                            "elasticloadbalancing:DescribeListeners",
+                                            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                            "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                                            "elasticloadbalancing:DescribeLoadBalancers",
+                                            "elasticloadbalancing:DescribeTargetGroupAttributes",
+                                            "elasticloadbalancing:DescribeTargetGroups",
+                                            "elasticloadbalancing:DescribeTargetHealth",
+                                            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                                            "elasticloadbalancing:ModifyListener",
+                                            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                                            "elasticloadbalancing:ModifyTargetGroup",
+                                            "elasticloadbalancing:ModifyTargetGroupAttributes",
+                                            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                            "elasticloadbalancing:RegisterTargets",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                                            "kms:DescribeKey"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v5"
+                        },
+                        {
+                            "CreateDate": "Fri, 21 Feb 2020 20:10:11 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "autoscaling:DescribeAutoScalingGroups",
+                                            "autoscaling:UpdateAutoScalingGroup",
+                                            "ec2:AttachVolume",
+                                            "ec2:AuthorizeSecurityGroupIngress",
+                                            "ec2:CreateRoute",
+                                            "ec2:CreateSecurityGroup",
+                                            "ec2:CreateTags",
+                                            "ec2:CreateVolume",
+                                            "ec2:DeleteRoute",
+                                            "ec2:DeleteSecurityGroup",
+                                            "ec2:DeleteVolume",
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:DescribeDhcpOptions",
+                                            "ec2:DescribeNetworkInterfaces",
+                                            "ec2:DetachVolume",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:ModifyVolume",
+                                            "ec2:RevokeSecurityGroupIngress",
+                                            "elasticloadbalancing:AddTags",
+                                            "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                                            "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                                            "elasticloadbalancing:ConfigureHealthCheck",
+                                            "elasticloadbalancing:CreateListener",
+                                            "elasticloadbalancing:CreateLoadBalancer",
+                                            "elasticloadbalancing:CreateLoadBalancerListeners",
+                                            "elasticloadbalancing:CreateLoadBalancerPolicy",
+                                            "elasticloadbalancing:CreateTargetGroup",
+                                            "elasticloadbalancing:DeleteListener",
+                                            "elasticloadbalancing:DeleteLoadBalancer",
+                                            "elasticloadbalancing:DeleteLoadBalancerListeners",
+                                            "elasticloadbalancing:DeleteTargetGroup",
+                                            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                            "elasticloadbalancing:DeregisterTargets",
+                                            "elasticloadbalancing:DescribeListeners",
+                                            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                            "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                                            "elasticloadbalancing:DescribeLoadBalancers",
+                                            "elasticloadbalancing:DescribeTargetGroupAttributes",
+                                            "elasticloadbalancing:DescribeTargetGroups",
+                                            "elasticloadbalancing:DescribeTargetHealth",
+                                            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                                            "elasticloadbalancing:ModifyListener",
+                                            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                                            "elasticloadbalancing:ModifyTargetGroup",
+                                            "elasticloadbalancing:ModifyTargetGroupAttributes",
+                                            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                            "elasticloadbalancing:RegisterTargets",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                                            "kms:DescribeKey"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v4"
+                        },
+                        {
+                            "CreateDate": "Wed, 22 May 2019 22:04:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "autoscaling:DescribeAutoScalingGroups",
+                                            "autoscaling:UpdateAutoScalingGroup",
+                                            "ec2:AttachVolume",
+                                            "ec2:AuthorizeSecurityGroupIngress",
+                                            "ec2:CreateRoute",
+                                            "ec2:CreateSecurityGroup",
+                                            "ec2:CreateTags",
+                                            "ec2:CreateVolume",
+                                            "ec2:DeleteRoute",
+                                            "ec2:DeleteSecurityGroup",
+                                            "ec2:DeleteVolume",
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:DescribeDhcpOptions",
+                                            "ec2:DetachVolume",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:ModifyVolume",
+                                            "ec2:RevokeSecurityGroupIngress",
+                                            "elasticloadbalancing:AddTags",
+                                            "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                                            "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                                            "elasticloadbalancing:ConfigureHealthCheck",
+                                            "elasticloadbalancing:CreateListener",
+                                            "elasticloadbalancing:CreateLoadBalancer",
+                                            "elasticloadbalancing:CreateLoadBalancerListeners",
+                                            "elasticloadbalancing:CreateLoadBalancerPolicy",
+                                            "elasticloadbalancing:CreateTargetGroup",
+                                            "elasticloadbalancing:DeleteListener",
+                                            "elasticloadbalancing:DeleteLoadBalancer",
+                                            "elasticloadbalancing:DeleteLoadBalancerListeners",
+                                            "elasticloadbalancing:DeleteTargetGroup",
+                                            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                            "elasticloadbalancing:DeregisterTargets",
+                                            "elasticloadbalancing:DescribeListeners",
+                                            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                            "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                                            "elasticloadbalancing:DescribeLoadBalancers",
+                                            "elasticloadbalancing:DescribeTargetGroupAttributes",
+                                            "elasticloadbalancing:DescribeTargetGroups",
+                                            "elasticloadbalancing:DescribeTargetHealth",
+                                            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                                            "elasticloadbalancing:ModifyListener",
+                                            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                                            "elasticloadbalancing:ModifyTargetGroup",
+                                            "elasticloadbalancing:ModifyTargetGroupAttributes",
+                                            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                            "elasticloadbalancing:RegisterTargets",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                                            "kms:DescribeKey"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v3"
+                        },
+                        {
+                            "CreateDate": "Wed, 03 Oct 2018 20:56:30 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "autoscaling:DescribeAutoScalingGroups",
+                                            "autoscaling:UpdateAutoScalingGroup",
+                                            "ec2:AttachVolume",
+                                            "ec2:AuthorizeSecurityGroupIngress",
+                                            "ec2:CreateRoute",
+                                            "ec2:CreateSecurityGroup",
+                                            "ec2:CreateTags",
+                                            "ec2:CreateVolume",
+                                            "ec2:DeleteRoute",
+                                            "ec2:DeleteSecurityGroup",
+                                            "ec2:DeleteVolume",
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:DetachVolume",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:ModifyVolume",
+                                            "ec2:RevokeSecurityGroupIngress",
+                                            "elasticloadbalancing:AddTags",
+                                            "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                                            "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                                            "elasticloadbalancing:ConfigureHealthCheck",
+                                            "elasticloadbalancing:CreateListener",
+                                            "elasticloadbalancing:CreateLoadBalancer",
+                                            "elasticloadbalancing:CreateLoadBalancerListeners",
+                                            "elasticloadbalancing:CreateLoadBalancerPolicy",
+                                            "elasticloadbalancing:CreateTargetGroup",
+                                            "elasticloadbalancing:DeleteListener",
+                                            "elasticloadbalancing:DeleteLoadBalancer",
+                                            "elasticloadbalancing:DeleteLoadBalancerListeners",
+                                            "elasticloadbalancing:DeleteTargetGroup",
+                                            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                            "elasticloadbalancing:DeregisterTargets",
+                                            "elasticloadbalancing:DescribeListeners",
+                                            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                            "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                                            "elasticloadbalancing:DescribeLoadBalancers",
+                                            "elasticloadbalancing:DescribeTargetGroupAttributes",
+                                            "elasticloadbalancing:DescribeTargetGroups",
+                                            "elasticloadbalancing:DescribeTargetHealth",
+                                            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                                            "elasticloadbalancing:ModifyListener",
+                                            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                                            "elasticloadbalancing:ModifyTargetGroup",
+                                            "elasticloadbalancing:ModifyTargetGroupAttributes",
+                                            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                            "elasticloadbalancing:RegisterTargets",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                                            "kms:DescribeKey"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": "iam:CreateServiceLinkedRole",
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Sun, 27 May 2018 21:06:14 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "autoscaling:DescribeAutoScalingGroups",
+                                            "autoscaling:UpdateAutoScalingGroup",
+                                            "ec2:AttachVolume",
+                                            "ec2:AuthorizeSecurityGroupIngress",
+                                            "ec2:CreateRoute",
+                                            "ec2:CreateSecurityGroup",
+                                            "ec2:CreateTags",
+                                            "ec2:CreateVolume",
+                                            "ec2:DeleteRoute",
+                                            "ec2:DeleteSecurityGroup",
+                                            "ec2:DeleteVolume",
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "ec2:DetachVolume",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:ModifyVolume",
+                                            "ec2:RevokeSecurityGroupIngress",
+                                            "elasticloadbalancing:AddTags",
+                                            "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                                            "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                                            "elasticloadbalancing:ConfigureHealthCheck",
+                                            "elasticloadbalancing:CreateListener",
+                                            "elasticloadbalancing:CreateLoadBalancer",
+                                            "elasticloadbalancing:CreateLoadBalancerListeners",
+                                            "elasticloadbalancing:CreateLoadBalancerPolicy",
+                                            "elasticloadbalancing:CreateTargetGroup",
+                                            "elasticloadbalancing:DeleteListener",
+                                            "elasticloadbalancing:DeleteLoadBalancer",
+                                            "elasticloadbalancing:DeleteLoadBalancerListeners",
+                                            "elasticloadbalancing:DeleteTargetGroup",
+                                            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                            "elasticloadbalancing:DeregisterTargets",
+                                            "elasticloadbalancing:DescribeListeners",
+                                            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                            "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                                            "elasticloadbalancing:DescribeLoadBalancers",
+                                            "elasticloadbalancing:DescribeTargetGroupAttributes",
+                                            "elasticloadbalancing:DescribeTargetGroups",
+                                            "elasticloadbalancing:DescribeTargetHealth",
+                                            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                                            "elasticloadbalancing:ModifyListener",
+                                            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                                            "elasticloadbalancing:ModifyTargetGroup",
+                                            "elasticloadbalancing:ModifyTargetGroupAttributes",
+                                            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                            "elasticloadbalancing:RegisterTargets",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                                            "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                                            "kms:DescribeKey"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Tue, 15 Jun 2021 20:57:05 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+                    "AttachmentCount": 2,
+                    "CreateDate": "Sun, 27 May 2018 21:09:01 GMT",
+                    "DefaultVersionId": "v2",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AmazonEKSWorkerNodePolicy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 21 Mar 2022 22:39:36 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeInstanceTypes",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "eks:DescribeCluster"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Sun, 27 May 2018 21:09:01 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:DescribeInstances",
+                                            "ec2:DescribeRouteTables",
+                                            "ec2:DescribeSecurityGroups",
+                                            "ec2:DescribeSubnets",
+                                            "ec2:DescribeVolumes",
+                                            "ec2:DescribeVolumesModifications",
+                                            "ec2:DescribeVpcs",
+                                            "eks:DescribeCluster"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 21 Mar 2022 22:39:36 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/aws-service-role/AutoScalingServiceRolePolicy",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Mon, 08 Jan 2018 23:10:55 GMT",
+                    "DefaultVersionId": "v6",
+                    "IsAttachable": true,
+                    "Path": "/aws-service-role/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AutoScalingServiceRolePolicy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Fri, 29 Oct 2021 22:06:23 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateFleet",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:StartInstances",
+                                            "ec2:StopInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricData",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "events:PutRule",
+                                            "events:PutTargets",
+                                            "events:RemoveTargets",
+                                            "events:DeleteRule",
+                                            "events:DescribeRule"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "events:ManagedBy": "autoscaling.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EventBridgeRuleManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "ssm:GetParameters"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SystemsManagerParameterManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v6"
+                        },
+                        {
+                            "CreateDate": "Mon, 29 Mar 2021 22:33:25 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateFleet",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:StartInstances",
+                                            "ec2:StopInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:GetMetricData",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "events:PutRule",
+                                            "events:PutTargets",
+                                            "events:RemoveTargets",
+                                            "events:DeleteRule",
+                                            "events:DescribeRule"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "events:ManagedBy": "autoscaling.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EventBridgeRuleManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v5"
+                        },
+                        {
+                            "CreateDate": "Fri, 05 Feb 2021 01:37:46 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateFleet",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:StartInstances",
+                                            "ec2:StopInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "events:PutRule",
+                                            "events:PutTargets",
+                                            "events:RemoveTargets",
+                                            "events:DeleteRule",
+                                            "events:DescribeRule"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "events:ManagedBy": "autoscaling.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EventBridgeRuleManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v4"
+                        },
+                        {
+                            "CreateDate": "Fri, 30 Oct 2020 00:01:26 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateFleet",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "events:PutRule",
+                                            "events:PutTargets",
+                                            "events:RemoveTargets",
+                                            "events:DeleteRule",
+                                            "events:DescribeRule"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "events:ManagedBy": "autoscaling.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EventBridgeRuleManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v3"
+                        },
+                        {
+                            "CreateDate": "Wed, 31 Oct 2018 18:19:10 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateFleet",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Mon, 08 Jan 2018 23:10:55 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "ec2:AttachClassicLinkVpc",
+                                            "ec2:CancelSpotInstanceRequests",
+                                            "ec2:CreateTags",
+                                            "ec2:DeleteTags",
+                                            "ec2:Describe*",
+                                            "ec2:DetachClassicLinkVpc",
+                                            "ec2:ModifyInstanceAttribute",
+                                            "ec2:RequestSpotInstances",
+                                            "ec2:RunInstances",
+                                            "ec2:TerminateInstances"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:PassRole"
+                                        ],
+                                        "Condition": {
+                                            "StringLike": {
+                                                "iam:PassedToService": "ec2.amazonaws.com*"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2InstanceProfileManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "iam:CreateServiceLinkedRole"
+                                        ],
+                                        "Condition": {
+                                            "StringEquals": {
+                                                "iam:AWSServiceName": "spot.amazonaws.com"
+                                            }
+                                        },
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "EC2SpotManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "elasticloadbalancing:Register*",
+                                            "elasticloadbalancing:Deregister*",
+                                            "elasticloadbalancing:Describe*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "ELBManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "cloudwatch:DeleteAlarms",
+                                            "cloudwatch:DescribeAlarms",
+                                            "cloudwatch:PutMetricAlarm"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "CWManagement"
+                                    },
+                                    {
+                                        "Action": [
+                                            "sns:Publish"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*",
+                                        "Sid": "SNSManagement"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Fri, 29 Oct 2021 22:06:23 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Wed, 07 Mar 2018 00:52:31 GMT",
+                    "DefaultVersionId": "v1",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "CloudWatchAgentAdminPolicy",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Wed, 07 Mar 2018 00:52:31 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "cloudwatch:PutMetricData",
+                                            "ec2:DescribeTags",
+                                            "logs:PutLogEvents",
+                                            "logs:DescribeLogStreams",
+                                            "logs:DescribeLogGroups",
+                                            "logs:CreateLogStream",
+                                            "logs:CreateLogGroup"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    },
+                                    {
+                                        "Action": [
+                                            "ssm:GetParameter",
+                                            "ssm:PutParameter"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Wed, 07 Mar 2018 00:52:31 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+                    "AttachmentCount": 3,
+                    "CreateDate": "Fri, 06 Feb 2015 18:40:58 GMT",
+                    "DefaultVersionId": "v2",
+                    "IsAttachable": true,
+                    "Path": "/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "AmazonS3FullAccess",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 27 Sep 2021 20:16:37 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "s3:*",
+                                            "s3-object-lambda:*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Fri, 06 Feb 2015 18:40:58 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": "s3:*",
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 27 Sep 2021 20:16:37 GMT",
+                    "type": "policy"
+                }
+            }
+        },
+        {
+            "self": {
+                "source_data": {
+                    "Arn": "arn:aws:iam::aws:policy/job-function/Billing",
+                    "AttachmentCount": 1,
+                    "CreateDate": "Thu, 10 Nov 2016 17:33:18 GMT",
+                    "DefaultVersionId": "v5",
+                    "IsAttachable": true,
+                    "Path": "/job-function/",
+                    "PermissionsBoundaryUsageCount": 0,
+                    "PolicyId": "XXXXXXXXXXXXXXXXXXXX",
+                    "PolicyName": "Billing",
+                    "PolicyVersionList": [
+                        {
+                            "CreateDate": "Mon, 05 Oct 2020 20:37:01 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "aws-portal:*Billing",
+                                            "aws-portal:*Usage",
+                                            "aws-portal:*PaymentMethods",
+                                            "budgets:ViewBudget",
+                                            "budgets:ModifyBudget",
+                                            "ce:UpdatePreferences",
+                                            "ce:CreateReport",
+                                            "ce:UpdateReport",
+                                            "ce:DeleteReport",
+                                            "ce:CreateNotificationSubscription",
+                                            "ce:UpdateNotificationSubscription",
+                                            "ce:DeleteNotificationSubscription",
+                                            "cur:DescribeReportDefinitions",
+                                            "cur:PutReportDefinition",
+                                            "cur:ModifyReportDefinition",
+                                            "cur:DeleteReportDefinition",
+                                            "purchase-orders:*PurchaseOrders"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": true,
+                            "VersionId": "v5"
+                        },
+                        {
+                            "CreateDate": "Thu, 27 Aug 2020 20:09:10 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "aws-portal:*Billing",
+                                            "aws-portal:*Usage",
+                                            "aws-portal:*PaymentMethods",
+                                            "budgets:ViewBudget",
+                                            "budgets:ModifyBudget",
+                                            "cur:*",
+                                            "purchase-orders:*PurchaseOrders"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v4"
+                        },
+                        {
+                            "CreateDate": "Fri, 24 Apr 2020 18:12:01 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "aws-portal:*Billing",
+                                            "awsbillingconsole:*Billing",
+                                            "aws-portal:*Usage",
+                                            "awsbillingconsole:*Usage",
+                                            "aws-portal:*PaymentMethods",
+                                            "awsbillingconsole:*PaymentMethods",
+                                            "budgets:ViewBudget",
+                                            "budgets:ModifyBudget",
+                                            "cur:*",
+                                            "purchase-orders:*PurchaseOrders"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v3"
+                        },
+                        {
+                            "CreateDate": "Tue, 06 Feb 2018 23:46:37 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "aws-portal:*Billing",
+                                            "awsbillingconsole:*Billing",
+                                            "aws-portal:*Usage",
+                                            "awsbillingconsole:*Usage",
+                                            "aws-portal:*PaymentMethods",
+                                            "awsbillingconsole:*PaymentMethods",
+                                            "budgets:ViewBudget",
+                                            "budgets:ModifyBudget",
+                                            "cur:*"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v2"
+                        },
+                        {
+                            "CreateDate": "Thu, 10 Nov 2016 17:33:18 GMT",
+                            "Document": {
+                                "Statement": [
+                                    {
+                                        "Action": [
+                                            "aws-portal:*Billing",
+                                            "aws-portal:*Usage",
+                                            "aws-portal:*PaymentMethods",
+                                            "budgets:ViewBudget",
+                                            "budgets:ModifyBudget"
+                                        ],
+                                        "Effect": "Allow",
+                                        "Resource": "*"
+                                    }
+                                ],
+                                "Version": "2012-10-17"
+                            },
+                            "IsDefaultVersion": false,
+                            "VersionId": "v1"
+                        }
+                    ],
+                    "UpdateDate": "Mon, 05 Oct 2020 20:37:01 GMT",
+                    "type": "policy"
+                }
+            }
+        }
+    ]
+}

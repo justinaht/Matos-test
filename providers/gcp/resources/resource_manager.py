@@ -39,6 +39,8 @@ class GCPResourceManager(BaseGCPManager):
 
         # Step by step will add the provision to fetch all resource type details e.g. pod, services etc.
         contentType = asset_v1p5beta1.ContentType.IAM_POLICY
+        if not RESOURCE_TYPE_REQUESTS[resource_type]:
+            return resources, None
         request = {
             "asset_types": RESOURCE_TYPE_REQUESTS[resource_type],
             "parent": f"projects/{project_id if project_id is not None else self.projectId}",

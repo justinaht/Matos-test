@@ -9,6 +9,7 @@ from kubernetes import client as kclient
 from datetime import datetime, timedelta
 from awscli.customizations.eks.get_token import STSClientFactory, TokenGenerator, TOKEN_EXPIRATION_MINS
 import json
+import base64
 
 logger = get_logger(__file__)
 
@@ -30,7 +31,14 @@ class AWSResourceManager:
             "storage": Storage,
             "network": Network,
             "sql": SQL,
-            "serviceAccount": IAM
+            "serviceAccount": ServiceAccount,
+            "log_monitor": CloudTrail,
+            "kms": KMS,
+            "policy": Policy,
+            "no_sql": DynamoDB,
+            "disk": Disk,
+            "snapshot": Snapshot,
+            "eip": EIP,
         }
 
         log = logger.new()
@@ -41,14 +49,15 @@ class AWSResourceManager:
         if not Resource:
             log.info("Requested resource_type is not supported.")
             return
-        try:
-            cloud_resource = Resource(
-                resource,
-            )
+        # try:
+        cloud_resource = Resource(
+            resource,
+        )
 
-            resource_details = cloud_resource.get_resource_inventory()
-        except Exception as ex:
-            raise Exception(ex)
+        resource_details = cloud_resource.get_resource_inventory()
+        # except Exception as ex:
+        #     print(ex, "===== cloud_resource.get_resource_inventory()")
+        #     raise Exception(ex)
 
         if resource_details:
             resource.update(details=resource_details)
@@ -339,12 +348,21 @@ class Instance(AWS):
         try:
             super(Instance, self).__init__()
             self.conn = self.client("ec2")
+            self.iam = self.client("iam")
             self.instance_ids = resource.get('instance_id') or resource.get('name')
+            self._iam_instance_profiles = None
 
             if self.instance_ids:
                 self.instance_ids = [self.instance_ids]
         except Exception as ex:
             raise Exception(ex)
+
+    @property
+    def iam_instance_profiles(self):
+        if not self._iam_instance_profiles:
+            self._iam_instance_profiles = self.iam.list_instance_profiles().get('InstanceProfiles')
+
+        return self._iam_instance_profiles
 
     def get_resource_inventory(self):
         """
@@ -384,6 +402,11 @@ class Instance(AWS):
                     "total": instance_config["memory"] if instance_config else 0,
                     "unit": "GB",
                 }
+                iam_instance_profile_id = instance_details.get('IamInstanceProfile', {}).get('Id')
+                if iam_instance_profile_id:
+                    iam_instance_profile_details = self.get_iam_instance_profile(iam_instance_profile_id)
+                    instance_details['IamInstanceProfile'] = iam_instance_profile_details
+
                 if self.instance_ids and \
                         instance_details.get("InstanceId") in self.instance_ids:
                     return instance_details
@@ -402,23 +425,22 @@ class Instance(AWS):
         volumes_data = []
         if volumes:
             for vol in volumes:
-                volumes_data.append(
-                    {
-                        "VolumeId": vol.get("VolumeId"),
-                        "AvailabilityZone": vol.get("AvailabilityZone"),
-                        "Size": vol.get("Size"),
-                        "VolumeType": vol.get("VolumeType"),
-                        "State": vol.get("State"),
-                        "Iops": vol.get("Iops"),
-                        "DeviceName": vol["Attachments"][0]["Device"] if len(vol['Attachments']) else '',
-                    }
-                )
+                volumes_data.append(vol)
                 total_size += vol.get("Size")
             if volumes_data:
                 instance_details["BlockDeviceMappings"] = {
                     "DiskSize": {"total": total_size, "unit": "GB"},
                     "Volumes": volumes_data,
                 }
+
+    def get_iam_instance_profile(self, profile_id):
+        try:
+            profiles = [profile for profile in self.iam_instance_profiles if
+                        profile.get('InstanceProfileId') == profile_id]
+        except Exception as ex:
+            print(ex, "====== iam instance profile fetch error")
+            return {}
+        return profiles[0]
 
 
 class Storage(AWS):
@@ -444,32 +466,24 @@ class Storage(AWS):
         instance_id (str): Ec2 instance id.
         return: dictionary object.
         """
-        bucket_policy = self.get_bucket_policy_list()
-        metric_config = self.get_bucket_metrics_configuration_list()
-        inventory_config = self.get_bucket_inventory_configuration_list()
-        intelligent_tiering_config = self.get_bucket_intelligent_tiering_configurations_list()
-        acl = self.get_bucket_acl()
-        policyStatus = self.get_bucket_policy_status()
-        object = self.get_object_list()
-        lifecycle = self.get_bucket_lifecycle()
-        bucket_encryption = self.get_bucket_encryption()
-        bucket_location = self.get_bucket_location()
-
         self.bucket = {
             **self.bucket,
             "type": "bucket",
-            "policy": bucket_policy,
-            "metric_configuration": metric_config,
-            "inventory_configuration": inventory_config,
-            "intelligent_tiering_configuration": intelligent_tiering_config,
-            "acl": acl,
-            "policy_status": policyStatus,
-            "object": object,
-            "lifecycle": lifecycle,
-            "bucket_encryption": bucket_encryption,
+            "policy": self.get_bucket_policy_list(),
+            "metric_configuration": self.get_bucket_metrics_configuration_list(),
+            "inventory_configuration": self.get_bucket_inventory_configuration_list(),
+            "intelligent_tiering_configuration": self.get_bucket_intelligent_tiering_configurations_list(),
+            "acl": self.get_bucket_acl(),
+            "policy_status": self.get_bucket_policy_status(),
+            # "object": self.get_object_list(),
+            "lifecycle": self.get_bucket_lifecycle(),
+            "encryption": self.get_bucket_encryption(),
             "versioning": self.get_bucket_versioning(),
             "tagging": self.get_bucket_tagging(),
-            "location": bucket_location
+            "location": self.get_bucket_location(),
+            "logging": self.get_bucket_logging(),
+            "public_access_block": self.get_bucket_public_access_block(),
+            "ownership": self.get_bucket_ownership(),
         }
         return self.bucket
 
@@ -483,6 +497,28 @@ class Storage(AWS):
             policy = {}
 
         return policy
+
+    def get_bucket_ownership(self):
+        bucket_name = self.bucket['name']
+        try:
+            ownership = self.conn.get_bucket_ownership_controls(Bucket=bucket_name)
+            rules = ownership['OwnershipControls']['Rules']
+        except Exception as ex:
+            print(bucket_name, "Ownership controls error: ", ex)
+            rules = []
+
+        return rules
+
+    def get_bucket_public_access_block(self):
+        bucket_name = self.bucket['name']
+        try:
+            resp = self.conn.get_public_access_block(Bucket=bucket_name)
+            publicAccessBlock = resp.get('PublicAccessBlockConfiguration', {})
+        except Exception as ex:
+            print(bucket_name, " public access block error: ", ex)
+            publicAccessBlock = {}
+
+        return publicAccessBlock
 
     def get_bucket_location(self):
         bucket_name = self.bucket['name']
@@ -660,6 +696,14 @@ class Storage(AWS):
             response = {}
         return response
 
+    def get_bucket_logging(self):
+        try:
+            response = self.conn.get_bucket_logging(Bucket=self.bucket['name'])
+        except Exception as ex:
+            print(self.bucket['name'], " bucket logging: ", ex)
+            response = {}
+        return response.get('LoggingEnabled')
+
 
 class Network(AWS):
     def __init__(self,
@@ -690,7 +734,9 @@ class Network(AWS):
         self.network = {
             **self.network,
             "subnets": subnets,
-            "network_acl": network_acl
+            "network_acl": network_acl,
+            "security_group": self.get_security_group(),
+            "flow_logs": self.get_flow_logs()
         }
         return self.network
 
@@ -754,6 +800,66 @@ class Network(AWS):
 
         return acls
 
+    def get_security_group(self):
+        def fetch_security_group(sg_list=None, continueToken: str = None):
+            request = {
+                "Filters": [
+                    {
+                        "Name": "vpc-id",
+                        "Values": [self.network['id']]
+                    }
+                ]
+            }
+            if continueToken:
+                request['NextToken'] = continueToken
+            response = self.conn.describe_security_groups(**request)
+            continueToken = response.get('NextToken', None)
+            current_sg = [] if not sg_list else sg_list
+            current_sg.extend(response.get('SecurityGroups', []))
+
+            return current_sg, continueToken
+
+        try:
+            sg_data, nextToken = fetch_security_group()
+
+            while nextToken:
+                sg_data, nextToken = fetch_security_group(sg_data, nextToken)
+        except Exception as ex:
+            print("network SG fetch error: ", ex)
+            return []
+
+        return sg_data
+
+    def get_flow_logs(self):
+        def fetch_flow_logs(flow_log_list=None, continueToken: str = None):
+            request = {
+                "Filters": [
+                    {
+                        "Name": "resource-id",
+                        "Values": [self.network['id']]
+                    }
+                ]
+            }
+            if continueToken:
+                request['NextToken'] = continueToken
+            response = self.conn.describe_flow_logs(**request)
+            continueToken = response.get('NextToken', None)
+            current_flow_logs = [] if not flow_log_list else flow_log_list
+            current_flow_logs.extend(response.get('FlowLogs', []))
+
+            return current_flow_logs, continueToken
+
+        try:
+            flow_logs, nextToken = fetch_flow_logs()
+
+            while nextToken:
+                flow_logs, nextToken = fetch_flow_logs(flow_logs, nextToken)
+        except Exception as ex:
+            print("network Flow log fetch error: ", ex)
+            return []
+
+        return flow_logs
+
 
 class SQL(AWS):
     def __init__(self,
@@ -781,11 +887,45 @@ class SQL(AWS):
 
         self.database = {
             **self.database,
+            "DBSnapshots": self.get_db_snapshots(instance_id=self.database.get('DBInstanceIdentifier')),
+            "DBCluster": None
         }
+
+        if self.database.get('DBClusterIdentifier'):
+            db_cluster = self.get_db_cluster(self.database.get('DBClusterIdentifier'))
+            if db_cluster:
+                self.database['DBCluster'] = db_cluster
+
         return self.database
 
+    def get_db_snapshots(self, instance_id):
+        response = self.conn.describe_db_snapshots(DBInstanceIdentifier=instance_id)
+        return response.get('DBSnapshots')
 
-class IAM(AWS):
+    def get_db_cluster(self, cluster_id):
+        def get_db_cluster_snapshot(c_id):
+            resp = self.conn.describe_db_cluster_snapshots(DBClusterIdentifier=c_id)
+            return resp.get('DBClusterSnapshots')
+
+        filters = [
+            {
+                "Name": "db-cluster-id",
+                "Values": [cluster_id]
+            }
+        ]
+        response = self.conn.describe_db_clusters(Filters=filters)
+
+        clusters = response.get('DBClusters', [])
+
+        clusters = [{
+            **cluster,
+            "Snapshots": get_db_cluster_snapshot(c_id=cluster.get('DBClusterIdentifier'))
+        } for cluster in clusters]
+
+        return clusters[0] if clusters else None
+
+
+class ServiceAccount(AWS):
     def __init__(self,
                  resource: dict,
                  **kwargs,
@@ -793,7 +933,7 @@ class IAM(AWS):
         """
         """
         try:
-            super(IAM, self).__init__()
+            super(ServiceAccount, self).__init__()
             self.conn = self.client("iam")
             self.user = resource
 
@@ -808,21 +948,334 @@ class IAM(AWS):
         instance_id (str): Ec2 instance id.
         return: dictionary object.
         """
-        response = self.conn.get_user(UserName=self.user['UserName'])
+        resp = self.conn.generate_credential_report()
+        pwd_enable_content = self.get_credential_report(self.user['UserName'])
+        pwd_enable = pwd_enable_content[0] if pwd_enable_content else None
+
+        users = self.conn.get_account_authorization_details().get('UserDetailList')
+        users = [user for user in users if user.get('UserName') == self.user['UserName']]
+        user = users[-1]
+        custom_policy_list = self.conn.list_policies(Scope='Local').get('Policies')
+        policy_details = []
+        for policy in user.get('AttachedManagedPolicies', []):
+            scope = 'Local' if [p for p in custom_policy_list if p.get('Arn') == policy.get('PolicyArn')] else 'AWS'
+            policy_detail = self.conn.get_policy(PolicyArn=policy.get('PolicyArn')).get('Policy')
+            policy_version = self.conn.get_policy_version(PolicyArn=policy.get('PolicyArn'),
+                                                          VersionId=policy_detail.get('DefaultVersionId')).get(
+                'PolicyVersion')
+            policy_details.append({**policy_detail, "PolicyVersion": policy_version, "Scope": scope})
+
         user_data = {
-            **response.get('User', {})
-        }
-        response = self.conn.list_user_policies(UserName=self.user['UserName'])
-        policy_data = []
-        for policy in response.get('PolicyNames', []):
-            response = self.conn.get_user_policy(UserName=self.user['UserName'], PolicyName=policy)
-            policy_data.append({
-                "PolicyName": policy,
-                "PolicyDocument": response.get('PolicyDocument', "")
-            })
-        user_data = {
-            **user_data,
-            "Policies": policy_data
+            **user,
+            "PasswordEnable": pwd_enable,
+            "AttachedManagedPolicies": policy_details,
         }
 
         return user_data
+
+    def get_credential_report(self, user_name):
+        content = []
+        try:
+            response = self.conn.get_credential_report()
+            origin_content = response.get('Content', '')
+            content = [False if user.split(',')[3] in ['false'] else True if user.split(',')[3] in ['true'] else
+            user.split(',')[3] for user in origin_content.decode('UTF-8').split('\n') if
+                       user.split(',')[0] == user_name]
+        except Exception as ex:
+            print(ex, "===== credential report")
+
+        return content
+
+
+class KMS(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(KMS, self).__init__()
+            self.conn = self.client("kms")
+            self.kms = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        key_detail = self.conn.describe_key(KeyId=self.kms.get('KeyId')).get('KeyMetadata')
+        key_policy_names = self.conn.list_key_policies(KeyId=self.kms.get('KeyId')).get('PolicyNames')
+        key_policies = [
+            json.loads(self.conn.get_key_policy(KeyId=self.kms.get('KeyId'), PolicyName=p_name).get('Policy')) for
+            p_name in key_policy_names]
+        rotation_status = self.conn.get_key_rotation_status(KeyId=self.kms.get('KeyId')).get('KeyRotationEnabled')
+
+        self.kms = {
+            **key_detail,
+            "KeyPolicies": key_policies,
+            "KeyRotationEnabled": rotation_status
+        }
+        return self.kms
+
+
+class CloudTrail(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(CloudTrail, self).__init__()
+            self.conn = self.client("cloudtrail")
+            self.logs = self.client('logs')
+            self.watch = self.client('cloudwatch')
+            self.trail = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        response = self.conn.get_trail(Name=self.trail['name'])
+        trail_data = {
+            "type": "cloudtrail",
+            **response.get('Trail', {})
+        }
+        log_group_arn = trail_data.get('CloudWatchLogsLogGroupArn')
+        if log_group_arn:
+            log_group = self.get_log_group(log_group_arn)
+            log_group_name = log_group.get('logGroupName')
+            if log_group_name:
+                metric_filters = self.get_metric_filters(log_group_name)
+                metric_filters = [{
+                    **metric,
+                    "metricTransformations": [{
+                        **data,
+                        "metricAlarms": self.get_alarms_for_metric(data.get('metricName'), data.get('metricNamespace'))
+                    } for data in metric.get('metricTransformations', [])]
+                } for metric in metric_filters]
+                log_group['metricFilters'] = metric_filters
+            trail_data['CloudWatchLogGroup'] = log_group
+
+        return trail_data
+
+    def get_log_group(self, arn):
+        def fetch_log_group(log_list=None, continueToken=None):
+            request = {}
+            if continueToken:
+                request['nextToken'] = continueToken
+            response = self.logs.describe_log_groups(**request)
+            continueToken = response.get('NextToken', None)
+            current_logs = [] if not log_list else log_list
+            current_logs.extend(response.get('logGroups', []))
+
+            return current_logs, continueToken
+
+        try:
+            logs, nextToken = fetch_log_group()
+
+            while nextToken:
+                logs = fetch_cloudtrails(logs, nextToken)
+        except Exception as ex:
+            print("cloudwatchlogs log group: ", ex)
+            return {}
+        logs = [log for log in logs if log.get('arn') == arn]
+        return logs[0] if logs else {}
+
+    def get_metric_filters(self, logGroupName):
+        def fetch_metric_filters(metric_filter_list=None, continueToken=None, name=None):
+            request = {}
+            if continueToken:
+                request['nextToken'] = continueToken
+                request['logGroupName'] = name
+            response = self.logs.describe_metric_filters(**request)
+            continueToken = response.get('NextToken', None)
+            current_metric_filters = [] if not metric_filter_list else metric_filter_list
+            current_metric_filters.extend(response.get('metricFilters', []))
+
+            return current_metric_filters, continueToken
+
+        try:
+            metric_filters, nextToken = fetch_metric_filters(name=logGroupName)
+
+            while nextToken:
+                metric_filters = fetch_cloudtrails(metric_filters, nextToken, logGroupName)
+        except Exception as ex:
+            print("cloudwatchlogs log group metric filter: ", ex)
+            return {}
+
+        return metric_filters
+
+    def get_alarms_for_metric(self, filterName, filterNamespace):
+        response = self.watch.describe_alarms_for_metric(MetricName=filterName, Namespace=filterNamespace)
+        return response.get('MetricAlarms')
+
+
+class Policy(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(Policy, self).__init__()
+            self.conn = self.client("iam")
+            self.policy = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        policy = {
+            **self.policy,
+            "Document": self.conn.get_policy_version(PolicyArn=self.policy.get('Arn'),
+                                                     VersionId=self.policy.get('DefaultVersionId')).get(
+                'PolicyVersion').get('Document')
+        }
+
+        return policy
+
+
+class Snapshot(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(Snapshot, self).__init__()
+            self.conn = self.client("ec2")
+            self.snapshot = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        snapshot = {
+            **self.snapshot,
+        }
+        print(snapshot, "==== snapshot")
+
+        return snapshot
+
+
+class EIP(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(EIP, self).__init__()
+            self.conn = self.client("ec2")
+            self.eip = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        eip = {
+            **self.eip,
+        }
+        print(eip, "==== eip")
+
+        return eip
+
+
+class Disk(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(Disk, self).__init__()
+            self.conn = self.client("ec2")
+            self.disk = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        disk = {
+            **self.disk,
+        }
+
+        return disk
+
+
+class DynamoDB(AWS):
+    def __init__(self,
+                 resource: dict,
+                 **kwargs,
+                 ) -> None:
+        """
+        """
+        try:
+            super(DynamoDB, self).__init__()
+            self.conn = self.client("dynamodb")
+            self.ddb = resource
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    def get_resource_inventory(self):
+        """
+        Fetches instance details.
+
+        Args:
+        instance_id (str): Ec2 instance id.
+        return: dictionary object.
+        """
+        dynamo_db = {
+            **self.conn.describe_table(TableName=self.ddb.get('name')).get('Table', {}),
+            "type": 'dynamodb'
+        }
+
+        return dynamo_db
