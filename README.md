@@ -71,9 +71,9 @@ Set `FLASK_APP` environment variable to specify the application
 Run the application
 
     python3 -m flask run
-    
 
-https://user-images.githubusercontent.com/30431135/169458509-98053f7e-9447-4148-b741-258c92a3580c.mov
+
+https://user-images.githubusercontent.com/30431135/169459671-cae99636-2e54-4134-814c-f432f2eee3af.mov
 
 
 # Contents
