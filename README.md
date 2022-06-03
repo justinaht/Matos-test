@@ -25,7 +25,7 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
             * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, just copy the name of the cluster you want to check
 ![Get detail cluster](./images/Screenshot%20from%202022-06-0.png)
      * Response:
-![Response cluster logging](./images/2.png)
+<space>![Response cluster logging](./images/2.png)<space>
 
 # STEP 2: Write unit test with JSON response from Step-1
 **Json data test:**
