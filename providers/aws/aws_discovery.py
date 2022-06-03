@@ -62,6 +62,21 @@ class AWSDiscovery(AWS):
 
         return cluster_resources
 
+    def get_cluster_detail(self, cluster_name):
+        cluster_details = self.eks.describe_cluster(name=cluster_name)
+        cluster_details = cluster_details['cluster']
+        return cluster_details
+
+    def update_cluster_logging_self(self, cluster_name, logging_data):
+        cluster_details = self.eks.describe_cluster(name=cluster_name)
+        res = self.eks.update_cluster_config(
+            name=cluster_name,
+            logging=logging_data
+        )
+        cluster_details = self.eks.describe_cluster(name=cluster_name)
+        cluster_details = cluster_details['cluster']
+        return cluster_details
+
     def get_buckets(self):
         """
         """
@@ -261,3 +276,15 @@ class AWSDiscovery(AWS):
         resources.extend(self.get_eip())
 
         return resources
+
+    def find_resources_cluster_self(self, cluster_name, **kwargs):
+        """
+        """
+        cluster = self.get_cluster_detail(cluster_name)
+        return cluster
+
+    def update_cluster_logging(self, cluster_name, logging_data, **kwargs):
+        """
+        """
+        cluster = self.update_cluster_logging_self(cluster_name, logging_data)
+        return cluster

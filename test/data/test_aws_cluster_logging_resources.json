@@ -1,0 +1,22 @@
+{
+  "logging": {
+    "clusterLogging": [
+      {
+        "enabled": true,
+        "types": [
+          "api"
+        ]
+      },
+      {
+        "enabled": false,
+        "types": [
+          "audit",
+          "authenticator",
+          "controllerManager",
+          "scheduler"
+        ]
+      }
+    ]
+  },
+  "name": "floral-unicorn-1653905381"
+}

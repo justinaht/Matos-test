@@ -40,3 +40,26 @@ class ResourceService:
                                                 rsc['self'].get('display_name', '') not in cluster_node_name_list]
 
         return pretty_resources, cluster_node_name_list
+
+class ResourceClusterSelfService:
+    provider = 'aws'
+    cluster_name = ""
+
+    def __init__(self, provider, cluster_name):
+        self.provider = provider
+        self.cluster_name = cluster_name
+
+    def get_resource(self, remove_instance=True):
+        try:
+            resource_cluster_self = Discovery(self.provider).find_resources_cluster_self(self.cluster_name) if self.provider == 'aws' else []
+            return resource_cluster_self
+        except Exception as ex:
+            raise Exception(ex)
+
+    def update_cluster_logging(self, data):
+        try:
+            # Search
+            resource_cluster_self = Discovery(self.provider).update_cluster_logging(self.cluster_name, data) if self.provider == 'aws' else []
+            return resource_cluster_self
+        except Exception as ex:
+            raise Exception(ex)

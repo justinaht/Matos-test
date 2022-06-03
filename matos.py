@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flasgger import Swagger
 from api.route.home import home_api
 from api.route.resource import resource_api
+from api.route.cluster_detail import resource_cluster_self_api
 
 
 def create_app():
@@ -20,6 +21,7 @@ def create_app():
     app.config.from_pyfile('config.py')
     app.register_blueprint(home_api, url_prefix='/api')
     app.register_blueprint(resource_api, url_prefix='/resources')
+    app.register_blueprint(resource_cluster_self_api, url_prefix='/cluster')
 
     return app
 

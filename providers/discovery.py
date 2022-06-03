@@ -24,3 +24,14 @@ class Discovery:
         """
 
         return self.manager.find_resources(**kwargs)
+
+    def find_resources_cluster_self(self, cluster_name, **kwargs):
+        """
+        """
+        return self.manager.find_resources_cluster_self(cluster_name, **kwargs)
+
+    def update_cluster_logging(self, cluster_name, logging_data, **kwargs):
+        """
+        """
+        return self.manager.update_cluster_logging(cluster_name, logging_data, **kwargs)
+        

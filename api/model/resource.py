@@ -14,3 +14,9 @@ class ResourceModel:
         self.policy = resource.get('policy')
         self.no_sql = resource.get('no_sql')
         self.eip = resource.get('eip')
+
+class ResourceClusterSelfModel:
+    def __init__(self, resource):
+        self.name = resource.get('name')
+        # self.display_name = resource.get('display_name')
+        self.logging = resource.get('logging')
