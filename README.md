@@ -16,7 +16,7 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
 1. Fill the information for file <i>/credentials/kube_config_aws</i>
 2. Change the name of <i>credentials/aws_role_account.json.sample</i> to <i>credentials/aws_role_account.json</i> and update the information for it
 3. Create api to get the logging status of an AWS cluster by name
-   **Endpoint**: GET <i>/cluster/<provider>/<cluster_name></i>
+   **Endpoint**: GET <i>/cluster<provider>/<cluster_name></i>
     * Parameters:
         * provider: The name of the cloud provider. For the testing purpose, please always set it as **aws**
         * cluster_name: The name of the cluster you want to check the logging status. You can archive this by:
@@ -36,7 +36,7 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
     /Matos/test/data/test_aws_cluster_logging_resources.py
 
 # STEP 3: Write a restful api to enable/disable cluster logging
-**Endpoint** POST */cluster/<provider>/<cluster_name>*
+**Endpoint** POST */cluster<provider>/<cluster_name>*
 ![Change status logging](./images/3.png)
 
     * Parameters:
