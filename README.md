@@ -46,8 +46,9 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
             * Go to Amazon Elastic Kubernetes Service
             * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, just copy the name of the cluster you want to check
 
-**Body**
-    * types: The logging types name of a cluster. This type should be **api, audit, authenticator, controllerManager, scheduler**
+**Body:**
+
+types: The logging types name of a cluster. This type should be **api, audit, authenticator, controllerManager, scheduler**
 
     Body example:
     ```
