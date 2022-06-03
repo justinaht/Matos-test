@@ -13,17 +13,9 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
 # STEP 1: Get resources status and metadata from AWS using Cloud SDK APIs
 **Description**: Create an api to get logging of the cluster. (Check: Swagger: **/apidocs**)
 
-
-
-
-
-
-
-
-
 1. Fill the information for file /credentials/kube_config_aws
-    2. Change the name of credentials/aws_role_account.json.sample to credentials/aws_role_account.json and fill update the information for it
-    3. Create api to get the logging status of an AWS cluster by name
+2. Change the name of credentials/aws_role_account.json.sample to credentials/aws_role_account.json and fill update the information for it
+3. Create api to get the logging status of an AWS cluster by name
 **Endpoint**: GET */cluster/<provider>/<cluster_name>*
     * Parameters:
         * provider: The name of the cloud provider. For the testing purpose, please always set it as aws
@@ -37,8 +29,10 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
 
 # STEP 2: Write unit test with JSON response from Step-1
 **Json data test**
+    
     */Matos/test/data/test_aws_cluster_logging_resources.json*
 **Python code test**
+    
     */Matos/test/data/test_aws_cluster_logging_resources.py*
 
 # STEP 3: Write a restful api to enable/disable cluster logging
