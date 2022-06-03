@@ -17,12 +17,12 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
 2. Change the name of <i>credentials/aws_role_account.json.sample</i> to <i>credentials/aws_role_account.json</i> and update the information for it
 3. Create api to get the logging status of an AWS cluster by name
    **Endpoint**: GET <i>/cluster<provider>/<cluster_name></i>
-- Parameters:
-  - provider: The name of the cloud provider. For the testing purpose, please always set it as **aws**
-  - cluster_name: The name of the cluster you want to check the logging status. You can archive this by:
-  - Login to your AWS Account
-  - Go to Amazon Elastic Kubernetes Service
-  - You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, copy the name of the cluster you want to check
+    * Parameters:
+        * provider: The name of the cloud provider. For the testing purpose, please always set it as **aws**
+        * cluster_name: The name of the cluster you want to check the logging status. You can archive this by:
+              * Login to your AWS Account
+              * Go to Amazon Elastic Kubernetes Service
+              * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, copy the name of the cluster you want to check
 ![Get detail cluster](./images/Screenshot%20from%202022-06-0.png)
      * Response: <br>
 ![Response cluster logging](./images/2.png)
@@ -42,9 +42,9 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
     * Parameters:
         * provider: The name of the cloud provider. For the testing purpose, please always set it as **aws**
         * cluster_name: The name of the cluster you want to check the logging status. You can archive this by:
-            * Login to your AWS Account
-            * Go to Amazon Elastic Kubernetes Service
-            * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, just copy the name of the cluster you want to check
+          * Login to your AWS Account
+          * Go to Amazon Elastic Kubernetes Service
+          * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, just copy the name of the cluster you want to check
 
 **Body:**
 
