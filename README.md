@@ -24,7 +24,7 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
             * Go to Amazon Elastic Kubernetes Service
             * You can see a list of clusters in the right-hand table. (If no cluster existed, you can create one). Then, just copy the name of the cluster you want to check
 ![Get detail cluster](./images/Screenshot%20from%202022-06-0.png)
-**Response:**
+     * Response:
 
 ![Response cluster logging](./images/2.png)
 
