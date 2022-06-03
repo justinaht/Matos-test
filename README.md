@@ -28,10 +28,10 @@ EKS control plane logging is enabled for your Amazon EKS clusters.
 ![Response cluster logging](./images/2.png)
 
 # STEP 2: Write unit test with JSON response from Step-1
-**Json data test**
+**Json data test:**
     
     /Matos/test/data/test_aws_cluster_logging_resources.json
-**Python code test**
+**Python code test:**
     
     /Matos/test/data/test_aws_cluster_logging_resources.py
 
